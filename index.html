@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novedades DTM - Control de Recursos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+/* === VARIABLES === */
+:root {
+    --primary: #1a73e8;
+    --primary-dark: #1557b0;
+    --secondary: #34a853;
+    --warning: #fbbc04;
+    --danger: #ea4335;
+    --bg: #f0f2f5;
+    --card-bg: #ffffff;
+    --text: #202124;
+    --text-light: #5f6368;
+    --border: #dadce0;
+    --radius: 8px;
+    --shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: block; }
+.role-container { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; text-align: center; }
+.role-container h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
+.role-container .subtitle { color: var(--text-light); font-size: 1.1rem; margin-bottom: 3rem; }
+.role-buttons { display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; }
+.role-btn { display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 2.5rem 3rem; border: 2px solid var(--border); border-radius: var(--radius); background: var(--card-bg); cursor: pointer; transition: all 0.2s; font-size: 1.2rem; color: var(--text); box-shadow: var(--shadow); }
+.role-btn:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.role-btn i { font-size: 3rem; color: var(--primary); }
+.role-btn-admin { border-color: #ea4335; }
+.role-btn-admin i { color: #ea4335; }
+.role-btn-admin:hover { border-color: #ea4335; }
+.app-header { background: var(--card-bg); padding: 1rem 2rem; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; }
+.header-left { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+.header-left h2 { font-size: 1.3rem; color: var(--primary); }
+.btn-icon { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text-light); padding: 0.5rem; border-radius: 50%; transition: background 0.2s; }
+.btn-icon:hover { background: var(--bg); }
+.header-nav { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.25rem; }
+.nav-btn { padding: 0.5rem 1rem; border: none; background: var(--bg); border-radius: 20px; cursor: pointer; font-size: 0.85rem; white-space: nowrap; color: var(--text-light); transition: all 0.2s; }
+.nav-btn.active { background: var(--primary); color: white; }
+.nav-btn:hover:not(.active) { background: var(--border); }
+.content { padding: 2rem; max-width: 900px; margin: 0 auto; }
+.form-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); margin-bottom: 1.5rem; }
+.form-card h3 { font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 0.75rem; }
+.form-group { margin-bottom: 1.25rem; }
+.form-group label { display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.4rem; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.95rem; transition: border-color 0.2s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1); }
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.btn { padding: 0.75rem 1.5rem; border: none; border-radius: var(--radius); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-success { background: var(--secondary); color: white; }
+.btn-success:hover { background: #2d9249; }
+.btn-block { width: 100%; justify-content: center; }
+.switch-group { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--bg); }
+.switch-group:last-child { border-bottom: none; }
+.switch-group label { font-size: 0.9rem; color: var(--text); margin-bottom: 0; }
+.switch { position: relative; width: 48px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; inset: 0; background: var(--border); border-radius: 26px; transition: 0.3s; }
+.slider::before { content: ''; position: absolute; height: 20px; width: 20px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: 0.3s; }
+.switch input:checked + .slider { background: var(--secondary); }
+.switch input:checked + .slider::before { transform: translateX(22px); }
+.records-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.records-table th, .records-table td { padding: 0.7rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border); }
+.records-table th { background: var(--bg); font-weight: 600; color: var(--text-light); position: sticky; top: 0; }
+.records-table tr:hover td { background: #f8f9fa; }
+.table-wrapper { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); background: var(--card-bg); }
+.badge { padding: 0.25rem 0.6rem; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+.badge-pending { background: #fff3cd; color: #856404; }
+.badge-complete { background: #d4edda; color: #155724; }
+.badge-active { background: #cce5ff; color: #004085; }
+.toast { position: fixed; bottom: 2rem; right: 2rem; padding: 1rem 1.5rem; background: var(--text); color: white; border-radius: var(--radius); box-shadow: var(--shadow-lg); font-size: 0.9rem; z-index: 9999; animation: slideIn 0.3s ease; }
+.toast.success { background: var(--secondary); }
+.toast.error { background: var(--danger); }
+@keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 9999; }
+.modal-content { background: var(--card-bg); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow-lg); max-width: 400px; width: 90%; }
+.modal-content h3 { margin-bottom: 1.25rem; color: var(--primary); }
+.admin-card { background: var(--card-bg); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 1.5rem; }
+.admin-card h4 { margin-bottom: 1rem; color: var(--text); }
+.resource-list { list-style: none; padding: 0; }
+.resource-list li { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--bg); font-size: 0.9rem; }
+.resource-list li:last-child { border-bottom: none; }
+.resource-list .btn-remove { background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1rem; padding: 0.25rem; }
+.resource-list .btn-remove:hover { background: #fce8e6; border-radius: 50%; }
+.add-resource-row { display: flex; gap: 0.5rem; margin-top: 0.75rem; }
+.add-resource-row input { flex: 1; padding: 0.5rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.9rem; }
+.add-resource-row button { padding: 0.5rem 1rem; background: var(--secondary); color: white; border: none; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+.btn-edit { padding: 0.3rem 0.6rem; background: var(--primary); color: white; border: none; border-radius: var(--radius); cursor: pointer; font-size: 0.75rem; }
+.btn-edit:hover { background: var(--primary-dark); }
+.btn-edit:disabled { background: var(--border); cursor: not-allowed; }
+.record-selector { margin-bottom: 1.5rem; }
+.record-selector select { width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.95rem; }
+/* === RESOURCE PICKER === */
+.res-section { margin-bottom: 1.5rem; }
+.res-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+.res-header h4 { font-size: 0.95rem; color: var(--text); margin: 0; }
+.btn-add { width: 28px; height: 28px; border-radius: 50%; border: none; background: var(--secondary); color: white; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.15s, background 0.15s; }
+.btn-add:hover { background: #2d9249; transform: scale(1.1); }
+.res-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; min-height: 32px; }
+.res-chip { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.35rem 0.7rem; background: #e8f0fe; border: 1px solid #c2d9f7; border-radius: 16px; font-size: 0.82rem; color: var(--primary-dark); }
+.res-chip .chip-remove { background: none; border: none; color: var(--danger); cursor: pointer; font-size: 0.85rem; padding: 0; line-height: 1; }
+.res-chip .chip-remove:hover { color: #b71c1c; }
+/* Picker Modal */
+.picker-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 10000; display: flex; align-items: center; justify-content: center; }
+.picker-box { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow-lg); width: 90%; max-width: 420px; max-height: 70vh; display: flex; flex-direction: column; overflow: hidden; }
+.picker-box .picker-header { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+.picker-box .picker-header h4 { margin: 0 0 0.75rem; color: var(--primary); font-size: 1rem; }
+.picker-box .picker-header input { width: 100%; padding: 0.6rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius); font-size: 0.9rem; }
+.picker-box .picker-header input:focus { outline: none; border-color: var(--primary); }
+.picker-box .picker-list { flex: 1; overflow-y: auto; padding: 0.5rem 0; }
+.picker-box .picker-list .picker-item { padding: 0.6rem 1.25rem; cursor: pointer; font-size: 0.88rem; transition: background 0.1s; }
+.picker-box .picker-list .picker-item:hover { background: #e8f0fe; }
+.picker-box .picker-list .picker-item.disabled { opacity: 0.4; pointer-events: none; text-decoration: line-through; }
+.picker-box .picker-footer { padding: 0.75rem 1.25rem; border-top: 1px solid var(--border); text-align: right; }
+.picker-box .picker-footer button { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+
+@media (max-width: 768px) {
+    .content { padding: 1rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .role-buttons { flex-direction: column; }
+    .role-btn { padding: 1.5rem 2rem; }
+    .app-header { padding: 0.75rem 1rem; }
+    .header-nav { gap: 0.3rem; }
+    .nav-btn { font-size: 0.8rem; padding: 0.4rem 0.75rem; }
+}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="role-selection" class="screen active">
+            <div class="role-container">
+                <h1><i class="fas fa-truck-moving"></i> Novedades DTM</h1>
+                <p class="subtitle">Control de Recursos - Transporte de Equipos de Perforación</p>
+                <div class="role-buttons">
+                    <button class="role-btn" data-role="dtm">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Sector DTM</span>
+                    </button>
+                    <button class="role-btn" data-role="copesa">
+                        <i class="fas fa-building"></i>
+                        <span>COORDINACION COPESA</span>
+                    </button>
+                    <button class="role-btn role-btn-admin" data-role="admin">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Administrador</span>
+                    </button>
+                </div>
+                <div id="admin-modal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <h3><i class="fas fa-lock"></i> Acceso Administrador</h3>
+                        <div class="form-group">
+                            <label for="admin-password">Contraseña</label>
+                            <input type="password" id="admin-password" placeholder="Ingresar clave...">
+                        </div>
+                        <p id="admin-error" style="color:var(--danger);display:none;font-size:0.85rem;">Clave incorrecta</p>
+                        <div style="display:flex;gap:1rem;margin-top:1rem;">
+                            <button id="admin-login-btn" class="btn btn-primary">Ingresar</button>
+                            <button id="admin-cancel-btn" class="btn" style="background:var(--bg);">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-admin" class="screen">
+            <header class="app-header">
+                <div class="header-left">
+                    <button id="btn-back-admin" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+                    <h2><i class="fas fa-shield-alt"></i> Administrador</h2>
+                </div>
+                <nav class="header-nav">
+                    <button class="nav-btn active" data-section="admin-registros">Editar Registros</button>
+                    <button class="nav-btn" data-section="admin-recursos">Gestionar Recursos</button>
+                </nav>
+            </header>
+            <main class="content" id="content-admin"></main>
+        </div>
+
+        <div id="main-dtm" class="screen">
+            <header class="app-header">
+                <div class="header-left">
+                    <button id="btn-back-dtm" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+                    <h2><i class="fas fa-hard-hat"></i> Sector DTM</h2>
+                </div>
+                <nav class="header-nav">
+                    <button class="nav-btn active" data-section="orden1">Orden 1 - Planificación</button>
+                    <button class="nav-btn" data-section="orden3">Orden 3 - Asistencia</button>
+                    <button class="nav-btn" data-section="orden4">Orden 4 - Tiempos</button>
+                    <button class="nav-btn" data-section="orden5">Orden 5 - NPT</button>
+                    <button class="nav-btn" data-section="registros">Registros</button>
+                </nav>
+            </header>
+            <main class="content" id="content-dtm"></main>
+        </div>
+
+        <div id="main-copesa" class="screen">
+            <header class="app-header">
+                <div class="header-left">
+                    <button id="btn-back-copesa" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+                    <h2><i class="fas fa-building"></i> COORDINACION COPESA</h2>
+                </div>
+                <nav class="header-nav">
+                    <button class="nav-btn active" data-section="orden2">Orden 2 - Asignación</button>
+                    <button class="nav-btn" data-section="registros">Registros</button>
+                </nav>
+            </header>
+            <main class="content" id="content-copesa"></main>
+        </div>
+    </div>
+
+    <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
+    <script>
+// =========================================================================
+// CONFIG
+// =========================================================================
+const CONFIG = {
+    siteUrl: 'https://TU_TENANT.sharepoint.com/sites/TU_SITIO',
+    listName: 'NovedadesDTM',
+    clientId: 'TU_CLIENT_ID_AQUI',
+    tenantId: 'TU_TENANT_ID_AQUI',
+    redirectUri: window.location.origin + window.location.pathname,
+    scopes: ['Sites.ReadWrite.All'],
+    personal: {
+        supervisores: ['MERCADO HECTOR ROQUE - JEFE CAMPO','MORA SERGIO CEFERINO - JEFE CAMPO','ALANIZ GUSTAVO ANTONIO - SUPERVISOR','AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR','BECERRA ALBERTO DANTE - SUPERVISOR','CARRIZO HECTOR ALEJANDRO - SUPERVISOR','MELIAN JEREMIAS NADIR - SUPERVISOR','QUINTANA JORGE MARTIN - SUPERVISOR','ROSSONE EDUARDO OMAR - SUPERVISOR','VITCOVICH ROBERTO GUSTAVO - SUPERVISOR'],
+        guincheros: ['ARMENGOL GUSTAVO MARCELO','BARROZO SEBASTIAN GONZALO','CASARINI ISAAC ISAIAS ALBERTO','CORNEJO WALTER SEBASTIAN','FRANCO DANIEL GUSTAVO','GOMEZ WALTER RUBEN','PACILLI FABIO DAMIAN','SANZANA MANSILLA BORIS ENRIQUE','TRACALEU GUSTAVO ALEJANDRO'],
+        choferesCargadora: ['FERREIRA GALANTE OSVALDO CARLOS','GODOY RODRIGO ALEJANDRO','HEREDIA CESAR DANIEL','HERNANDEZ ESTEBAN FERNANDO','LOPEZ LEANDRO EMANUEL','NAIN MARIO DAVID','PAEZ MAXIMILIANO EZEQUIEL','REVILLA LUIS SANTIAGO'],
+        grueros: ['CASTRO MARTIN ANTONIO','REYES PEDRO ESTEBAN','REYNAGA RAUL FEDERICO','RIOS LUIS MARCELO','SUELDO JUAN ADRIAN'],
+        choferes: ['BARGAS DARIO ANTONIO - CARRETON','BARRIA ANDRES ROMAN - CARRETON','BARRIOS ROLANDO ADRIAN - CARRETON','CABEZAS VICTOR OSCAR - CARRETON','CRETTON VICTOR JAVIER - CARRETON','DEL RIO LUIS ALBERTO - CARRETON','DI LUCA JOSE ANTONIO - CARRETON','FERNANDEZ ISMAEL WALTER EFRAIN - CARRETON','FERREIRA MARIO ESTEBAN - CARRETON','FLORES ARIEL GUSTAVO - CARRETON','GONZALEZ WALTER DANIEL - CARRETON','HERNANDEZ JOSE SERGIO - CARRETON','LEGUIPAN BRUNO ALEJANDRO - CARRETON','MASLOVSKI FEDERICO ABEL - CARRETON','MENGUEZ FRANCISCO ADRIANO - CARRETON','MUÑOZ DIEGO ADRIAN - CARRETON','MUÑOZ JAVIER ALEJANDRO - CARRETON','NUÑEZ DARIO EZEQUIEL - CARRETON','PHILLIPS GASTON ERNESTO - CARRETON','VIDAL GARCIA WILSON - CARRETON','GARGAGLIONE SEBASTIAN - CARRETON','HERNANDEZ PATRICIO ALEJANDRO - CARRETON','PAREDES ERNESTO ALEJANDRO - CARRETON','CASMUZ CARLOS ANTONIO MARTIN - SEMI','DE LA LLAMA ALEJANDRO ANDRES - SEMI','GUTIERREZ JORGE ANDRES - SEMI','LUZ CLARA JUAN - SEMI','SARRATEA EDGARDO EMMANUEL - SEMI','WOLHWEND MARCELO - SEMI','HERNANDEZ CLAUDIA ANDREA - CHOFER CLASE D','MUÑOZ SANDRA MARIELA - CHOFER CLASE D','SEPULVEDA GUILLERMO EDUARDO - CHOFER CLASE E'],
+        ayudantes: ['ARRAMENDI MARIO LUIS','BARRIOS MAXIMO BENJAMIN','BARROS MATIAS EMMANUEL','CASARINI ISRAEL ANTHER OMAR','CASTILLO MALDONADO JOSE ALBERTO','CHICUY BRUNO GERARDO','DIAZ IAN ANDRES','ESTEVEZ MATIAS EZEQUIEL','GALLARDO ALBERTO EDUARDO','MAHIA JONATHAN NAHUEL','OVANDO LAURIANO ALEJANDRO','QUEDIMAN DIEGO SEBASTIAN','REALES MAXIMILIANO ANDRES','REYES BORRAS FEDERICO JAVIER','TUREO ALEX SEBASTIAN']
+    },
+    flota: {
+        guinches: ['AIM619 - KENWORTH','CJJ39 - KENWORTH','VEC604 - AUTOCAR','AF895MC - SCANIA','GPET-F148 - KENWORTH','GPET-F149 - KENWORTH','AI283NS - KENWORTH'],
+        cargadoras: ['011603A8347 - HELI Autoelevador','314160511580 - LONKING Autoelevador','XUG00978LSCB18724 - XCMG Cargadora','XUG0700KHPCB08121 - XCMG Cargadora'],
+        gruas: ['LXGCPA503RA009356 - XCMG','LXGCPA509RA009359 - XCMG'],
+        camiones: ['AG392AE - IVECO Tractor c/hidro','AF248NQ - IVECO Tractor de auxilio','AF593ZZ - AGRALE Tractor c/cisterna','AG982RQ - IVECO Tractor c/malacate','AF516RN - IVECO Tractor c/malacate','AF516RO - IVECO Tractor doble','AF868YL - IVECO Tractor doble','AG807DH - VOLKSWAGEN Tractor doble','AH541EV - SCANIA Tractor doble','AH541EW - SCANIA Tractor doble','AH610EQ - SCANIA Tractor doble','AH881KI - IVECO Tractor doble','AH881KJ - IVECO Tractor doble','AH610ER - SCANIA Tractor doble','AF868YN - IVECO Tractor simple','AG149BU - IVECO Tractor simple','AG218BZ - IVECO Tractor simple']
+    },
+    turnos: ['T 1', 'T 2', 'T 3', 'T 4', 'T 5', 'T 6', 'Pre Tarea. Hoja de Ruta', 'Pre Tarea. Mont. Tablonada / Semi Barras'],
+    equipos: ['PAE 002', 'PAE 003', 'PAE 006', 'PAE 007']
+};
+</script>
+<script>
+// =========================================================================
+// SHAREPOINT SERVICE (modo offline localStorage + modo online MSAL/Graph)
+// =========================================================================
+const SharePointService = (() => {
+    let accessToken = null;
+    const msalConfig = { auth: { clientId: CONFIG.clientId, authority: `https://login.microsoftonline.com/${CONFIG.tenantId}`, redirectUri: CONFIG.redirectUri } };
+    let msalInstance = null;
+
+    function initMsal() { if (typeof msal !== 'undefined' && CONFIG.clientId !== 'TU_CLIENT_ID_AQUI') { msalInstance = new msal.PublicClientApplication(msalConfig); } }
+
+    async function login() {
+        if (!msalInstance) return false;
+        try { const r = await msalInstance.loginPopup({ scopes: CONFIG.scopes }); accessToken = r.accessToken; return true; }
+        catch (e) { console.error('Auth error:', e); return false; }
+    }
+
+    async function getToken() {
+        if (!msalInstance) return null;
+        try { const accounts = msalInstance.getAllAccounts(); if (accounts.length === 0) { await login(); return accessToken; }
+            const r = await msalInstance.acquireTokenSilent({ scopes: CONFIG.scopes, account: accounts[0] }); accessToken = r.accessToken; return accessToken;
+        } catch (e) { return await login() ? accessToken : null; }
+    }
+
+    async function apiRequest(endpoint, method = 'GET', body = null) {
+        const token = await getToken();
+        const baseUrl = `${CONFIG.siteUrl}/_api/web/lists/getbytitle('${CONFIG.listName}')`;
+        const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json;odata=nometadata', 'Content-Type': 'application/json;odata=nometadata' };
+        if (method === 'POST' || method === 'MERGE') { headers['X-RequestDigest'] = await getRequestDigest(); }
+        if (method === 'MERGE') { headers['IF-MATCH'] = '*'; headers['X-HTTP-Method'] = 'MERGE'; }
+        const options = { method: method === 'MERGE' ? 'POST' : method, headers };
+        if (body) options.body = JSON.stringify(body);
+        const response = await fetch(`${baseUrl}${endpoint}`, options);
+        if (!response.ok) throw new Error(`API Error: ${response.status}`);
+        const text = await response.text();
+        return text ? JSON.parse(text) : null;
+    }
+
+    async function getRequestDigest() {
+        const token = await getToken();
+        const r = await fetch(`${CONFIG.siteUrl}/_api/contextinfo`, { method: 'POST', headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json;odata=nometadata' } });
+        return (await r.json()).FormDigestValue;
+    }
+
+    // MODO OFFLINE (localStorage)
+    const STORAGE_KEY = 'novedades_dtm_records';
+    function getLocalRecords() { const d = localStorage.getItem(STORAGE_KEY); return d ? JSON.parse(d) : []; }
+    function saveLocalRecords(records) { localStorage.setItem(STORAGE_KEY, JSON.stringify(records)); }
+    function createLocalItem(data) { const records = getLocalRecords(); const newItem = { Id: records.length > 0 ? Math.max(...records.map(r => r.Id)) + 1 : 1, ...data, Created: new Date().toISOString() }; records.push(newItem); saveLocalRecords(records); return newItem; }
+    function getLocalItems() { return getLocalRecords().sort((a, b) => b.Id - a.Id); }
+    function getLocalItemById(id) { return getLocalRecords().find(r => r.Id === id); }
+    function updateLocalItem(id, data) { const records = getLocalRecords(); const i = records.findIndex(r => r.Id === id); if (i !== -1) { records[i] = { ...records[i], ...data, Modified: new Date().toISOString() }; saveLocalRecords(records); return records[i]; } return null; }
+
+    function isOnline() { return CONFIG.clientId !== 'TU_CLIENT_ID_AQUI' && msalInstance !== null; }
+
+    return {
+        init: initMsal, login,
+        create: async (data) => isOnline() ? await apiRequest('/items', 'POST', data) : createLocalItem(data),
+        getAll: async () => isOnline() ? (await apiRequest('/items?$orderby=Id desc'))?.value || [] : getLocalItems(),
+        getById: async (id) => isOnline() ? await apiRequest(`/items(${id})`) : getLocalItemById(id),
+        update: async (id, data) => isOnline() ? await apiRequest(`/items(${id})`, 'MERGE', data) : updateLocalItem(id, data),
+        isOnline
+    };
+})();
+</script>
+<script>
+// =========================================================================
+// APP - Navegación principal
+// =========================================================================
+const App = (() => {
+    let currentRole = null;
+    let currentSection = null;
+
+    function init() { setupRoleSelection(); setupNavigation(); setupAdminModal(); }
+
+    function setupRoleSelection() {
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                currentRole = btn.dataset.role;
+                if (currentRole === 'admin') { document.getElementById('admin-modal').style.display = 'flex'; document.getElementById('admin-password').value = ''; document.getElementById('admin-error').style.display = 'none'; document.getElementById('admin-password').focus(); return; }
+                const screenId = currentRole === 'dtm' ? 'main-dtm' : 'main-copesa';
+                showScreen(screenId);
+                const firstNav = document.querySelector(`#main-${currentRole} .nav-btn.active`);
+                if (firstNav) loadSection(firstNav.dataset.section);
+            });
+        });
+        document.getElementById('btn-back-dtm').addEventListener('click', () => showScreen('role-selection'));
+        document.getElementById('btn-back-copesa').addEventListener('click', () => showScreen('role-selection'));
+        document.getElementById('btn-back-admin').addEventListener('click', () => showScreen('role-selection'));
+    }
+
+    function setupAdminModal() {
+        const modal = document.getElementById('admin-modal');
+        const passInput = document.getElementById('admin-password');
+        const errorMsg = document.getElementById('admin-error');
+        document.getElementById('admin-login-btn').addEventListener('click', () => {
+            if (passInput.value === 'CerroDragon01') { modal.style.display = 'none'; currentRole = 'admin'; showScreen('main-admin'); const fn = document.querySelector('#main-admin .nav-btn.active'); if (fn) loadSection(fn.dataset.section); }
+            else { errorMsg.style.display = 'block'; passInput.value = ''; passInput.focus(); }
+        });
+        passInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('admin-login-btn').click(); });
+        document.getElementById('admin-cancel-btn').addEventListener('click', () => { modal.style.display = 'none'; });
+    }
+
+    function setupNavigation() {
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', () => { const p = btn.closest('.app-header'); p.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); loadSection(btn.dataset.section); });
+        });
+    }
+
+    function showScreen(id) { document.querySelectorAll('.screen').forEach(s => s.classList.remove('active')); document.getElementById(id).classList.add('active'); }
+
+    function loadSection(section) {
+        currentSection = section;
+        let el;
+        if (currentRole === 'admin') el = document.getElementById('content-admin');
+        else if (currentRole === 'dtm') el = document.getElementById('content-dtm');
+        else el = document.getElementById('content-copesa');
+        switch (section) {
+            case 'orden1': el.innerHTML = Forms.renderOrden1(); Forms.initOrden1(el); break;
+            case 'orden2': el.innerHTML = Forms.renderOrden2(); Forms.initOrden2(el); break;
+            case 'orden3': el.innerHTML = Forms.renderOrden3(); Forms.initOrden3(el); break;
+            case 'orden4': el.innerHTML = Forms.renderOrden4(); Forms.initOrden4(el); break;
+            case 'orden5': el.innerHTML = Forms.renderOrden5(); Forms.initOrden5(el); break;
+            case 'registros': loadRegistros(el); break;
+            case 'admin-registros': Admin.loadRegistros(el); break;
+            case 'admin-recursos': Admin.loadRecursos(el); break;
+        }
+    }
+
+    async function loadRegistros(container) {
+        container.innerHTML = '<p>Cargando registros...</p>';
+        try { const records = await SharePointService.getAll(); container.innerHTML = Forms.renderRegistros(records, currentRole); Forms.initRegistrosEdit(container, currentRole); }
+        catch (e) { container.innerHTML = '<p>Error al cargar registros.</p>'; console.error(e); }
+    }
+
+    function showToast(message, type = 'success') {
+        const existing = document.querySelector('.toast'); if (existing) existing.remove();
+        const toast = document.createElement('div'); toast.className = `toast ${type}`; toast.textContent = message;
+        document.body.appendChild(toast); setTimeout(() => toast.remove(), 3500);
+    }
+
+    function getRole() { return currentRole; }
+    return { init, showToast, refreshSection: () => { if (currentSection) loadSection(currentSection); }, loadSection, getRole };
+})();
+</script>
+<script>
+// =========================================================================
+// FORMS - Formularios de cada Orden
+// =========================================================================
+const Forms = (() => {
+    function renderOrden1() {
+        return `<div class="form-card"><h3><i class="fas fa-clipboard-list"></i> Orden 1 - Planificación Inicial</h3>
+        <form id="form-orden1">
+            <div class="form-group"><label for="equipo">Equipo</label><select id="equipo" name="Equipo" required><option value="">Seleccionar equipo</option>${CONFIG.equipos.map(e=>`<option value="${e}">${e}</option>`).join('')}</select></div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="pozoOrigen">Pozo Origen</label>
+                    <select id="pozoOrigenSelect" style="margin-bottom:0.4rem"><option value="">— Seleccionar pozo activo o escribir nuevo —</option></select>
+                    <input type="text" id="pozoOrigen" name="PozoOrigen" required placeholder="Escribir pozo nuevo o seleccionar arriba">
+                </div>
+                <div class="form-group"><label for="pozoDestino">Pozo Destino</label><input type="text" id="pozoDestino" name="PozoDestino" required placeholder="Ej: Pozo LLL-1030"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label for="turno">Turno</label><select id="turno" name="Turno" required><option value="">Seleccionar turno</option>${CONFIG.turnos.map(t=>`<option value="${t}">${t}</option>`).join('')}</select></div>
+                <div class="form-group"><label for="horaRequerida">Hora Requerida</label><input type="datetime-local" id="horaRequerida" name="HoraRequerida"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Crear Registro</button>
+        </form></div>`;
+    }
+    function initOrden1(container) {
+        const form = container.querySelector('#form-orden1');
+        const equipoSelect = form.querySelector('#equipo');
+        const turnoSelect = form.querySelector('#turno');
+        const pozoOrigenSelect = container.querySelector('#pozoOrigenSelect');
+        const pozoOrigenInput = form.querySelector('#pozoOrigen');
+
+        const turnosOrdenados = ['T 1', 'T 2', 'T 3', 'T 4', 'T 5', 'T 6'];
+        let _records = [];
+
+        // Al cambiar equipo: llenar picklist de pozos activos
+        equipoSelect.addEventListener('change', async () => {
+            const equipo = equipoSelect.value;
+            turnoSelect.value = '';
+            pozoOrigenInput.value = '';
+            pozoOrigenInput.readOnly = false;
+            pozoOrigenInput.style.background = '';
+            pozoOrigenSelect.innerHTML = '<option value="">— Seleccionar pozo activo o escribir nuevo —</option>';
+
+            if (!equipo) return;
+
+            _records = await SharePointService.getAll();
+            // Registros activos de este equipo (FinDTM != true)
+            const activos = _records.filter(r => r.Equipo === equipo && !r.FinDTM);
+
+            // Obtener pozos origen únicos con DTM activo (el pozo desde donde sale el equipo)
+            const pozosActivos = [...new Set(activos.map(r => r.PozoOrigen).filter(Boolean))];
+
+            if (pozosActivos.length > 0) {
+                pozoOrigenSelect.innerHTML = '<option value="">— Seleccionar pozo activo o escribir nuevo —</option>' +
+                    pozosActivos.map(p => `<option value="${p}">${p}</option>`).join('');
+            }
+
+            // Si no hay pozos activos, es un nuevo DTM → sugerir T1
+            if (pozosActivos.length === 0) {
+                turnoSelect.value = 'T 1';
+            }
+        });
+
+        // Al seleccionar un pozo del picklist → auto-rellenar turno
+        pozoOrigenSelect.addEventListener('change', () => {
+            const pozo = pozoOrigenSelect.value;
+            if (!pozo) {
+                pozoOrigenInput.value = '';
+                pozoOrigenInput.readOnly = false;
+                pozoOrigenInput.style.background = '';
+                turnoSelect.value = '';
+                // Rehabilitar todos los turnos
+                turnoSelect.querySelectorAll('option').forEach(opt => { opt.disabled = false; });
+                return;
+            }
+
+            pozoOrigenInput.value = pozo;
+            pozoOrigenInput.readOnly = true;
+            pozoOrigenInput.style.background = '#e8f0fe';
+
+            // Calcular siguiente turno para este equipo + pozo origen (sugerencia)
+            const equipo = equipoSelect.value;
+            const registrosPozo = _records.filter(r => r.Equipo === equipo && r.PozoOrigen === pozo && !r.FinDTM);
+            const turnosUsados = registrosPozo.map(r => r.Turno).filter(t => turnosOrdenados.includes(t));
+            let maxIdx = -1;
+            turnosUsados.forEach(t => { const idx = turnosOrdenados.indexOf(t); if (idx > maxIdx) maxIdx = idx; });
+
+            const sigIdx = maxIdx + 1;
+            if (sigIdx < turnosOrdenados.length) {
+                turnoSelect.value = turnosOrdenados[sigIdx];
+            } else {
+                turnoSelect.value = 'Pre Tarea. Hoja de Ruta';
+            }
+
+            // Deshabilitar turnos anteriores al siguiente
+            turnoSelect.querySelectorAll('option').forEach(opt => {
+                const tIdx = turnosOrdenados.indexOf(opt.value);
+                if (tIdx !== -1 && tIdx < sigIdx) {
+                    opt.disabled = true;
+                } else {
+                    opt.disabled = false;
+                }
+            });
+        });
+
+        // Si el usuario escribe manualmente un pozo nuevo (sin seleccionar del picklist)
+        pozoOrigenInput.addEventListener('input', () => {
+            if (!pozoOrigenInput.readOnly) {
+                // Pozo nuevo → sugerir T1
+                turnoSelect.value = 'T 1';
+            }
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = { Equipo: form.Equipo.value, Turno: turnoSelect.value, PozoOrigen: form.PozoOrigen.value, PozoDestino: form.PozoDestino.value, Estado: 'Orden1_Completa' };
+            if (form.HoraRequerida.value) data.HoraRequerida = form.HoraRequerida.value;
+            try { await SharePointService.create(data); App.showToast('Registro creado exitosamente'); form.reset(); pozoOrigenInput.readOnly = false; pozoOrigenInput.style.background = ''; turnoSelect.value = ''; pozoOrigenSelect.innerHTML = '<option value="">— Seleccionar pozo activo o escribir nuevo —</option>'; }
+            catch (err) { App.showToast('Error al crear registro', 'error'); console.error(err); }
+        });
+    }
+
+    function renderOrden2() {
+        const personalSections = [
+            { key: 'Supervisor', label: 'Supervisor/es', icon: 'fa-user-tie', options: CONFIG.personal.supervisores },
+            { key: 'Guinchero', label: 'Guinchero/s', icon: 'fa-user-cog', options: CONFIG.personal.guincheros },
+            { key: 'ChoferCargadora', label: 'Chofer/es Cargadora', icon: 'fa-user', options: CONFIG.personal.choferesCargadora },
+            { key: 'Gruero', label: 'Gruero/s', icon: 'fa-user-shield', options: CONFIG.personal.grueros },
+            { key: 'Chofer', label: 'Chofer/es', icon: 'fa-id-card', options: CONFIG.personal.choferes },
+            { key: 'Ayudante', label: 'Ayudante/s', icon: 'fa-user-friends', options: CONFIG.personal.ayudantes }
+        ];
+        const flotaSections = [
+            { key: 'Guinche', label: 'Guinche/s', icon: 'fa-truck-pickup', options: CONFIG.flota.guinches },
+            { key: 'Cargadora', label: 'Cargadora/s', icon: 'fa-truck-loading', options: CONFIG.flota.cargadoras },
+            { key: 'Grua', label: 'Grúa/s', icon: 'fa-truck-monster', options: CONFIG.flota.gruas },
+            { key: 'Camion', label: 'Camión/es', icon: 'fa-truck', options: CONFIG.flota.camiones }
+        ];
+        const sections = [...personalSections, ...flotaSections];
+        const renderSecs = (list) => list.map(s => `
+            <div class="res-section" data-key="${s.key}">
+                <div class="res-header">
+                    <i class="fas ${s.icon}" style="color:var(--text-light)"></i>
+                    <h4>${s.label}</h4>
+                    <button type="button" class="btn-add" data-key="${s.key}" title="Agregar ${s.label}"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="res-chips" id="chips-${s.key}"></div>
+            </div>
+        `).join('');
+
+        return `<div class="form-card">
+            <h3><i class="fas fa-users-cog"></i> Orden 2 - Asignación de Recursos</h3>
+            <div class="record-selector"><label>Seleccionar registro a completar:</label><select id="select-record-orden2"><option value="">Cargando...</option></select></div>
+            <form id="form-orden2" style="display:none;">
+                <div class="form-group"><label>Hora Requerida (definida por DTM)</label><input type="text" id="horaRequeridaDisplay" readonly disabled style="background:#e8f0fe;font-weight:600;color:var(--primary-dark)"></div>
+                <div class="form-group"><label>Hora Plan Arribo</label><input type="datetime-local" id="horaPlanArribo" name="HoraPlanArribo" required></div>
+                <h4 style="margin:1.5rem 0 .75rem;color:var(--primary)"><i class="fas fa-users"></i> PERSONAL</h4>
+                ${renderSecs(personalSections)}
+                <h4 style="margin:1.5rem 0 .75rem;color:var(--primary)"><i class="fas fa-truck"></i> FLOTA</h4>
+                ${renderSecs(flotaSections)}
+                <div class="form-group" style="margin-top:1.5rem"><label>Comentarios</label><textarea name="ComentarioCopesa" placeholder="Observaciones..."></textarea></div>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top:1.5rem"><i class="fas fa-save"></i> Guardar Asignación</button>
+            </form>
+        </div>`;
+    }
+
+    // Picker state for Orden 2
+    const _orden2State = {};
+    const _orden2Sections = [
+        { key: 'Supervisor', options: () => CONFIG.personal.supervisores },
+        { key: 'Guinchero', options: () => CONFIG.personal.guincheros },
+        { key: 'ChoferCargadora', options: () => CONFIG.personal.choferesCargadora },
+        { key: 'Gruero', options: () => CONFIG.personal.grueros },
+        { key: 'Chofer', options: () => CONFIG.personal.choferes },
+        { key: 'Ayudante', options: () => CONFIG.personal.ayudantes },
+        { key: 'Guinche', options: () => CONFIG.flota.guinches },
+        { key: 'Cargadora', options: () => CONFIG.flota.cargadoras },
+        { key: 'Grua', options: () => CONFIG.flota.gruas },
+        { key: 'Camion', options: () => CONFIG.flota.camiones }
+    ];
+
+    function openPicker(key, container) {
+        const sec = _orden2Sections.find(s => s.key === key);
+        if (!sec) return;
+        const options = sec.options();
+        const selected = _orden2State[key] || [];
+
+        const overlay = document.createElement('div');
+        overlay.className = 'picker-overlay';
+        overlay.innerHTML = `<div class="picker-box">
+            <div class="picker-header"><h4>Seleccionar ${key}</h4><input type="text" placeholder="Buscar..." id="picker-search"></div>
+            <div class="picker-list" id="picker-list"></div>
+            <div class="picker-footer"><button type="button" id="picker-close">Cerrar</button></div>
+        </div>`;
+        document.body.appendChild(overlay);
+
+        const listEl = overlay.querySelector('#picker-list');
+        const searchEl = overlay.querySelector('#picker-search');
+
+        function renderList(filter = '') {
+            const f = filter.toLowerCase();
+            listEl.innerHTML = options.filter(o => o.toLowerCase().includes(f)).map(o => {
+                const isSelected = selected.includes(o);
+                return `<div class="picker-item ${isSelected ? 'disabled' : ''}" data-value="${o}">${o}${isSelected ? ' ✓' : ''}</div>`;
+            }).join('');
+        }
+        renderList();
+        searchEl.focus();
+        searchEl.addEventListener('input', () => renderList(searchEl.value));
+
+        listEl.addEventListener('click', (e) => {
+            const item = e.target.closest('.picker-item');
+            if (!item || item.classList.contains('disabled')) return;
+            const val = item.dataset.value;
+            if (!_orden2State[key]) _orden2State[key] = [];
+            _orden2State[key].push(val);
+            renderChips(key, container);
+            renderList(searchEl.value);
+        });
+
+        overlay.querySelector('#picker-close').addEventListener('click', () => overlay.remove());
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+    }
+
+    function renderChips(key, container) {
+        const chipsEl = container.querySelector(`#chips-${key}`);
+        const items = _orden2State[key] || [];
+        chipsEl.innerHTML = items.map((item, idx) => `<span class="res-chip">${item} <button type="button" class="chip-remove" data-key="${key}" data-idx="${idx}"><i class="fas fa-times"></i></button></span>`).join('');
+        // Hidden inputs for form submission
+        chipsEl.querySelectorAll('input[type=hidden]')?.forEach(i => i.remove());
+        items.forEach((item, idx) => {
+            const hidden = document.createElement('input');
+            hidden.type = 'hidden'; hidden.name = `${key}${idx + 1}`; hidden.value = item;
+            chipsEl.appendChild(hidden);
+        });
+    }
+
+    async function initOrden2(container) {
+        // Reset state
+        _orden2Sections.forEach(s => { _orden2State[s.key] = []; });
+
+        const selector = container.querySelector('#select-record-orden2');
+        const form = container.querySelector('#form-orden2');
+        const records = await SharePointService.getAll();
+        const pending = records.filter(r => r.Estado === 'Orden1_Completa');
+        if (!pending.length) { selector.innerHTML = '<option value="">No hay registros pendientes</option>'; return; }
+        selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
+        selector.addEventListener('change', () => {
+            form.style.display = selector.value ? 'block' : 'none';
+            if (selector.value) {
+                const rec = pending.find(r => r.Id === parseInt(selector.value));
+                const hrDisplay = container.querySelector('#horaRequeridaDisplay');
+                if (rec && rec.HoraRequerida) {
+                    hrDisplay.value = new Date(rec.HoraRequerida).toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' });
+                } else {
+                    hrDisplay.value = 'No especificada';
+                }
+
+                // Lógica condicional por tipo de turno
+                const esPretareaHR = rec && rec.Turno && rec.Turno.toLowerCase().includes('hoja de ruta');
+                const esPretareaMT = rec && rec.Turno && rec.Turno.toLowerCase().includes('tablonada');
+                const esPretarea = esPretareaHR || esPretareaMT;
+
+                const allSections = container.querySelectorAll('.res-section');
+                allSections.forEach(sec => {
+                    const key = sec.dataset.key;
+                    if (esPretareaHR) {
+                        // Pre Tarea Hoja de Ruta: solo Supervisor
+                        sec.style.display = (key === 'Supervisor') ? '' : 'none';
+                    } else if (esPretareaMT) {
+                        // Pre Tarea Mont. Tablonada: Supervisor + Chofer (personal), Cargadora + Camion (flota)
+                        sec.style.display = (['Supervisor','Chofer','Cargadora','Camion'].includes(key)) ? '' : 'none';
+                    } else {
+                        sec.style.display = '';
+                    }
+                });
+                // Ocultar/mostrar títulos PERSONAL y FLOTA
+                const h4s = form.querySelectorAll('h4');
+                h4s.forEach(h4 => {
+                    if (esPretareaHR && h4.textContent.includes('FLOTA')) {
+                        h4.style.display = 'none';
+                    } else {
+                        h4.style.display = '';
+                    }
+                });
+            }
+        });
+
+        // Add button handlers
+        container.querySelectorAll('.btn-add').forEach(btn => {
+            btn.addEventListener('click', () => openPicker(btn.dataset.key, container));
+        });
+
+        // Remove chip handlers (delegated)
+        container.addEventListener('click', (e) => {
+            const removeBtn = e.target.closest('.chip-remove');
+            if (!removeBtn) return;
+            const key = removeBtn.dataset.key;
+            const idx = parseInt(removeBtn.dataset.idx);
+            _orden2State[key].splice(idx, 1);
+            renderChips(key, container);
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = parseInt(selector.value);
+            const data = { Estado: 'Orden2_Completa' };
+            if (form.HoraPlanArribo.value) data.HoraPlanArribo = form.HoraPlanArribo.value;
+            if (form.ComentarioCopesa && form.ComentarioCopesa.value) data.ComentarioCopesa = form.ComentarioCopesa.value;
+            // Collect all selected resources from state
+            _orden2Sections.forEach(s => {
+                const items = _orden2State[s.key] || [];
+                items.forEach((item, idx) => { data[`${s.key}${idx + 1}`] = item; });
+            });
+            try { await SharePointService.update(id, data); App.showToast('Asignación guardada'); App.loadSection('orden2'); }
+            catch(er) { App.showToast('Error al guardar', 'error'); console.error(er); }
+        });
+    }
+
+    function renderOrden3() {
+        return `<div class="form-card"><h3><i class="fas fa-clipboard-check"></i> Orden 3 - Control de Asistencia</h3><div class="record-selector"><label>Seleccionar registro:</label><select id="select-record-orden3"><option value="">Cargando...</option></select></div><form id="form-orden3" style="display:none;"><div class="form-row"><div class="form-group"><label>Fecha y Hora de Arribo</label><input type="datetime-local" name="FechaHoraArribo" required></div></div><div id="campos-t1-orden3" style="display:none"><div class="form-row"><div class="form-group"><label>KM Hoja de Ruta</label><input type="number" id="kmHojaRuta" name="KmHojaRuta" step="0.1" placeholder="Ej: 125.5"></div></div><div class="form-row"><div class="switch-group"><label>Acta Entrega Locación</label><label class="switch"><input type="checkbox" id="actaEntrega" name="ActaEntregaLocacion"><span class="slider"></span></label></div><div class="switch-group"><label>Hoja de Ruta Aprobada</label><label class="switch"><input type="checkbox" id="hojaRuta" name="HojaRutaAprobada"><span class="slider"></span></label></div></div></div><h4 style="margin:1.5rem 0 .75rem;color:var(--text-light)"><i class="fas fa-user-check"></i> Checks de Asistencia</h4><div id="asistencia-checks"></div><button type="submit" class="btn btn-success btn-block" style="margin-top:1.5rem"><i class="fas fa-check-circle"></i> Confirmar Asistencia</button></form></div>`;
+    }
+    async function initOrden3(container) {
+        const selector = container.querySelector('#select-record-orden3');
+        const form = container.querySelector('#form-orden3');
+        const checksC = container.querySelector('#asistencia-checks');
+        const camposT1 = container.querySelector('#campos-t1-orden3');
+        const records = await SharePointService.getAll();
+        const pending = records.filter(r => r.Estado === 'Orden2_Completa');
+        if (!pending.length) { selector.innerHTML = '<option>No hay registros pendientes</option>'; return; }
+        selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
+        selector.addEventListener('change', async () => {
+            if(!selector.value){form.style.display='none';return;}
+            form.style.display='block';
+            const rec = await SharePointService.getById(parseInt(selector.value));
+            // Mostrar campos KM/Acta/HojaRuta solo para T 1
+            camposT1.style.display = (rec && rec.Turno === 'T 1') ? 'block' : 'none';
+            renderChecks(checksC, rec);
+        });
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); const id = parseInt(selector.value);
+            const rec = pending.find(r => r.Id === id);
+            const data = { FechaHoraArribo: form.FechaHoraArribo.value, Estado: 'Orden3_Completa' };
+            // Pre Tarea salta Orden 4 → pasa directo a Orden4_Completa
+            if (rec && rec.Turno && rec.Turno.toLowerCase().includes('pre tarea')) {
+                data.Estado = 'Orden4_Completa';
+            }
+            // Solo guardar campos T 1 si corresponde
+            if (rec && rec.Turno === 'T 1') {
+                if (form.KmHojaRuta.value) data.KmHojaRuta = parseFloat(form.KmHojaRuta.value);
+                data.ActaEntregaLocacion = form.querySelector('#actaEntrega').checked;
+                data.HojaRutaAprobada = form.querySelector('#hojaRuta').checked;
+            }
+            checksC.querySelectorAll('input[type="checkbox"]').forEach(cb => { data[cb.name] = cb.checked; });
+            try { await SharePointService.update(id, data); App.showToast('Asistencia confirmada'); App.loadSection('orden3'); } catch(e) { App.showToast('Error','error'); }
+        });
+    }
+    function renderChecks(container, rec) {
+        const checks = [];
+        ['Supervisor','Guinchero','ChoferCargadora','Gruero','Chofer','Ayudante','Guinche','Cargadora','Grua','Camion'].forEach(pref => {
+            for(let i=1;i<=10;i++) { if(rec[`${pref}${i}`]) checks.push({key:`Asist${pref}${i}`, label:`${pref} ${i}: ${rec[`${pref}${i}`]}`}); }
+        });
+        if(!checks.length){container.innerHTML='<p style="color:var(--text-light)">No hay recursos asignados.</p>';return;}
+        container.innerHTML = checks.map(c=>`<div class="switch-group"><label>${c.label}</label><label class="switch"><input type="checkbox" name="${c.key}"><span class="slider"></span></label></div>`).join('');
+    }
+
+    function renderOrden4() {
+        return `<div class="form-card"><h3><i class="fas fa-clock"></i> Orden 4 - Tiempos Operativos</h3><div class="record-selector"><label>Seleccionar registro:</label><select id="select-record-orden4"><option value="">Cargando...</option></select></div><form id="form-orden4" style="display:none;"><div class="form-row"><div class="form-group"><label>Fecha/Hora Evacuación</label><input type="datetime-local" name="FechaHoraEvacuacion"></div><div class="form-group"><label>Reprogramación</label><select name="Reprogramacion"><option value="">Sin reprogram.</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select></div></div><div class="form-row"><div class="form-group"><label>Fecha/Hora Carrito BOP</label><input type="datetime-local" name="FechaHoraCarritoBOP"></div><div class="form-group"><label>Fecha/Hora Bajada Mástil</label><input type="datetime-local" name="FechaHoraBajadaMastil"></div></div><div class="form-row"><div class="form-group"><label>Fecha/Hora Fin Vactor</label><input type="datetime-local" name="FechaHoraFinVactor"></div><div class="form-group"><label>Fecha/Hora Plug Down</label><input type="datetime-local" name="FechaHoraPlugDown"></div></div><button type="submit" class="btn btn-primary btn-block" style="margin-top:1.5rem"><i class="fas fa-save"></i> Guardar Tiempos</button></form></div>`;
+    }
+    async function initOrden4(container) {
+        const selector = container.querySelector('#select-record-orden4');
+        const form = container.querySelector('#form-orden4');
+        const records = await SharePointService.getAll();
+        // Excluir Pre Tareas de Orden 4 (no aplica para ellas)
+        const pending = records.filter(r => r.Estado === 'Orden3_Completa' && r.Turno && !r.Turno.toLowerCase().includes('pre tarea'));
+        if (!pending.length) { selector.innerHTML = '<option>No hay registros pendientes de tiempos</option>'; return; }
+        selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
+
+        const camposOrden4 = ['FechaHoraEvacuacion','Reprogramacion','FechaHoraCarritoBOP','FechaHoraBajadaMastil','FechaHoraFinVactor','FechaHoraPlugDown'];
+
+        selector.addEventListener('change', () => {
+            if (!selector.value) { form.style.display = 'none'; return; }
+            form.style.display = 'block';
+            const rec = pending.find(r => r.Id === parseInt(selector.value));
+
+            // Buscar registros del MISMO equipo + pozo origen que ya tengan datos de Orden 4
+            const hermanos = records.filter(r =>
+                r.Equipo === rec.Equipo && r.PozoOrigen === rec.PozoOrigen &&
+                r.Id !== rec.Id && !r.Turno?.toLowerCase().includes('pre tarea')
+            );
+
+            // Para cada campo: si algún hermano ya lo tiene cargado, bloquear y mostrar valor
+            camposOrden4.forEach(campo => {
+                const el = form.querySelector(`[name="${campo}"]`);
+                if (!el) return;
+                // Buscar si algún hermano ya completó este campo
+                const valorPrevio = hermanos.find(h => h[campo] && h[campo] !== '' && h[campo] !== '0');
+                if (valorPrevio && valorPrevio[campo]) {
+                    if (el.tagName === 'SELECT') {
+                        el.value = valorPrevio[campo];
+                    } else {
+                        el.value = typeof valorPrevio[campo] === 'string' && valorPrevio[campo].includes('T')
+                            ? valorPrevio[campo].substring(0, 16) : valorPrevio[campo];
+                    }
+                    el.disabled = true;
+                    el.style.background = '#e8f0fe';
+                } else {
+                    el.value = '';
+                    el.disabled = false;
+                    el.style.background = '';
+                }
+            });
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); const id = parseInt(selector.value);
+            const data = { Estado: 'Orden4_Completa' };
+            // Solo enviar campos que NO están disabled (los editables)
+            camposOrden4.forEach(campo => {
+                const el = form.querySelector(`[name="${campo}"]`);
+                if (el && !el.disabled && el.value) data[campo] = el.value;
+            });
+            try { await SharePointService.update(id, data); App.showToast('Tiempos guardados'); App.loadSection('orden4'); }
+            catch(e) { App.showToast('Error','error'); }
+        });
+    }
+
+    function renderOrden5() {
+        return `<div class="form-card"><h3><i class="fas fa-comment-dots"></i> Orden 5 - Comentarios NPT</h3><div class="record-selector"><label>Seleccionar registro:</label><select id="select-record-orden5"><option value="">Cargando...</option></select></div><form id="form-orden5" style="display:none;"><div class="form-group"><label>Comentario NPT</label><textarea name="ComentarioNPT" placeholder="Describir tiempos no productivos..."></textarea></div><div class="form-row" style="align-items:end"><div class="form-group"><label>FIN DTM</label><select id="finDTM" name="FinDTM"><option value="No">No</option><option value="Si">Sí</option></select></div><div class="form-group" id="grupo-retiro-flota" style="display:none"><label>Fecha/Hora Retiro de Flota</label><input type="datetime-local" id="retiroFlota" name="FechaHoraRetiroFlota"></div></div><button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Guardar Comentario</button></form></div>`;
+    }
+    async function initOrden5(container) {
+        const selector = container.querySelector('#select-record-orden5');
+        const form = container.querySelector('#form-orden5');
+        const records = await SharePointService.getAll();
+        const pending = records.filter(r => r.Estado === 'Orden3_Completa' || r.Estado === 'Orden4_Completa');
+        if (!pending.length) { selector.innerHTML = '<option>No hay registros disponibles</option>'; return; }
+        selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
+        selector.addEventListener('change', () => { form.style.display = selector.value ? 'block' : 'none'; });
+
+        // Mostrar/ocultar campo Retiro de Flota según FIN DTM
+        const finDTMSelect = container.querySelector('#finDTM');
+        const grupoRetiro = container.querySelector('#grupo-retiro-flota');
+        finDTMSelect.addEventListener('change', () => {
+            grupoRetiro.style.display = finDTMSelect.value === 'Si' ? 'block' : 'none';
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); const id = parseInt(selector.value);
+            const data = { ComentarioNPT: form.ComentarioNPT.value, FinDTM: finDTMSelect.value === 'Si', Estado: 'Completo' };
+            if (finDTMSelect.value === 'Si' && form.FechaHoraRetiroFlota.value) {
+                data.FechaHoraRetiroFlota = form.FechaHoraRetiroFlota.value;
+            }
+            try { await SharePointService.update(id, data); App.showToast('NPT guardado'); App.loadSection('orden5'); } catch(e) { App.showToast('Error','error'); }
+        });
+    }
+
+    function renderRegistros(records, role) {
+        if (!records || !records.length) return `<div class="form-card"><h3><i class="fas fa-database"></i> Registros</h3><p style="color:var(--text-light)">No hay registros.</p></div>`;
+        const badge = (e) => { switch(e){case 'Orden1_Completa':return '<span class="badge badge-pending">Pendiente COPESA</span>';case 'Orden2_Completa':return '<span class="badge badge-active">Pendiente Asistencia</span>';case 'Orden3_Completa':return '<span class="badge badge-active">Pendiente Tiempos</span>';case 'Orden4_Completa':return '<span class="badge badge-active">Pendiente NPT</span>';case 'Completo':return '<span class="badge badge-complete">Completo</span>';default:return '<span class="badge badge-pending">-</span>';} };
+        return `<div class="form-card"><h3><i class="fas fa-database"></i> Registros (${records.length})</h3></div><div class="table-wrapper"><table class="records-table"><thead><tr><th>ID</th><th>Equipo</th><th>Turno</th><th>Origen</th><th>Destino</th><th>Estado</th><th>Creado</th></tr></thead><tbody>${records.map(r=>`<tr><td>${r.Id}</td><td><strong>${r.Equipo||'-'}</strong></td><td>${r.Turno||'-'}</td><td>${r.PozoOrigen||'-'}</td><td>${r.PozoDestino||'-'}</td><td>${badge(r.Estado)}</td><td>${r.Created?new Date(r.Created).toLocaleDateString('es-AR'):'-'}</td></tr>`).join('')}</tbody></table></div>`;
+    }
+    function initRegistrosEdit() {}
+
+    return { renderOrden1, initOrden1, renderOrden2, initOrden2, renderOrden3, initOrden3, renderOrden4, initOrden4, renderOrden5, initOrden5, renderRegistros, initRegistrosEdit };
+})();
+</script>
+<script>
+// =========================================================================
+// ADMIN
+// =========================================================================
+const Admin = (() => {
+    const CUSTOM_KEY = 'novedades_dtm_custom_resources';
+    function getCustom() { const d = localStorage.getItem(CUSTOM_KEY); return d ? JSON.parse(d) : null; }
+    function saveCustom(r) { localStorage.setItem(CUSTOM_KEY, JSON.stringify(r)); applyCustom(r); }
+    function applyCustom(r) {
+        if(r.supervisores)CONFIG.personal.supervisores=r.supervisores; if(r.guincheros)CONFIG.personal.guincheros=r.guincheros;
+        if(r.choferesCargadora)CONFIG.personal.choferesCargadora=r.choferesCargadora; if(r.grueros)CONFIG.personal.grueros=r.grueros;
+        if(r.choferes)CONFIG.personal.choferes=r.choferes; if(r.ayudantes)CONFIG.personal.ayudantes=r.ayudantes;
+        if(r.guinches)CONFIG.flota.guinches=r.guinches; if(r.cargadoras)CONFIG.flota.cargadoras=r.cargadoras;
+        if(r.gruas)CONFIG.flota.gruas=r.gruas; if(r.camiones)CONFIG.flota.camiones=r.camiones;
+        if(r.equipos)CONFIG.equipos=r.equipos; if(r.turnos)CONFIG.turnos=r.turnos;
+    }
+    function initCustom() { const c = getCustom(); if(c) applyCustom(c); }
+    function getCurrent() { return { supervisores:[...CONFIG.personal.supervisores], guincheros:[...CONFIG.personal.guincheros], choferesCargadora:[...CONFIG.personal.choferesCargadora], grueros:[...CONFIG.personal.grueros], choferes:[...CONFIG.personal.choferes], ayudantes:[...CONFIG.personal.ayudantes], guinches:[...CONFIG.flota.guinches], cargadoras:[...CONFIG.flota.cargadoras], gruas:[...CONFIG.flota.gruas], camiones:[...CONFIG.flota.camiones], equipos:[...CONFIG.equipos], turnos:[...CONFIG.turnos] }; }
+
+    async function loadRegistros(container) {
+        container.innerHTML = '<p>Cargando...</p>';
+        const records = await SharePointService.getAll();
+        if(!records.length){container.innerHTML='<div class="form-card"><h3>Registros</h3><p>No hay registros.</p></div>';return;}
+        const badge=(e)=>{switch(e){case 'Orden1_Completa':return '<span class="badge badge-pending">O1</span>';case 'Orden2_Completa':return '<span class="badge badge-active">O2</span>';case 'Orden3_Completa':return '<span class="badge badge-active">O3</span>';case 'Orden4_Completa':return '<span class="badge badge-active">O4</span>';case 'Completo':return '<span class="badge badge-complete">OK</span>';default:return '-';}};
+        container.innerHTML = `<div class="form-card"><h3><i class="fas fa-database"></i> Registros Admin (${records.length})</h3></div><div class="table-wrapper"><table class="records-table"><thead><tr><th>ID</th><th>Equipo</th><th>Turno</th><th>Ruta</th><th>Estado</th><th>Acción</th></tr></thead><tbody>${records.map(r=>`<tr><td>${r.Id}</td><td><strong>${r.Equipo||'-'}</strong></td><td>${r.Turno||'-'}</td><td>${r.PozoOrigen||''} → ${r.PozoDestino||''}</td><td>${badge(r.Estado)}</td><td><button class="btn-edit" data-id="${r.Id}"><i class="fas fa-pencil-alt"></i></button></td></tr>`).join('')}</tbody></table></div><div id="admin-edit-container"></div>`;
+        container.querySelectorAll('.btn-edit').forEach(btn => { btn.addEventListener('click', async ()=>{ const rec = await SharePointService.getById(parseInt(btn.dataset.id)); renderEdit(container.querySelector('#admin-edit-container'), rec); }); });
+    }
+
+    function renderEdit(container, rec) {
+        // Helper para generar selectores de personal/flota con valor actual
+        function selRow(prefix, options, max, label) {
+            let h = '';
+            for (let i = 1; i <= max; i++) {
+                const val = rec[`${prefix}${i}`] || '';
+                h += `<div class="form-group"><label>${label} ${i}</label><select name="${prefix}${i}"><option value="">Sin asignar</option>${options.map(o => `<option value="${o}" ${o===val?'selected':''}>${o}</option>`).join('')}</select></div>`;
+            }
+            return `<div class="form-row">${h}</div>`;
+        }
+        function dtVal(field) { return rec[field] ? rec[field].substring(0,16) : ''; }
+
+        container.innerHTML = `<div class="form-card">
+            <h3><i class="fas fa-edit"></i> Editar Registro #${rec.Id} — ${rec.Equipo || 'Sin equipo'} | ${rec.Turno || ''}</h3>
+            <form id="form-admin-edit">
+
+                <h4 style="margin:0.5rem 0 0.75rem;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:0.5rem">Orden 1 — Planificación</h4>
+                <div class="form-row">
+                    <div class="form-group"><label>Equipo</label><select name="Equipo"><option value="">-</option>${CONFIG.equipos.map(e=>`<option value="${e}" ${e===rec.Equipo?'selected':''}>${e}</option>`).join('')}</select></div>
+                    <div class="form-group"><label>Turno</label><select name="Turno"><option value="">-</option>${CONFIG.turnos.map(t=>`<option value="${t}" ${t===rec.Turno?'selected':''}>${t}</option>`).join('')}</select></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Pozo Origen</label><input name="PozoOrigen" value="${rec.PozoOrigen||''}"></div>
+                    <div class="form-group"><label>Pozo Destino</label><input name="PozoDestino" value="${rec.PozoDestino||''}"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Hora Requerida</label><input type="datetime-local" name="HoraRequerida" value="${dtVal('HoraRequerida')}"></div>
+                </div>
+
+                <h4 style="margin:1.5rem 0 0.75rem;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:0.5rem">Orden 2 — Asignación COPESA</h4>
+                <div class="form-row">
+                    <div class="form-group"><label>Hora Plan Arribo</label><input type="datetime-local" name="HoraPlanArribo" value="${dtVal('HoraPlanArribo')}"></div>
+                </div>
+                ${selRow('Supervisor', CONFIG.personal.supervisores, 3, 'Supervisor')}
+                ${selRow('Guinchero', CONFIG.personal.guincheros, 3, 'Guinchero')}
+                ${selRow('ChoferCargadora', CONFIG.personal.choferesCargadora, 3, 'Chofer Cargadora')}
+                ${selRow('Gruero', CONFIG.personal.grueros, 3, 'Gruero')}
+                ${selRow('Chofer', CONFIG.personal.choferes, 12, 'Chofer')}
+                ${selRow('Ayudante', CONFIG.personal.ayudantes, 5, 'Ayudante')}
+                ${selRow('Guinche', CONFIG.flota.guinches, 3, 'Guinche')}
+                ${selRow('Cargadora', CONFIG.flota.cargadoras, 3, 'Cargadora')}
+                ${selRow('Grua', CONFIG.flota.gruas, 3, 'Grúa')}
+                ${selRow('Camion', CONFIG.flota.camiones, 12, 'Camión')}
+                <div class="form-group"><label>Comentario COPESA</label><textarea name="ComentarioCopesa">${rec.ComentarioCopesa||''}</textarea></div>
+
+                <h4 style="margin:1.5rem 0 0.75rem;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:0.5rem">Orden 3 — Asistencia y Arribo</h4>
+                <div class="form-row">
+                    <div class="form-group"><label>Fecha/Hora Arribo</label><input type="datetime-local" name="FechaHoraArribo" value="${dtVal('FechaHoraArribo')}"></div>
+                    <div class="form-group"><label>KM Hoja de Ruta</label><input type="number" step="0.1" name="KmHojaRuta" value="${rec.KmHojaRuta||''}"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Acta Entrega Locación</label><select name="ActaEntregaLocacion"><option value="false" ${!rec.ActaEntregaLocacion?'selected':''}>No</option><option value="true" ${rec.ActaEntregaLocacion?'selected':''}>Sí</option></select></div>
+                    <div class="form-group"><label>Hoja Ruta Aprobada</label><select name="HojaRutaAprobada"><option value="false" ${!rec.HojaRutaAprobada?'selected':''}>No</option><option value="true" ${rec.HojaRutaAprobada?'selected':''}>Sí</option></select></div>
+                </div>
+
+                <h4 style="margin:1.5rem 0 0.75rem;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:0.5rem">Orden 4 — Tiempos Operativos</h4>
+                <div class="form-row">
+                    <div class="form-group"><label>Fecha/Hora Evacuación</label><input type="datetime-local" name="FechaHoraEvacuacion" value="${dtVal('FechaHoraEvacuacion')}"></div>
+                    <div class="form-group"><label>Reprogramación</label><select name="Reprogramacion"><option value="">-</option>${[1,2,3,4,5].map(n=>`<option value="${n}" ${rec.Reprogramacion==n?'selected':''}>${n}</option>`).join('')}</select></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Fecha/Hora Carrito BOP</label><input type="datetime-local" name="FechaHoraCarritoBOP" value="${dtVal('FechaHoraCarritoBOP')}"></div>
+                    <div class="form-group"><label>Fecha/Hora Bajada Mástil</label><input type="datetime-local" name="FechaHoraBajadaMastil" value="${dtVal('FechaHoraBajadaMastil')}"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Fecha/Hora Fin Vactor</label><input type="datetime-local" name="FechaHoraFinVactor" value="${dtVal('FechaHoraFinVactor')}"></div>
+                    <div class="form-group"><label>Fecha/Hora Plug Down</label><input type="datetime-local" name="FechaHoraPlugDown" value="${dtVal('FechaHoraPlugDown')}"></div>
+                </div>
+
+                <h4 style="margin:1.5rem 0 0.75rem;color:var(--primary);border-bottom:1px solid var(--border);padding-bottom:0.5rem">Orden 5 — NPT</h4>
+                <div class="form-group"><label>Comentario NPT</label><textarea name="ComentarioNPT">${rec.ComentarioNPT||''}</textarea></div>
+                <div class="form-row" style="align-items:end">
+                    <div class="form-group"><label>FIN DTM</label><select name="FinDTM"><option value="false" ${!rec.FinDTM?'selected':''}>No</option><option value="true" ${rec.FinDTM?'selected':''}>Sí</option></select></div>
+                    <div class="form-group"><label>Fecha/Hora Retiro de Flota</label><input type="datetime-local" name="FechaHoraRetiroFlota" value="${rec.FechaHoraRetiroFlota ? rec.FechaHoraRetiroFlota.substring(0,16) : ''}"></div>
+                </div>
+
+                <h4 style="margin:1.5rem 0 0.75rem;color:var(--danger);border-bottom:1px solid var(--border);padding-bottom:0.5rem">Estado del Registro</h4>
+                <div class="form-group"><label>Estado</label><select name="Estado">${['Orden1_Completa','Orden2_Completa','Orden3_Completa','Orden4_Completa','Completo'].map(e=>`<option value="${e}" ${e===rec.Estado?'selected':''}>${e}</option>`).join('')}</select></div>
+
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top:1.5rem"><i class="fas fa-save"></i> Guardar Cambios (Admin)</button>
+            </form>
+        </div>`;
+        container.scrollIntoView({behavior:'smooth'});
+        container.querySelector('#form-admin-edit').addEventListener('submit', async(e)=>{
+            e.preventDefault(); const fd=new FormData(e.target); const data={}; fd.forEach((v,k)=>{if(v && v !== '-')data[k]=v;});
+            // Convertir booleans
+            if (data.ActaEntregaLocacion) data.ActaEntregaLocacion = data.ActaEntregaLocacion === 'true';
+            if (data.HojaRutaAprobada) data.HojaRutaAprobada = data.HojaRutaAprobada === 'true';
+            if (data.FinDTM) data.FinDTM = data.FinDTM === 'true';
+            try{await SharePointService.update(rec.Id,data); App.showToast('Registro actualizado'); Admin.loadRegistros(document.getElementById('content-admin'));}catch(er){App.showToast('Error al guardar','error');console.error(er);}
+        });
+    }
+
+    function loadRecursos(container) {
+        const cats=[{key:'equipos',label:'Equipos',icon:'fa-oil-well'},{key:'turnos',label:'Turnos',icon:'fa-clock'},{key:'supervisores',label:'Supervisores',icon:'fa-user-tie'},{key:'guincheros',label:'Guincheros',icon:'fa-user-cog'},{key:'choferesCargadora',label:'Choferes Cargadora',icon:'fa-user'},{key:'grueros',label:'Grueros',icon:'fa-user'},{key:'choferes',label:'Choferes',icon:'fa-id-card'},{key:'ayudantes',label:'Ayudantes',icon:'fa-user-friends'},{key:'guinches',label:'Guinches',icon:'fa-truck-pickup'},{key:'cargadoras',label:'Cargadoras',icon:'fa-truck-loading'},{key:'gruas',label:'Grúas',icon:'fa-truck-monster'},{key:'camiones',label:'Camiones',icon:'fa-truck'}];
+        const res = getCurrent();
+        container.innerHTML = `<div class="form-card"><h3><i class="fas fa-cogs"></i> Gestionar Recursos</h3></div>${cats.map(c=>`<div class="admin-card"><h4><i class="fas ${c.icon}"></i> ${c.label} (${res[c.key].length})</h4><ul class="resource-list">${res[c.key].map((item,idx)=>`<li><span>${item}</span><button class="btn-remove" data-cat="${c.key}" data-idx="${idx}"><i class="fas fa-times"></i></button></li>`).join('')}</ul><div class="add-resource-row"><input type="text" id="input-${c.key}" placeholder="Nuevo..."><button data-cat="${c.key}"><i class="fas fa-plus"></i> Agregar</button></div></div>`).join('')}`;
+        container.querySelectorAll('.btn-remove').forEach(btn=>{btn.addEventListener('click',()=>{const r=getCurrent();r[btn.dataset.cat].splice(parseInt(btn.dataset.idx),1);saveCustom(r);App.showToast('Eliminado');loadRecursos(container);});});
+        container.querySelectorAll('.add-resource-row button').forEach(btn=>{btn.addEventListener('click',()=>{const inp=container.querySelector(`#input-${btn.dataset.cat}`);const v=inp.value.trim();if(!v){App.showToast('Ingrese valor','error');return;}const r=getCurrent();if(r[btn.dataset.cat].includes(v)){App.showToast('Ya existe','error');return;}r[btn.dataset.cat].push(v);saveCustom(r);App.showToast('Agregado');loadRecursos(container);});});
+    }
+
+    return { loadRegistros, loadRecursos, initCustomResources: initCustom };
+})();
+</script>
+<script>
+// =========================================================================
+// INIT
+// =========================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    SharePointService.init();
+    Admin.initCustomResources();
+    App.init();
+});
+</script>
+</body>
+</html>
