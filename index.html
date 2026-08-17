@@ -123,6 +123,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .picker-box .picker-list .picker-item.disabled { opacity: 0.4; pointer-events: none; text-decoration: line-through; }
 .picker-box .picker-footer { padding: 0.75rem 1.25rem; border-top: 1px solid var(--border); text-align: right; }
 .picker-box .picker-footer button { padding: 0.5rem 1rem; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); cursor: pointer; font-size: 0.85rem; }
+/* Sync status */
+.sync-badge { position: fixed; top: 0.75rem; right: 1rem; padding: 0.4rem 0.9rem; border-radius: 16px; font-size: 0.78rem; font-weight: 600; z-index: 10001; display: none; align-items: center; gap: 0.4rem; }
+.sync-badge.saving { display: inline-flex; background: #fff3cd; color: #856404; }
+.sync-badge.ok { display: inline-flex; background: #d4edda; color: #155724; }
+.sync-badge.err { display: inline-flex; background: #f8d7da; color: #721c24; }
+.sync-badge.loading { display: inline-flex; background: #cce5ff; color: #004085; }
 
 @media (max-width: 768px) {
     .content { padding: 1rem; }
@@ -136,6 +142,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
     </style>
 </head>
 <body>
+    <div id="syncBadge" class="sync-badge"></div>
     <div id="app">
         <div id="role-selection" class="screen active">
             <div class="role-container">
@@ -218,31 +225,33 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
         </div>
     </div>
 
-    <script src="https://alcdn.msauth.net/browser/2.38.0/js/msal-browser.min.js"></script>
     <script>
 // =========================================================================
-// CONFIG
+// GITHUB SYNC CONFIG
+// =========================================================================
+const GH_OWNER = "sergiosanjurjo";
+const GH_REPO = "dtm-novedades";
+const GH_BRANCH = "main";
+const WORKER_URL = "https://dtm-proxy.sergio-sanjurjo.workers.dev";
+const ADMIN_PASSWORD = "CerroDragon01";
+
+// =========================================================================
+// CONFIG - se carga dinámicamente desde resources.json de GitHub
 // =========================================================================
 const CONFIG = {
-    siteUrl: 'https://TU_TENANT.sharepoint.com/sites/TU_SITIO',
-    listName: 'NovedadesDTM',
-    clientId: 'TU_CLIENT_ID_AQUI',
-    tenantId: 'TU_TENANT_ID_AQUI',
-    redirectUri: window.location.origin + window.location.pathname,
-    scopes: ['Sites.ReadWrite.All'],
     personal: {
-        supervisores: ['MERCADO HECTOR ROQUE - JEFE CAMPO','MORA SERGIO CEFERINO - JEFE CAMPO','ALANIZ GUSTAVO ANTONIO - SUPERVISOR','AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR','BECERRA ALBERTO DANTE - SUPERVISOR','CARRIZO HECTOR ALEJANDRO - SUPERVISOR','MELIAN JEREMIAS NADIR - SUPERVISOR','QUINTANA JORGE MARTIN - SUPERVISOR','ROSSONE EDUARDO OMAR - SUPERVISOR','VITCOVICH ROBERTO GUSTAVO - SUPERVISOR'],
-        guincheros: ['ARMENGOL GUSTAVO MARCELO','BARROZO SEBASTIAN GONZALO','CASARINI ISAAC ISAIAS ALBERTO','CORNEJO WALTER SEBASTIAN','FRANCO DANIEL GUSTAVO','GOMEZ WALTER RUBEN','PACILLI FABIO DAMIAN','SANZANA MANSILLA BORIS ENRIQUE','TRACALEU GUSTAVO ALEJANDRO'],
-        choferesCargadora: ['FERREIRA GALANTE OSVALDO CARLOS','GODOY RODRIGO ALEJANDRO','HEREDIA CESAR DANIEL','HERNANDEZ ESTEBAN FERNANDO','LOPEZ LEANDRO EMANUEL','NAIN MARIO DAVID','PAEZ MAXIMILIANO EZEQUIEL','REVILLA LUIS SANTIAGO'],
-        grueros: ['CASTRO MARTIN ANTONIO','REYES PEDRO ESTEBAN','REYNAGA RAUL FEDERICO','RIOS LUIS MARCELO','SUELDO JUAN ADRIAN'],
-        choferes: ['BARGAS DARIO ANTONIO - CARRETON','BARRIA ANDRES ROMAN - CARRETON','BARRIOS ROLANDO ADRIAN - CARRETON','CABEZAS VICTOR OSCAR - CARRETON','CRETTON VICTOR JAVIER - CARRETON','DEL RIO LUIS ALBERTO - CARRETON','DI LUCA JOSE ANTONIO - CARRETON','FERNANDEZ ISMAEL WALTER EFRAIN - CARRETON','FERREIRA MARIO ESTEBAN - CARRETON','FLORES ARIEL GUSTAVO - CARRETON','GONZALEZ WALTER DANIEL - CARRETON','HERNANDEZ JOSE SERGIO - CARRETON','LEGUIPAN BRUNO ALEJANDRO - CARRETON','MASLOVSKI FEDERICO ABEL - CARRETON','MENGUEZ FRANCISCO ADRIANO - CARRETON','MUÑOZ DIEGO ADRIAN - CARRETON','MUÑOZ JAVIER ALEJANDRO - CARRETON','NUÑEZ DARIO EZEQUIEL - CARRETON','PHILLIPS GASTON ERNESTO - CARRETON','VIDAL GARCIA WILSON - CARRETON','GARGAGLIONE SEBASTIAN - CARRETON','HERNANDEZ PATRICIO ALEJANDRO - CARRETON','PAREDES ERNESTO ALEJANDRO - CARRETON','CASMUZ CARLOS ANTONIO MARTIN - SEMI','DE LA LLAMA ALEJANDRO ANDRES - SEMI','GUTIERREZ JORGE ANDRES - SEMI','LUZ CLARA JUAN - SEMI','SARRATEA EDGARDO EMMANUEL - SEMI','WOLHWEND MARCELO - SEMI','HERNANDEZ CLAUDIA ANDREA - CHOFER CLASE D','MUÑOZ SANDRA MARIELA - CHOFER CLASE D','SEPULVEDA GUILLERMO EDUARDO - CHOFER CLASE E'],
-        ayudantes: ['ARRAMENDI MARIO LUIS','BARRIOS MAXIMO BENJAMIN','BARROS MATIAS EMMANUEL','CASARINI ISRAEL ANTHER OMAR','CASTILLO MALDONADO JOSE ALBERTO','CHICUY BRUNO GERARDO','DIAZ IAN ANDRES','ESTEVEZ MATIAS EZEQUIEL','GALLARDO ALBERTO EDUARDO','MAHIA JONATHAN NAHUEL','OVANDO LAURIANO ALEJANDRO','QUEDIMAN DIEGO SEBASTIAN','REALES MAXIMILIANO ANDRES','REYES BORRAS FEDERICO JAVIER','TUREO ALEX SEBASTIAN']
+        supervisores: [],
+        guincheros: [],
+        choferesCargadora: [],
+        grueros: [],
+        choferes: [],
+        ayudantes: []
     },
     flota: {
-        guinches: ['AIM619 - KENWORTH','CJJ39 - KENWORTH','VEC604 - AUTOCAR','AF895MC - SCANIA','GPET-F148 - KENWORTH','GPET-F149 - KENWORTH','AI283NS - KENWORTH'],
-        cargadoras: ['011603A8347 - HELI Autoelevador','314160511580 - LONKING Autoelevador','XUG00978LSCB18724 - XCMG Cargadora','XUG0700KHPCB08121 - XCMG Cargadora'],
-        gruas: ['LXGCPA503RA009356 - XCMG','LXGCPA509RA009359 - XCMG'],
-        camiones: ['AG392AE - IVECO Tractor c/hidro','AF248NQ - IVECO Tractor de auxilio','AF593ZZ - AGRALE Tractor c/cisterna','AG982RQ - IVECO Tractor c/malacate','AF516RN - IVECO Tractor c/malacate','AF516RO - IVECO Tractor doble','AF868YL - IVECO Tractor doble','AG807DH - VOLKSWAGEN Tractor doble','AH541EV - SCANIA Tractor doble','AH541EW - SCANIA Tractor doble','AH610EQ - SCANIA Tractor doble','AH881KI - IVECO Tractor doble','AH881KJ - IVECO Tractor doble','AH610ER - SCANIA Tractor doble','AF868YN - IVECO Tractor simple','AG149BU - IVECO Tractor simple','AG218BZ - IVECO Tractor simple']
+        guinches: [],
+        cargadoras: [],
+        gruas: [],
+        camiones: []
     },
     turnos: ['T 1', 'T 2', 'T 3', 'T 4', 'T 5', 'T 6', 'Pre Tarea. Hoja de Ruta', 'Pre Tarea. Mont. Tablonada / Semi Barras'],
     equipos: ['PAE 002', 'PAE 003', 'PAE 006', 'PAE 007']
@@ -250,68 +259,137 @@ const CONFIG = {
 </script>
 <script>
 // =========================================================================
-// SHAREPOINT SERVICE (modo offline localStorage + modo online MSAL/Graph)
+// GITHUB SERVICE - Lectura pública + escritura via Cloudflare Worker
 // =========================================================================
-const SharePointService = (() => {
-    let accessToken = null;
-    const msalConfig = { auth: { clientId: CONFIG.clientId, authority: `https://login.microsoftonline.com/${CONFIG.tenantId}`, redirectUri: CONFIG.redirectUri } };
-    let msalInstance = null;
+const GitHubService = (() => {
+    let _records = [];
+    let _resourcesLoaded = false;
 
-    function initMsal() { if (typeof msal !== 'undefined' && CONFIG.clientId !== 'TU_CLIENT_ID_AQUI') { msalInstance = new msal.PublicClientApplication(msalConfig); } }
-
-    async function login() {
-        if (!msalInstance) return false;
-        try { const r = await msalInstance.loginPopup({ scopes: CONFIG.scopes }); accessToken = r.accessToken; return true; }
-        catch (e) { console.error('Auth error:', e); return false; }
+    // === LECTURA (pública, sin token) ===
+    async function loadRecords() {
+        try {
+            const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/records.json?ref=${GH_BRANCH}&t=${Date.now()}`;
+            const res = await fetch(url, { cache: "no-store", headers: { "Accept": "application/vnd.github.v3.raw" } });
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            _records = await res.json();
+        } catch (e) {
+            console.warn("No se pudo leer records.json de GitHub, usando caché local", e);
+            const local = localStorage.getItem('dtm_records_cache');
+            _records = local ? JSON.parse(local) : [];
+        }
+        // Cache local como respaldo
+        localStorage.setItem('dtm_records_cache', JSON.stringify(_records));
+        return _records;
     }
 
-    async function getToken() {
-        if (!msalInstance) return null;
-        try { const accounts = msalInstance.getAllAccounts(); if (accounts.length === 0) { await login(); return accessToken; }
-            const r = await msalInstance.acquireTokenSilent({ scopes: CONFIG.scopes, account: accounts[0] }); accessToken = r.accessToken; return accessToken;
-        } catch (e) { return await login() ? accessToken : null; }
+    async function loadResources() {
+        if (_resourcesLoaded) return;
+        try {
+            const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/resources.json?ref=${GH_BRANCH}&t=${Date.now()}`;
+            const res = await fetch(url, { cache: "no-store", headers: { "Accept": "application/vnd.github.v3.raw" } });
+            if (!res.ok) throw new Error("HTTP " + res.status);
+            const data = await res.json();
+            // Aplicar al CONFIG global
+            if (data.equipos) CONFIG.equipos = data.equipos;
+            if (data.turnos) CONFIG.turnos = data.turnos;
+            if (data.personal) {
+                Object.keys(data.personal).forEach(k => { if (data.personal[k]) CONFIG.personal[k] = data.personal[k]; });
+            }
+            if (data.flota) {
+                Object.keys(data.flota).forEach(k => { if (data.flota[k]) CONFIG.flota[k] = data.flota[k]; });
+            }
+            _resourcesLoaded = true;
+            localStorage.setItem('dtm_resources_cache', JSON.stringify(data));
+        } catch (e) {
+            console.warn("No se pudo leer resources.json de GitHub, usando caché local", e);
+            const local = localStorage.getItem('dtm_resources_cache');
+            if (local) {
+                const data = JSON.parse(local);
+                if (data.equipos) CONFIG.equipos = data.equipos;
+                if (data.turnos) CONFIG.turnos = data.turnos;
+                if (data.personal) Object.keys(data.personal).forEach(k => { if (data.personal[k]) CONFIG.personal[k] = data.personal[k]; });
+                if (data.flota) Object.keys(data.flota).forEach(k => { if (data.flota[k]) CONFIG.flota[k] = data.flota[k]; });
+            }
+            _resourcesLoaded = true;
+        }
     }
 
-    async function apiRequest(endpoint, method = 'GET', body = null) {
-        const token = await getToken();
-        const baseUrl = `${CONFIG.siteUrl}/_api/web/lists/getbytitle('${CONFIG.listName}')`;
-        const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json;odata=nometadata', 'Content-Type': 'application/json;odata=nometadata' };
-        if (method === 'POST' || method === 'MERGE') { headers['X-RequestDigest'] = await getRequestDigest(); }
-        if (method === 'MERGE') { headers['IF-MATCH'] = '*'; headers['X-HTTP-Method'] = 'MERGE'; }
-        const options = { method: method === 'MERGE' ? 'POST' : method, headers };
-        if (body) options.body = JSON.stringify(body);
-        const response = await fetch(`${baseUrl}${endpoint}`, options);
-        if (!response.ok) throw new Error(`API Error: ${response.status}`);
-        const text = await response.text();
-        return text ? JSON.parse(text) : null;
+    // === ESCRITURA (via Worker) ===
+    async function saveRecord(data) {
+        setSyncBadge("saving", "Guardando...");
+        try {
+            const res = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password: ADMIN_PASSWORD, action: "save_record", data })
+            });
+            const result = await res.json();
+            if (!res.ok) throw new Error(result.error || "HTTP " + res.status);
+            setSyncBadge("ok", "✓ Guardado");
+            // Actualizar cache local
+            if (data.Id) {
+                const idx = _records.findIndex(r => r.Id === data.Id);
+                if (idx !== -1) _records[idx] = { ..._records[idx], ...data, Modified: new Date().toISOString() };
+            } else {
+                if (result.record) _records.push(result.record);
+            }
+            localStorage.setItem('dtm_records_cache', JSON.stringify(_records));
+            return result.record || data;
+        } catch (e) {
+            setSyncBadge("err", "Error: " + e.message);
+            throw e;
+        }
     }
 
-    async function getRequestDigest() {
-        const token = await getToken();
-        const r = await fetch(`${CONFIG.siteUrl}/_api/contextinfo`, { method: 'POST', headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json;odata=nometadata' } });
-        return (await r.json()).FormDigestValue;
+    async function saveResources(resourcesData) {
+        setSyncBadge("saving", "Guardando recursos...");
+        try {
+            const res = await fetch(WORKER_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password: ADMIN_PASSWORD, action: "save_resources", data: resourcesData })
+            });
+            const result = await res.json();
+            if (!res.ok) throw new Error(result.error || "HTTP " + res.status);
+            setSyncBadge("ok", "✓ Recursos guardados");
+            _resourcesLoaded = false; // Forzar recarga
+            localStorage.setItem('dtm_resources_cache', JSON.stringify(resourcesData));
+            return result;
+        } catch (e) {
+            setSyncBadge("err", "Error: " + e.message);
+            throw e;
+        }
     }
 
-    // MODO OFFLINE (localStorage)
-    const STORAGE_KEY = 'novedades_dtm_records';
-    function getLocalRecords() { const d = localStorage.getItem(STORAGE_KEY); return d ? JSON.parse(d) : []; }
-    function saveLocalRecords(records) { localStorage.setItem(STORAGE_KEY, JSON.stringify(records)); }
-    function createLocalItem(data) { const records = getLocalRecords(); const newItem = { Id: records.length > 0 ? Math.max(...records.map(r => r.Id)) + 1 : 1, ...data, Created: new Date().toISOString() }; records.push(newItem); saveLocalRecords(records); return newItem; }
-    function getLocalItems() { return getLocalRecords().sort((a, b) => b.Id - a.Id); }
-    function getLocalItemById(id) { return getLocalRecords().find(r => r.Id === id); }
-    function updateLocalItem(id, data) { const records = getLocalRecords(); const i = records.findIndex(r => r.Id === id); if (i !== -1) { records[i] = { ...records[i], ...data, Modified: new Date().toISOString() }; saveLocalRecords(records); return records[i]; } return null; }
-
-    function isOnline() { return CONFIG.clientId !== 'TU_CLIENT_ID_AQUI' && msalInstance !== null; }
-
+    // === API PÚBLICA (compatible con la interfaz anterior) ===
     return {
-        init: initMsal, login,
-        create: async (data) => isOnline() ? await apiRequest('/items', 'POST', data) : createLocalItem(data),
-        getAll: async () => isOnline() ? (await apiRequest('/items?$orderby=Id desc'))?.value || [] : getLocalItems(),
-        getById: async (id) => isOnline() ? await apiRequest(`/items(${id})`) : getLocalItemById(id),
-        update: async (id, data) => isOnline() ? await apiRequest(`/items(${id})`, 'MERGE', data) : updateLocalItem(id, data),
-        isOnline
+        init: async () => {
+            setSyncBadge("loading", "Cargando datos...");
+            await loadResources();
+            await loadRecords();
+            setSyncBadge("ok", "✓ Datos sincronizados");
+        },
+        create: async (data) => await saveRecord(data),
+        getAll: async () => { if (_records.length === 0) await loadRecords(); return [..._records].sort((a, b) => b.Id - a.Id); },
+        getById: async (id) => { if (_records.length === 0) await loadRecords(); return _records.find(r => r.Id === id); },
+        update: async (id, data) => await saveRecord({ Id: id, ...data }),
+        saveResources,
+        refresh: async () => { await loadRecords(); return _records; }
     };
 })();
+
+function setSyncBadge(type, text) {
+    const b = document.getElementById("syncBadge");
+    b.style.display = "inline-flex";
+    b.className = "sync-badge " + type;
+    b.textContent = text;
+    if (type === "ok") setTimeout(() => { b.style.display = "none"; }, 3000);
+}
+
+// Auto-refresh cada 60 segundos
+setInterval(async () => {
+    try { await GitHubService.refresh(); } catch(e) {}
+}, 60000);
 </script>
 <script>
 // =========================================================================
@@ -344,7 +422,7 @@ const App = (() => {
         const passInput = document.getElementById('admin-password');
         const errorMsg = document.getElementById('admin-error');
         document.getElementById('admin-login-btn').addEventListener('click', () => {
-            if (passInput.value === 'CerroDragon01') { modal.style.display = 'none'; currentRole = 'admin'; showScreen('main-admin'); const fn = document.querySelector('#main-admin .nav-btn.active'); if (fn) loadSection(fn.dataset.section); }
+            if (passInput.value === ADMIN_PASSWORD) { modal.style.display = 'none'; currentRole = 'admin'; showScreen('main-admin'); const fn = document.querySelector('#main-admin .nav-btn.active'); if (fn) loadSection(fn.dataset.section); }
             else { errorMsg.style.display = 'block'; passInput.value = ''; passInput.focus(); }
         });
         passInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') document.getElementById('admin-login-btn').click(); });
@@ -379,7 +457,7 @@ const App = (() => {
 
     async function loadRegistros(container) {
         container.innerHTML = '<p>Cargando registros...</p>';
-        try { const records = await SharePointService.getAll(); container.innerHTML = Forms.renderRegistros(records, currentRole); Forms.initRegistrosEdit(container, currentRole); }
+        try { const records = await GitHubService.getAll(); container.innerHTML = Forms.renderRegistros(records, currentRole); Forms.initRegistrosEdit(container, currentRole); }
         catch (e) { container.innerHTML = '<p>Error al cargar registros.</p>'; console.error(e); }
     }
 
@@ -427,7 +505,6 @@ const Forms = (() => {
         const turnosOrdenados = ['T 1', 'T 2', 'T 3', 'T 4', 'T 5', 'T 6'];
         let _records = [];
 
-        // Al cambiar equipo: llenar picklist de pozos activos
         equipoSelect.addEventListener('change', async () => {
             const equipo = equipoSelect.value;
             turnoSelect.value = '';
@@ -438,11 +515,8 @@ const Forms = (() => {
 
             if (!equipo) return;
 
-            _records = await SharePointService.getAll();
-            // Registros activos de este equipo (FinDTM != true)
+            _records = await GitHubService.getAll();
             const activos = _records.filter(r => r.Equipo === equipo && !r.FinDTM);
-
-            // Obtener pozos origen únicos con DTM activo (el pozo desde donde sale el equipo)
             const pozosActivos = [...new Set(activos.map(r => r.PozoOrigen).filter(Boolean))];
 
             if (pozosActivos.length > 0) {
@@ -450,13 +524,11 @@ const Forms = (() => {
                     pozosActivos.map(p => `<option value="${p}">${p}</option>`).join('');
             }
 
-            // Si no hay pozos activos, es un nuevo DTM → sugerir T1
             if (pozosActivos.length === 0) {
                 turnoSelect.value = 'T 1';
             }
         });
 
-        // Al seleccionar un pozo del picklist → auto-rellenar turno
         pozoOrigenSelect.addEventListener('change', () => {
             const pozo = pozoOrigenSelect.value;
             if (!pozo) {
@@ -464,7 +536,6 @@ const Forms = (() => {
                 pozoOrigenInput.readOnly = false;
                 pozoOrigenInput.style.background = '';
                 turnoSelect.value = '';
-                // Rehabilitar todos los turnos
                 turnoSelect.querySelectorAll('option').forEach(opt => { opt.disabled = false; });
                 return;
             }
@@ -473,7 +544,6 @@ const Forms = (() => {
             pozoOrigenInput.readOnly = true;
             pozoOrigenInput.style.background = '#e8f0fe';
 
-            // Calcular siguiente turno para este equipo + pozo origen (sugerencia)
             const equipo = equipoSelect.value;
             const registrosPozo = _records.filter(r => r.Equipo === equipo && r.PozoOrigen === pozo && !r.FinDTM);
             const turnosUsados = registrosPozo.map(r => r.Turno).filter(t => turnosOrdenados.includes(t));
@@ -487,7 +557,6 @@ const Forms = (() => {
                 turnoSelect.value = 'Pre Tarea. Hoja de Ruta';
             }
 
-            // Deshabilitar turnos anteriores al siguiente
             turnoSelect.querySelectorAll('option').forEach(opt => {
                 const tIdx = turnosOrdenados.indexOf(opt.value);
                 if (tIdx !== -1 && tIdx < sigIdx) {
@@ -498,10 +567,8 @@ const Forms = (() => {
             });
         });
 
-        // Si el usuario escribe manualmente un pozo nuevo (sin seleccionar del picklist)
         pozoOrigenInput.addEventListener('input', () => {
             if (!pozoOrigenInput.readOnly) {
-                // Pozo nuevo → sugerir T1
                 turnoSelect.value = 'T 1';
             }
         });
@@ -510,7 +577,7 @@ const Forms = (() => {
             e.preventDefault();
             const data = { Equipo: form.Equipo.value, Turno: turnoSelect.value, PozoOrigen: form.PozoOrigen.value, PozoDestino: form.PozoDestino.value, Estado: 'Orden1_Completa' };
             if (form.HoraRequerida.value) data.HoraRequerida = form.HoraRequerida.value;
-            try { await SharePointService.create(data); App.showToast('Registro creado exitosamente'); form.reset(); pozoOrigenInput.readOnly = false; pozoOrigenInput.style.background = ''; turnoSelect.value = ''; pozoOrigenSelect.innerHTML = '<option value="">— Seleccionar pozo activo o escribir nuevo —</option>'; }
+            try { await GitHubService.create(data); App.showToast('Registro creado exitosamente'); form.reset(); pozoOrigenInput.readOnly = false; pozoOrigenInput.style.background = ''; turnoSelect.value = ''; pozoOrigenSelect.innerHTML = '<option value="">— Seleccionar pozo activo o escribir nuevo —</option>'; }
             catch (err) { App.showToast('Error al crear registro', 'error'); console.error(err); }
         });
     }
@@ -530,7 +597,6 @@ const Forms = (() => {
             { key: 'Grua', label: 'Grúa/s', icon: 'fa-truck-monster', options: CONFIG.flota.gruas },
             { key: 'Camion', label: 'Camión/es', icon: 'fa-truck', options: CONFIG.flota.camiones }
         ];
-        const sections = [...personalSections, ...flotaSections];
         const renderSecs = (list) => list.map(s => `
             <div class="res-section" data-key="${s.key}">
                 <div class="res-header">
@@ -558,7 +624,6 @@ const Forms = (() => {
         </div>`;
     }
 
-    // Picker state for Orden 2
     const _orden2State = {};
     const _orden2Sections = [
         { key: 'Supervisor', options: () => CONFIG.personal.supervisores },
@@ -620,22 +685,14 @@ const Forms = (() => {
         const chipsEl = container.querySelector(`#chips-${key}`);
         const items = _orden2State[key] || [];
         chipsEl.innerHTML = items.map((item, idx) => `<span class="res-chip">${item} <button type="button" class="chip-remove" data-key="${key}" data-idx="${idx}"><i class="fas fa-times"></i></button></span>`).join('');
-        // Hidden inputs for form submission
-        chipsEl.querySelectorAll('input[type=hidden]')?.forEach(i => i.remove());
-        items.forEach((item, idx) => {
-            const hidden = document.createElement('input');
-            hidden.type = 'hidden'; hidden.name = `${key}${idx + 1}`; hidden.value = item;
-            chipsEl.appendChild(hidden);
-        });
     }
 
     async function initOrden2(container) {
-        // Reset state
         _orden2Sections.forEach(s => { _orden2State[s.key] = []; });
 
         const selector = container.querySelector('#select-record-orden2');
         const form = container.querySelector('#form-orden2');
-        const records = await SharePointService.getAll();
+        const records = await GitHubService.getAll();
         const pending = records.filter(r => r.Estado === 'Orden1_Completa');
         if (!pending.length) { selector.innerHTML = '<option value="">No hay registros pendientes</option>'; return; }
         selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
@@ -650,25 +707,20 @@ const Forms = (() => {
                     hrDisplay.value = 'No especificada';
                 }
 
-                // Lógica condicional por tipo de turno
                 const esPretareaHR = rec && rec.Turno && rec.Turno.toLowerCase().includes('hoja de ruta');
                 const esPretareaMT = rec && rec.Turno && rec.Turno.toLowerCase().includes('tablonada');
-                const esPretarea = esPretareaHR || esPretareaMT;
 
                 const allSections = container.querySelectorAll('.res-section');
                 allSections.forEach(sec => {
                     const key = sec.dataset.key;
                     if (esPretareaHR) {
-                        // Pre Tarea Hoja de Ruta: solo Supervisor
                         sec.style.display = (key === 'Supervisor') ? '' : 'none';
                     } else if (esPretareaMT) {
-                        // Pre Tarea Mont. Tablonada: Supervisor + Chofer (personal), Cargadora + Camion (flota)
                         sec.style.display = (['Supervisor','Chofer','Cargadora','Camion'].includes(key)) ? '' : 'none';
                     } else {
                         sec.style.display = '';
                     }
                 });
-                // Ocultar/mostrar títulos PERSONAL y FLOTA
                 const h4s = form.querySelectorAll('h4');
                 h4s.forEach(h4 => {
                     if (esPretareaHR && h4.textContent.includes('FLOTA')) {
@@ -680,12 +732,10 @@ const Forms = (() => {
             }
         });
 
-        // Add button handlers
         container.querySelectorAll('.btn-add').forEach(btn => {
             btn.addEventListener('click', () => openPicker(btn.dataset.key, container));
         });
 
-        // Remove chip handlers (delegated)
         container.addEventListener('click', (e) => {
             const removeBtn = e.target.closest('.chip-remove');
             if (!removeBtn) return;
@@ -701,12 +751,11 @@ const Forms = (() => {
             const data = { Estado: 'Orden2_Completa' };
             if (form.HoraPlanArribo.value) data.HoraPlanArribo = form.HoraPlanArribo.value;
             if (form.ComentarioCopesa && form.ComentarioCopesa.value) data.ComentarioCopesa = form.ComentarioCopesa.value;
-            // Collect all selected resources from state
             _orden2Sections.forEach(s => {
                 const items = _orden2State[s.key] || [];
                 items.forEach((item, idx) => { data[`${s.key}${idx + 1}`] = item; });
             });
-            try { await SharePointService.update(id, data); App.showToast('Asignación guardada'); App.loadSection('orden2'); }
+            try { await GitHubService.update(id, data); App.showToast('Asignación guardada'); App.loadSection('orden2'); }
             catch(er) { App.showToast('Error al guardar', 'error'); console.error(er); }
         });
     }
@@ -719,15 +768,14 @@ const Forms = (() => {
         const form = container.querySelector('#form-orden3');
         const checksC = container.querySelector('#asistencia-checks');
         const camposT1 = container.querySelector('#campos-t1-orden3');
-        const records = await SharePointService.getAll();
+        const records = await GitHubService.getAll();
         const pending = records.filter(r => r.Estado === 'Orden2_Completa');
         if (!pending.length) { selector.innerHTML = '<option>No hay registros pendientes</option>'; return; }
         selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
         selector.addEventListener('change', async () => {
             if(!selector.value){form.style.display='none';return;}
             form.style.display='block';
-            const rec = await SharePointService.getById(parseInt(selector.value));
-            // Mostrar campos KM/Acta/HojaRuta solo para T 1
+            const rec = await GitHubService.getById(parseInt(selector.value));
             camposT1.style.display = (rec && rec.Turno === 'T 1') ? 'block' : 'none';
             renderChecks(checksC, rec);
         });
@@ -735,18 +783,16 @@ const Forms = (() => {
             e.preventDefault(); const id = parseInt(selector.value);
             const rec = pending.find(r => r.Id === id);
             const data = { FechaHoraArribo: form.FechaHoraArribo.value, Estado: 'Orden3_Completa' };
-            // Pre Tarea salta Orden 4 → pasa directo a Orden4_Completa
             if (rec && rec.Turno && rec.Turno.toLowerCase().includes('pre tarea')) {
                 data.Estado = 'Orden4_Completa';
             }
-            // Solo guardar campos T 1 si corresponde
             if (rec && rec.Turno === 'T 1') {
                 if (form.KmHojaRuta.value) data.KmHojaRuta = parseFloat(form.KmHojaRuta.value);
                 data.ActaEntregaLocacion = form.querySelector('#actaEntrega').checked;
                 data.HojaRutaAprobada = form.querySelector('#hojaRuta').checked;
             }
             checksC.querySelectorAll('input[type="checkbox"]').forEach(cb => { data[cb.name] = cb.checked; });
-            try { await SharePointService.update(id, data); App.showToast('Asistencia confirmada'); App.loadSection('orden3'); } catch(e) { App.showToast('Error','error'); }
+            try { await GitHubService.update(id, data); App.showToast('Asistencia confirmada'); App.loadSection('orden3'); } catch(e) { App.showToast('Error','error'); }
         });
     }
     function renderChecks(container, rec) {
@@ -764,8 +810,7 @@ const Forms = (() => {
     async function initOrden4(container) {
         const selector = container.querySelector('#select-record-orden4');
         const form = container.querySelector('#form-orden4');
-        const records = await SharePointService.getAll();
-        // Excluir Pre Tareas de Orden 4 (no aplica para ellas)
+        const records = await GitHubService.getAll();
         const pending = records.filter(r => r.Estado === 'Orden3_Completa' && r.Turno && !r.Turno.toLowerCase().includes('pre tarea'));
         if (!pending.length) { selector.innerHTML = '<option>No hay registros pendientes de tiempos</option>'; return; }
         selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
@@ -777,17 +822,14 @@ const Forms = (() => {
             form.style.display = 'block';
             const rec = pending.find(r => r.Id === parseInt(selector.value));
 
-            // Buscar registros del MISMO equipo + pozo origen que ya tengan datos de Orden 4
             const hermanos = records.filter(r =>
                 r.Equipo === rec.Equipo && r.PozoOrigen === rec.PozoOrigen &&
                 r.Id !== rec.Id && !r.Turno?.toLowerCase().includes('pre tarea')
             );
 
-            // Para cada campo: si algún hermano ya lo tiene cargado, bloquear y mostrar valor
             camposOrden4.forEach(campo => {
                 const el = form.querySelector(`[name="${campo}"]`);
                 if (!el) return;
-                // Buscar si algún hermano ya completó este campo
                 const valorPrevio = hermanos.find(h => h[campo] && h[campo] !== '' && h[campo] !== '0');
                 if (valorPrevio && valorPrevio[campo]) {
                     if (el.tagName === 'SELECT') {
@@ -809,12 +851,11 @@ const Forms = (() => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault(); const id = parseInt(selector.value);
             const data = { Estado: 'Orden4_Completa' };
-            // Solo enviar campos que NO están disabled (los editables)
             camposOrden4.forEach(campo => {
                 const el = form.querySelector(`[name="${campo}"]`);
                 if (el && !el.disabled && el.value) data[campo] = el.value;
             });
-            try { await SharePointService.update(id, data); App.showToast('Tiempos guardados'); App.loadSection('orden4'); }
+            try { await GitHubService.update(id, data); App.showToast('Tiempos guardados'); App.loadSection('orden4'); }
             catch(e) { App.showToast('Error','error'); }
         });
     }
@@ -825,13 +866,12 @@ const Forms = (() => {
     async function initOrden5(container) {
         const selector = container.querySelector('#select-record-orden5');
         const form = container.querySelector('#form-orden5');
-        const records = await SharePointService.getAll();
+        const records = await GitHubService.getAll();
         const pending = records.filter(r => r.Estado === 'Orden3_Completa' || r.Estado === 'Orden4_Completa');
         if (!pending.length) { selector.innerHTML = '<option>No hay registros disponibles</option>'; return; }
         selector.innerHTML = '<option value="">Seleccionar...</option>' + pending.map(r=>`<option value="${r.Id}">${r.Equipo} | ${r.PozoOrigen} → ${r.PozoDestino} | ${r.Turno}</option>`).join('');
         selector.addEventListener('change', () => { form.style.display = selector.value ? 'block' : 'none'; });
 
-        // Mostrar/ocultar campo Retiro de Flota según FIN DTM
         const finDTMSelect = container.querySelector('#finDTM');
         const grupoRetiro = container.querySelector('#grupo-retiro-flota');
         finDTMSelect.addEventListener('change', () => {
@@ -844,7 +884,7 @@ const Forms = (() => {
             if (finDTMSelect.value === 'Si' && form.FechaHoraRetiroFlota.value) {
                 data.FechaHoraRetiroFlota = form.FechaHoraRetiroFlota.value;
             }
-            try { await SharePointService.update(id, data); App.showToast('NPT guardado'); App.loadSection('orden5'); } catch(e) { App.showToast('Error','error'); }
+            try { await GitHubService.update(id, data); App.showToast('NPT guardado'); App.loadSection('orden5'); } catch(e) { App.showToast('Error','error'); }
         });
     }
 
@@ -863,31 +903,16 @@ const Forms = (() => {
 // ADMIN
 // =========================================================================
 const Admin = (() => {
-    const CUSTOM_KEY = 'novedades_dtm_custom_resources';
-    function getCustom() { const d = localStorage.getItem(CUSTOM_KEY); return d ? JSON.parse(d) : null; }
-    function saveCustom(r) { localStorage.setItem(CUSTOM_KEY, JSON.stringify(r)); applyCustom(r); }
-    function applyCustom(r) {
-        if(r.supervisores)CONFIG.personal.supervisores=r.supervisores; if(r.guincheros)CONFIG.personal.guincheros=r.guincheros;
-        if(r.choferesCargadora)CONFIG.personal.choferesCargadora=r.choferesCargadora; if(r.grueros)CONFIG.personal.grueros=r.grueros;
-        if(r.choferes)CONFIG.personal.choferes=r.choferes; if(r.ayudantes)CONFIG.personal.ayudantes=r.ayudantes;
-        if(r.guinches)CONFIG.flota.guinches=r.guinches; if(r.cargadoras)CONFIG.flota.cargadoras=r.cargadoras;
-        if(r.gruas)CONFIG.flota.gruas=r.gruas; if(r.camiones)CONFIG.flota.camiones=r.camiones;
-        if(r.equipos)CONFIG.equipos=r.equipos; if(r.turnos)CONFIG.turnos=r.turnos;
-    }
-    function initCustom() { const c = getCustom(); if(c) applyCustom(c); }
-    function getCurrent() { return { supervisores:[...CONFIG.personal.supervisores], guincheros:[...CONFIG.personal.guincheros], choferesCargadora:[...CONFIG.personal.choferesCargadora], grueros:[...CONFIG.personal.grueros], choferes:[...CONFIG.personal.choferes], ayudantes:[...CONFIG.personal.ayudantes], guinches:[...CONFIG.flota.guinches], cargadoras:[...CONFIG.flota.cargadoras], gruas:[...CONFIG.flota.gruas], camiones:[...CONFIG.flota.camiones], equipos:[...CONFIG.equipos], turnos:[...CONFIG.turnos] }; }
-
     async function loadRegistros(container) {
         container.innerHTML = '<p>Cargando...</p>';
-        const records = await SharePointService.getAll();
+        const records = await GitHubService.getAll();
         if(!records.length){container.innerHTML='<div class="form-card"><h3>Registros</h3><p>No hay registros.</p></div>';return;}
         const badge=(e)=>{switch(e){case 'Orden1_Completa':return '<span class="badge badge-pending">O1</span>';case 'Orden2_Completa':return '<span class="badge badge-active">O2</span>';case 'Orden3_Completa':return '<span class="badge badge-active">O3</span>';case 'Orden4_Completa':return '<span class="badge badge-active">O4</span>';case 'Completo':return '<span class="badge badge-complete">OK</span>';default:return '-';}};
         container.innerHTML = `<div class="form-card"><h3><i class="fas fa-database"></i> Registros Admin (${records.length})</h3></div><div class="table-wrapper"><table class="records-table"><thead><tr><th>ID</th><th>Equipo</th><th>Turno</th><th>Ruta</th><th>Estado</th><th>Acción</th></tr></thead><tbody>${records.map(r=>`<tr><td>${r.Id}</td><td><strong>${r.Equipo||'-'}</strong></td><td>${r.Turno||'-'}</td><td>${r.PozoOrigen||''} → ${r.PozoDestino||''}</td><td>${badge(r.Estado)}</td><td><button class="btn-edit" data-id="${r.Id}"><i class="fas fa-pencil-alt"></i></button></td></tr>`).join('')}</tbody></table></div><div id="admin-edit-container"></div>`;
-        container.querySelectorAll('.btn-edit').forEach(btn => { btn.addEventListener('click', async ()=>{ const rec = await SharePointService.getById(parseInt(btn.dataset.id)); renderEdit(container.querySelector('#admin-edit-container'), rec); }); });
+        container.querySelectorAll('.btn-edit').forEach(btn => { btn.addEventListener('click', async ()=>{ const rec = await GitHubService.getById(parseInt(btn.dataset.id)); renderEdit(container.querySelector('#admin-edit-container'), rec); }); });
     }
 
     function renderEdit(container, rec) {
-        // Helper para generar selectores de personal/flota con valor actual
         function selRow(prefix, options, max, label) {
             let h = '';
             for (let i = 1; i <= max; i++) {
@@ -971,32 +996,80 @@ const Admin = (() => {
         container.scrollIntoView({behavior:'smooth'});
         container.querySelector('#form-admin-edit').addEventListener('submit', async(e)=>{
             e.preventDefault(); const fd=new FormData(e.target); const data={}; fd.forEach((v,k)=>{if(v && v !== '-')data[k]=v;});
-            // Convertir booleans
             if (data.ActaEntregaLocacion) data.ActaEntregaLocacion = data.ActaEntregaLocacion === 'true';
             if (data.HojaRutaAprobada) data.HojaRutaAprobada = data.HojaRutaAprobada === 'true';
             if (data.FinDTM) data.FinDTM = data.FinDTM === 'true';
-            try{await SharePointService.update(rec.Id,data); App.showToast('Registro actualizado'); Admin.loadRegistros(document.getElementById('content-admin'));}catch(er){App.showToast('Error al guardar','error');console.error(er);}
+            try{await GitHubService.update(rec.Id,data); App.showToast('Registro actualizado'); Admin.loadRegistros(document.getElementById('content-admin'));}catch(er){App.showToast('Error al guardar','error');console.error(er);}
         });
     }
 
     function loadRecursos(container) {
-        const cats=[{key:'equipos',label:'Equipos',icon:'fa-oil-well'},{key:'turnos',label:'Turnos',icon:'fa-clock'},{key:'supervisores',label:'Supervisores',icon:'fa-user-tie'},{key:'guincheros',label:'Guincheros',icon:'fa-user-cog'},{key:'choferesCargadora',label:'Choferes Cargadora',icon:'fa-user'},{key:'grueros',label:'Grueros',icon:'fa-user'},{key:'choferes',label:'Choferes',icon:'fa-id-card'},{key:'ayudantes',label:'Ayudantes',icon:'fa-user-friends'},{key:'guinches',label:'Guinches',icon:'fa-truck-pickup'},{key:'cargadoras',label:'Cargadoras',icon:'fa-truck-loading'},{key:'gruas',label:'Grúas',icon:'fa-truck-monster'},{key:'camiones',label:'Camiones',icon:'fa-truck'}];
-        const res = getCurrent();
-        container.innerHTML = `<div class="form-card"><h3><i class="fas fa-cogs"></i> Gestionar Recursos</h3></div>${cats.map(c=>`<div class="admin-card"><h4><i class="fas ${c.icon}"></i> ${c.label} (${res[c.key].length})</h4><ul class="resource-list">${res[c.key].map((item,idx)=>`<li><span>${item}</span><button class="btn-remove" data-cat="${c.key}" data-idx="${idx}"><i class="fas fa-times"></i></button></li>`).join('')}</ul><div class="add-resource-row"><input type="text" id="input-${c.key}" placeholder="Nuevo..."><button data-cat="${c.key}"><i class="fas fa-plus"></i> Agregar</button></div></div>`).join('')}`;
-        container.querySelectorAll('.btn-remove').forEach(btn=>{btn.addEventListener('click',()=>{const r=getCurrent();r[btn.dataset.cat].splice(parseInt(btn.dataset.idx),1);saveCustom(r);App.showToast('Eliminado');loadRecursos(container);});});
-        container.querySelectorAll('.add-resource-row button').forEach(btn=>{btn.addEventListener('click',()=>{const inp=container.querySelector(`#input-${btn.dataset.cat}`);const v=inp.value.trim();if(!v){App.showToast('Ingrese valor','error');return;}const r=getCurrent();if(r[btn.dataset.cat].includes(v)){App.showToast('Ya existe','error');return;}r[btn.dataset.cat].push(v);saveCustom(r);App.showToast('Agregado');loadRecursos(container);});});
+        const cats=[{key:'equipos',label:'Equipos',icon:'fa-oil-well',get:()=>CONFIG.equipos},{key:'turnos',label:'Turnos',icon:'fa-clock',get:()=>CONFIG.turnos},{key:'supervisores',label:'Supervisores',icon:'fa-user-tie',get:()=>CONFIG.personal.supervisores},{key:'guincheros',label:'Guincheros',icon:'fa-user-cog',get:()=>CONFIG.personal.guincheros},{key:'choferesCargadora',label:'Choferes Cargadora',icon:'fa-user',get:()=>CONFIG.personal.choferesCargadora},{key:'grueros',label:'Grueros',icon:'fa-user',get:()=>CONFIG.personal.grueros},{key:'choferes',label:'Choferes',icon:'fa-id-card',get:()=>CONFIG.personal.choferes},{key:'ayudantes',label:'Ayudantes',icon:'fa-user-friends',get:()=>CONFIG.personal.ayudantes},{key:'guinches',label:'Guinches',icon:'fa-truck-pickup',get:()=>CONFIG.flota.guinches},{key:'cargadoras',label:'Cargadoras',icon:'fa-truck-loading',get:()=>CONFIG.flota.cargadoras},{key:'gruas',label:'Grúas',icon:'fa-truck-monster',get:()=>CONFIG.flota.gruas},{key:'camiones',label:'Camiones',icon:'fa-truck',get:()=>CONFIG.flota.camiones}];
+
+        container.innerHTML = `<div class="form-card"><h3><i class="fas fa-cogs"></i> Gestionar Recursos</h3><p style="color:var(--text-light);font-size:0.85rem;">Los cambios se guardan en GitHub y se ven en todos los dispositivos al instante.</p></div>${cats.map(c=>`<div class="admin-card"><h4><i class="fas ${c.icon}"></i> ${c.label} (${c.get().length})</h4><ul class="resource-list">${c.get().map((item,idx)=>`<li><span>${item}</span><button class="btn-remove" data-cat="${c.key}" data-idx="${idx}"><i class="fas fa-times"></i></button></li>`).join('')}</ul><div class="add-resource-row"><input type="text" id="input-${c.key}" placeholder="Nuevo..."><button data-cat="${c.key}"><i class="fas fa-plus"></i> Agregar</button></div></div>`).join('')}`;
+
+        container.querySelectorAll('.btn-remove').forEach(btn=>{btn.addEventListener('click', async ()=>{
+            applyChange(btn.dataset.cat, 'remove', parseInt(btn.dataset.idx));
+            await saveCurrentResources();
+            App.showToast('Eliminado');
+            loadRecursos(container);
+        });});
+
+        container.querySelectorAll('.add-resource-row button').forEach(btn=>{btn.addEventListener('click', async ()=>{
+            const inp=container.querySelector(`#input-${btn.dataset.cat}`);
+            const v=inp.value.trim();
+            if(!v){App.showToast('Ingrese valor','error');return;}
+            const list = getListByCat(btn.dataset.cat);
+            if(list.includes(v)){App.showToast('Ya existe','error');return;}
+            applyChange(btn.dataset.cat, 'add', v);
+            await saveCurrentResources();
+            App.showToast('Agregado');
+            loadRecursos(container);
+        });});
     }
 
-    return { loadRegistros, loadRecursos, initCustomResources: initCustom };
+    function getListByCat(cat) {
+        const map = { equipos: CONFIG.equipos, turnos: CONFIG.turnos, supervisores: CONFIG.personal.supervisores, guincheros: CONFIG.personal.guincheros, choferesCargadora: CONFIG.personal.choferesCargadora, grueros: CONFIG.personal.grueros, choferes: CONFIG.personal.choferes, ayudantes: CONFIG.personal.ayudantes, guinches: CONFIG.flota.guinches, cargadoras: CONFIG.flota.cargadoras, gruas: CONFIG.flota.gruas, camiones: CONFIG.flota.camiones };
+        return map[cat] || [];
+    }
+
+    function applyChange(cat, action, value) {
+        const list = getListByCat(cat);
+        if (action === 'remove') { list.splice(value, 1); }
+        else if (action === 'add') { list.push(value); }
+    }
+
+    async function saveCurrentResources() {
+        const data = {
+            equipos: [...CONFIG.equipos],
+            turnos: [...CONFIG.turnos],
+            personal: {
+                supervisores: [...CONFIG.personal.supervisores],
+                guincheros: [...CONFIG.personal.guincheros],
+                choferesCargadora: [...CONFIG.personal.choferesCargadora],
+                grueros: [...CONFIG.personal.grueros],
+                choferes: [...CONFIG.personal.choferes],
+                ayudantes: [...CONFIG.personal.ayudantes]
+            },
+            flota: {
+                guinches: [...CONFIG.flota.guinches],
+                cargadoras: [...CONFIG.flota.cargadoras],
+                gruas: [...CONFIG.flota.gruas],
+                camiones: [...CONFIG.flota.camiones]
+            }
+        };
+        await GitHubService.saveResources(data);
+    }
+
+    return { loadRegistros, loadRecursos };
 })();
 </script>
 <script>
 // =========================================================================
 // INIT
 // =========================================================================
-document.addEventListener('DOMContentLoaded', () => {
-    SharePointService.init();
-    Admin.initCustomResources();
+document.addEventListener('DOMContentLoaded', async () => {
+    await GitHubService.init();
     App.init();
 });
 </script>
