@@ -23,7 +23,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "SJS",
     "PozoDestino": "SJS2",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-08-18T20:45",
     "Id": 3,
     "Created": "2026-08-17T19:45:16.395Z",
@@ -45,7 +45,7 @@
     "Camion6": "AH541EW - SCANIA Tractor doble",
     "Camion7": "AH541EV - SCANIA Tractor doble",
     "Camion8": "AG807DH - VOLKSWAGEN Tractor doble",
-    "Modified": "2026-08-17T19:48:03.683Z",
+    "Modified": "2026-08-17T19:49:02.340Z",
     "FechaHoraArribo": "2026-08-18T20:47",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -62,6 +62,8 @@
     "AsistCamion5": true,
     "AsistCamion6": false,
     "AsistCamion7": true,
-    "AsistCamion8": false
+    "AsistCamion8": false,
+    "ComentarioNPT": "jasjsajasjasjd",
+    "FinDTM": false
   }
 ]
