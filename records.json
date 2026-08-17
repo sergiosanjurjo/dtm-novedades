@@ -71,12 +71,12 @@
     "Turno": "T 1",
     "PozoOrigen": "PICA",
     "PozoDestino": "PICA1",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-08-18T20:13",
     "Id": 4,
     "Created": "2026-08-17T20:13:51.691Z",
     "HoraPlanArribo": "2026-08-18T20:17",
-    "ComentarioCopesa": "FelÃÂ±iz navidad",
+    "ComentarioCopesa": "FelÃÂÃÂ±iz navidad",
     "Supervisor1": "MORA SERGIO CEFERINO - JEFE CAMPO",
     "Supervisor2": "ALANIZ GUSTAVO ANTONIO - SUPERVISOR",
     "Supervisor3": "AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR",
@@ -101,7 +101,7 @@
     "Camion3": "AF516RN - IVECO Tractor c/malacate",
     "Camion4": "AG982RQ - IVECO Tractor c/malacate",
     "Camion5": "AF593ZZ - AGRALE Tractor c/cisterna",
-    "Modified": "2026-08-17T20:15:52.284Z",
+    "Modified": "2026-08-17T20:16:04.279Z",
     "FechaHoraArribo": "2026-08-18T20:17",
     "KmHojaRuta": 20,
     "ActaEntregaLocacion": true,
@@ -134,6 +134,8 @@
     "FechaHoraCarritoBOP": "2026-08-18T20:18",
     "FechaHoraBajadaMastil": "2026-08-18T20:15",
     "FechaHoraFinVactor": "2026-08-19T20:18",
-    "FechaHoraPlugDown": "2026-08-18T20:18"
+    "FechaHoraPlugDown": "2026-08-18T20:18",
+    "ComentarioNPT": "El pica paga el asado",
+    "FinDTM": false
   }
 ]
