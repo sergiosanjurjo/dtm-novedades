@@ -17,5 +17,15 @@
     "HoraRequerida": "2026-08-18T20:09",
     "Id": 2,
     "Created": "2026-08-17T19:09:43.547Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "SJS",
+    "PozoDestino": "SJS2",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-08-18T20:45",
+    "Id": 3,
+    "Created": "2026-08-17T19:45:16.395Z"
   }
 ]
