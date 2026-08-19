@@ -76,7 +76,7 @@
     "Id": 4,
     "Created": "2026-08-17T20:13:51.691Z",
     "HoraPlanArribo": "2026-08-18T20:17",
-    "ComentarioCopesa": "FelÃÂÃÂ±iz navidad",
+    "ComentarioCopesa": "FelÃÂÃÂÃÂÃÂ±iz navidad",
     "Supervisor1": "MORA SERGIO CEFERINO - JEFE CAMPO",
     "Supervisor2": "ALANIZ GUSTAVO ANTONIO - SUPERVISOR",
     "Supervisor3": "AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR",
@@ -137,5 +137,15 @@
     "FechaHoraPlugDown": "2026-08-18T20:18",
     "ComentarioNPT": "El pica paga el asado",
     "FinDTM": false
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 1",
+    "PozoOrigen": "PET-843",
+    "PozoDestino": "PET-866",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-08-19T20:00",
+    "Id": 5,
+    "Created": "2026-08-19T19:40:03.836Z"
   }
 ]
