@@ -389,7 +389,7 @@
     "AsistCamion4": false,
     "AsistCamion5": true,
     "FechaHoraBajadaMastil": "2026-08-20T14:00",
-    "ComentarioNPT": "Detallo NPT del DTM en curso:\n(2.5 Hr) 20:00 a 22:30 Hr Espera de cia COPESA para inicio de DTM.\n(2 Hr) 23:30 a 01:30 Hr Espera camiÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n guinche por falla mecÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡nica. \n(2 Hr) 01:30 a 03:30 Hr Monta tabloada por demora en entrega de locaciÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n .\n(1 Hr) 03:30 a 04:30 Hr Acondiciona locaciÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n para posicionar grÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂºa y retirar drill cabin.\n(2 Hr) 06:00 a 08:00 Hr Espera evacuaciÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n de tanques de agua. \n(4,5 Hr)Espera arreglo locacion"
+    "ComentarioNPT": "Detallo NPT del DTM en curso:\n(2.5 Hr) 20:00 a 22:30 Hr Espera de cia COPESA para inicio de DTM.\n(2 Hr) 23:30 a 01:30 Hr Espera camiÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n guinche por falla mecÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¡nica. \n(2 Hr) 01:30 a 03:30 Hr Monta tabloada por demora en entrega de locaciÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n .\n(1 Hr) 03:30 a 04:30 Hr Acondiciona locaciÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n para posicionar grÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂºa y retirar drill cabin.\n(2 Hr) 06:00 a 08:00 Hr Espera evacuaciÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ³n de tanques de agua. \n(4,5 Hr)Espera arreglo locacion"
   },
   {
     "Equipo": "PAE 002",
@@ -468,9 +468,12 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "PZ-1703",
     "PozoDestino": "PCD-1355",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-08-21T17:48",
     "Id": 11,
-    "Created": "2026-08-21T15:48:56.555Z"
+    "Created": "2026-08-21T15:48:56.555Z",
+    "HoraPlanArribo": "2026-08-22T18:49",
+    "Supervisor1": "MORA SERGIO CEFERINO - JEFE CAMPO",
+    "Modified": "2026-08-21T15:49:24.985Z"
   }
 ]
