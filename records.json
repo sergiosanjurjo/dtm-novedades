@@ -389,7 +389,7 @@
     "AsistCamion4": false,
     "AsistCamion5": true,
     "FechaHoraBajadaMastil": "2026-08-20T14:00",
-    "ComentarioNPT": "Detallo NPT del DTM en curso:\n(2.5 Hr) 20:00 a 22:30 Hr Espera de cia COPESA para inicio de DTM.\n(2 Hr) 23:30 a 01:30 Hr Espera camión guinche por falla mecánica. \n(2 Hr) 01:30 a 03:30 Hr Monta tabloada por demora en entrega de locación .\n(1 Hr) 03:30 a 04:30 Hr Acondiciona locación para posicionar grúa y retirar drill cabin.\n(2 Hr) 06:00 a 08:00 Hr Espera evacuación de tanques de agua. \n(4,5 Hr)Espera arreglo locacion"
+    "ComentarioNPT": "Detallo NPT del DTM en curso:\n(2.5 Hr) 20:00 a 22:30 Hr Espera de cia COPESA para inicio de DTM.\n(2 Hr) 23:30 a 01:30 Hr Espera camiÃ³n guinche por falla mecÃ¡nica. \n(2 Hr) 01:30 a 03:30 Hr Monta tabloada por demora en entrega de locaciÃ³n .\n(1 Hr) 03:30 a 04:30 Hr Acondiciona locaciÃ³n para posicionar grÃºa y retirar drill cabin.\n(2 Hr) 06:00 a 08:00 Hr Espera evacuaciÃ³n de tanques de agua. \n(4,5 Hr)Espera arreglo locacion"
   },
   {
     "Equipo": "PAE 002",
@@ -400,5 +400,15 @@
     "HoraRequerida": "2026-08-22T11:02",
     "Id": 9,
     "Created": "2026-08-21T14:02:20.456Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 2",
+    "PozoOrigen": "SJS",
+    "PozoDestino": "dd2",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-08-22T18:32",
+    "Id": 10,
+    "Created": "2026-08-21T15:20:14.436Z"
   }
 ]
