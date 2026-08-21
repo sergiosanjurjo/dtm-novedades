@@ -337,7 +337,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PR-1254",
     "PozoDestino": "PE-986",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-08-20T08:00",
     "Id": 8,
     "Created": "2026-08-20T18:57:12.730Z",
@@ -363,7 +363,7 @@
     "Camion3": "AG392AE - IVECO Tractor c/hidro",
     "Camion4": "AH881KI - IVECO Tractor doble",
     "Camion5": "AH541EW - SCANIA Tractor doble",
-    "Modified": "2026-08-21T14:06:19.232Z",
+    "Modified": "2026-08-21T14:08:14.950Z",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
     "FinDTM": false,
@@ -387,7 +387,8 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": false,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "FechaHoraBajadaMastil": "2026-08-20T14:00"
   },
   {
     "Equipo": "PAE 002",
