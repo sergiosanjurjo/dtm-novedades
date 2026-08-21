@@ -337,7 +337,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PR-1254",
     "PozoDestino": "PE-986",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-08-20T08:00",
     "Id": 8,
     "Created": "2026-08-20T18:57:12.730Z",
@@ -363,7 +363,7 @@
     "Camion3": "AG392AE - IVECO Tractor c/hidro",
     "Camion4": "AH881KI - IVECO Tractor doble",
     "Camion5": "AH541EW - SCANIA Tractor doble",
-    "Modified": "2026-08-21T14:08:14.950Z",
+    "Modified": "2026-08-21T14:23:31.170Z",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
     "FinDTM": false,
@@ -388,7 +388,8 @@
     "AsistCamion3": true,
     "AsistCamion4": false,
     "AsistCamion5": true,
-    "FechaHoraBajadaMastil": "2026-08-20T14:00"
+    "FechaHoraBajadaMastil": "2026-08-20T14:00",
+    "ComentarioNPT": "Detallo NPT del DTM en curso:\n(2.5 Hr) 20:00 a 22:30 Hr Espera de cia COPESA para inicio de DTM.\n(2 Hr) 23:30 a 01:30 Hr Espera camión guinche por falla mecánica. \n(2 Hr) 01:30 a 03:30 Hr Monta tabloada por demora en entrega de locación .\n(1 Hr) 03:30 a 04:30 Hr Acondiciona locación para posicionar grúa y retirar drill cabin.\n(2 Hr) 06:00 a 08:00 Hr Espera evacuación de tanques de agua. \n(4,5 Hr)Espera arreglo locacion"
   },
   {
     "Equipo": "PAE 002",
