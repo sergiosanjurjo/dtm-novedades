@@ -549,7 +549,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1009",
     "PozoDestino": "PLF-1002",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-08-23T00:00",
     "Id": 13,
     "Created": "2026-08-26T16:59:15.797Z",
@@ -578,7 +578,7 @@
     "Camion5": "AH541EW - SCANIA Tractor doble",
     "Camion6": "AF868YN - IVECO Tractor simple",
     "Camion7": "AH881KI - IVECO Tractor doble",
-    "Modified": "2026-08-26T17:59:46.269Z",
+    "Modified": "2026-08-26T18:44:16.549Z",
     "FechaHoraArribo": "2026-08-23T02:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -602,6 +602,8 @@
     "AsistCamion4": true,
     "AsistCamion5": true,
     "AsistCamion6": true,
-    "AsistCamion7": true
+    "AsistCamion7": true,
+    "ComentarioNPT": "2 hr de Espera personal\n3 hr Espera montaje de Matts",
+    "FinDTM": false
   }
 ]
