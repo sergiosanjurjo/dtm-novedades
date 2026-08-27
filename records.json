@@ -639,7 +639,7 @@
     "Camion3": "AH881KJ - IVECO Tractor doble",
     "Camion4": "AF868YN - IVECO Tractor simple",
     "Camion5": "AH881KI - IVECO Tractor doble",
-    "Modified": "2026-08-26T19:50:17.329Z",
+    "Modified": "2026-08-27T18:09:18.797Z",
     "FechaHoraArribo": "2026-08-23T14:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -659,7 +659,9 @@
     "AsistCamion4": true,
     "AsistCamion5": true,
     "ComentarioNPT": "2,5 hr Camion transporta zaranda sale del camión quedandose encajado.\n3,5 hr Espera supervisor por incidente.\n\nObservacion: \n\n- CF-97 operativo pero no se registra chofer, COPESA paso detalle de que el chofer es Ferreira Mario\n\n- CF-140 operativos pero no se registra chofer, COPESA paso detalle de que el chofer es Del Rio, Alberto.\n\n- No se encuentran en la lista de personal NUÑEZ DARIO Y REYES FEDERICO.",
-    "FinDTM": false
+    "FinDTM": false,
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false
   },
   {
     "Equipo": "PAE 002",
