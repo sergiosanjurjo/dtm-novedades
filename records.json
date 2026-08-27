@@ -210,7 +210,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PET-843",
     "PozoDestino": "PET-866",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-08-20T08:00",
     "Id": 6,
     "Created": "2026-08-20T14:58:49.668Z",
@@ -242,7 +242,7 @@
     "Camion5": "AH541EV - SCANIA Tractor doble",
     "Camion6": "AH610EQ - SCANIA Tractor doble",
     "Camion7": "AH610ER - SCANIA Tractor doble",
-    "Modified": "2026-08-27T17:58:47.552Z",
+    "Modified": "2026-08-27T18:04:53.792Z",
     "FechaHoraArribo": "2026-08-20T08:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -275,7 +275,9 @@
     "FechaHoraPlugDown": "2026-08-19T16:00",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
-    "FinDTM": false
+    "FinDTM": true,
+    "ComentarioNPT": "2,75 HR Personal eléctrico trabaja en falla de consola de cabina perforador",
+    "FechaHoraRetiroFlota": "2026-08-21T02:00"
   },
   {
     "Equipo": "PAE 003",
