@@ -242,7 +242,7 @@
     "Camion5": "AH541EV - SCANIA Tractor doble",
     "Camion6": "AH610EQ - SCANIA Tractor doble",
     "Camion7": "AH610ER - SCANIA Tractor doble",
-    "Modified": "2026-08-20T17:48:28.174Z",
+    "Modified": "2026-08-27T17:58:47.552Z",
     "FechaHoraArribo": "2026-08-20T08:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -272,7 +272,10 @@
     "AsistCamion7": true,
     "FechaHoraEvacuacion": "2026-08-20T00:30",
     "FechaHoraBajadaMastil": "2026-08-20T06:00",
-    "FechaHoraPlugDown": "2026-08-19T16:00"
+    "FechaHoraPlugDown": "2026-08-19T16:00",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
