@@ -655,5 +655,15 @@
     "AsistCamion5": true,
     "ComentarioNPT": "2,5 hr Camion transporta zaranda sale del camión quedandose encajado.\n3,5 hr Espera supervisor por incidente.\n\nObservacion: \n\n- CF-97 operativo pero no se registra chofer, COPESA paso detalle de que el chofer es Ferreira Mario\n\n- CF-140 operativos pero no se registra chofer, COPESA paso detalle de que el chofer es Del Rio, Alberto.\n\n- No se encuentran en la lista de personal NUÑEZ DARIO Y REYES FEDERICO.",
     "FinDTM": false
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 1",
+    "PozoOrigen": "PET-866",
+    "PozoDestino": "PSA-818",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-08-26T20:00",
+    "Id": 15,
+    "Created": "2026-08-27T13:41:55.912Z"
   }
 ]
