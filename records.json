@@ -639,7 +639,7 @@
     "Camion3": "AH881KJ - IVECO Tractor doble",
     "Camion4": "AF868YN - IVECO Tractor simple",
     "Camion5": "AH881KI - IVECO Tractor doble",
-    "Modified": "2026-08-27T18:43:12.036Z",
+    "Modified": "2026-08-27T19:25:51.778Z",
     "FechaHoraArribo": "2026-08-23T14:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -663,7 +663,7 @@
     "ActaEntregaLocacion": true,
     "HojaRutaAprobada": true,
     "ChoferCargadora2": "HEREDIA CESAR DANIEL",
-    "KmHojaRuta": "3.1"
+    "KmHojaRuta": "3.2"
   },
   {
     "Equipo": "PAE 002",
