@@ -661,7 +661,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PET-866",
     "PozoDestino": "PSA-818",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-08-26T20:00",
     "Id": 15,
     "Created": "2026-08-27T13:41:55.912Z",
@@ -691,7 +691,7 @@
     "Camion3": "AF868YL - IVECO Tractor doble",
     "Camion4": "AH881KJ - IVECO Tractor doble",
     "Camion5": "AH881KI - IVECO Tractor doble",
-    "Modified": "2026-08-27T14:02:49.580Z",
+    "Modified": "2026-08-27T14:06:26.641Z",
     "FechaHoraArribo": "2026-08-26T20:00",
     "KmHojaRuta": 25.1,
     "ActaEntregaLocacion": true,
@@ -719,6 +719,8 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "FechaHoraBajadaMastil": "2026-08-26T23:15",
+    "FechaHoraPlugDown": "2026-08-26T11:30"
   }
 ]
