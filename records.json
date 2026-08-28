@@ -823,7 +823,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PET-866",
     "PozoDestino": "PSA-818",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-08-27T20:00",
     "Id": 17,
     "Created": "2026-08-28T13:56:39.465Z",
@@ -852,7 +852,7 @@
     "Camion3": "AF868YL - IVECO Tractor doble",
     "Camion4": "AF516RO - IVECO Tractor doble",
     "Camion5": "AG982RQ - IVECO Tractor c/malacate",
-    "Modified": "2026-08-28T14:22:36.856Z",
+    "Modified": "2026-08-28T14:23:37.494Z",
     "FechaHoraArribo": "2026-08-27T20:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -877,7 +877,9 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
