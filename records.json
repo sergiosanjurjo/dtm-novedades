@@ -925,7 +925,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1005",
     "PozoDestino": "PLF-1002",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden3_Completa",
     "HoraRequerida": "2026-08-31T13:00",
     "Id": 20,
     "Created": "2026-08-30T19:58:38.356Z",
@@ -947,6 +947,23 @@
     "Guinche2": "GPET-F148 - KENWORTH",
     "Cargadora1": "XUG0700KHPCB08121 - XCMG Cargadora",
     "Cargadora2": "XUG00978LSCB18724 - XCMG Cargadora",
-    "Modified": "2026-08-30T20:10:51.464Z"
+    "Modified": "2026-08-31T00:49:54.499Z",
+    "FechaHoraArribo": "2026-08-31T13:00",
+    "AsistSupervisor1": true,
+    "AsistSupervisor2": true,
+    "AsistGuinchero1": true,
+    "AsistChoferCargadora1": true,
+    "AsistChofer1": true,
+    "AsistChofer2": true,
+    "AsistChofer3": true,
+    "AsistChofer4": true,
+    "AsistChofer5": true,
+    "AsistChofer6": true,
+    "AsistAyudante1": true,
+    "AsistAyudante2": true,
+    "AsistGuinche1": true,
+    "AsistGuinche2": true,
+    "AsistCargadora1": true,
+    "AsistCargadora2": true
   }
 ]
