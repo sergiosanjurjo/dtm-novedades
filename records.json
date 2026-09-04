@@ -1263,7 +1263,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PE-986(d)",
     "PozoDestino": "PE-1057",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-02T14:00",
     "Id": 25,
     "Created": "2026-09-04T16:58:29.420Z",
@@ -1283,7 +1283,7 @@
     "Grua1": "LXGCPA503RA009356 - XCMG",
     "Camion1": "AH881KJ - IVECO Tractor doble",
     "Camion2": "AG982RQ - IVECO Tractor c/malacate",
-    "Modified": "2026-09-04T17:05:50.592Z",
+    "Modified": "2026-09-04T17:06:39.382Z",
     "FechaHoraArribo": "2026-09-02T14:00",
     "KmHojaRuta": 6.9,
     "ActaEntregaLocacion": true,
@@ -1302,6 +1302,8 @@
     "AsistGrua1": true,
     "AsistCamion1": true,
     "AsistCamion2": true,
-    "FechaHoraPlugDown": "2026-09-02T11:15"
+    "FechaHoraPlugDown": "2026-09-02T11:15",
+    "ComentarioNPT": "2hs opera con un solo guinche",
+    "FinDTM": false
   }
 ]
