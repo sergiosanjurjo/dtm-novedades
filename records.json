@@ -1311,7 +1311,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PE-986(d)",
     "PozoDestino": "PE-1057",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden3_Completa",
     "HoraRequerida": "2026-09-03T02:00",
     "Id": 26,
     "Created": "2026-09-04T18:18:53.614Z",
@@ -1332,6 +1332,22 @@
     "Camion1": "AG982RQ - IVECO Tractor c/malacate",
     "Camion2": "AG218BZ - IVECO Tractor simple",
     "Camion3": "AH881KJ - IVECO Tractor doble",
-    "Modified": "2026-09-04T18:25:45.770Z"
+    "Modified": "2026-09-04T18:26:50.409Z",
+    "FechaHoraArribo": "2026-09-03T02:00",
+    "AsistSupervisor1": true,
+    "AsistGuinchero1": true,
+    "AsistChoferCargadora1": true,
+    "AsistGruero1": true,
+    "AsistChofer1": true,
+    "AsistChofer2": true,
+    "AsistChofer3": true,
+    "AsistAyudante1": true,
+    "AsistAyudante2": true,
+    "AsistGuinche1": true,
+    "AsistCargadora1": true,
+    "AsistGrua1": true,
+    "AsistCamion1": true,
+    "AsistCamion2": true,
+    "AsistCamion3": true
   }
 ]
