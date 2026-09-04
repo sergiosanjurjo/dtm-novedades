@@ -1131,7 +1131,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PSA-818",
     "PozoDestino": "PCD-1354",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-03T20:02",
     "Id": 23,
     "Created": "2026-09-04T15:02:13.912Z",
@@ -1160,7 +1160,7 @@
     "Camion3": "AH541EV - SCANIA Tractor doble",
     "Camion4": "AH881KI - IVECO Tractor doble",
     "Camion5": "AH610ER - SCANIA Tractor doble",
-    "Modified": "2026-09-04T16:24:56.938Z",
+    "Modified": "2026-09-04T16:25:49.664Z",
     "FechaHoraArribo": "2026-09-03T08:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -1184,6 +1184,8 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "ComentarioNPT": "1hs de cambio de tablero demorando energizar cabina",
+    "FinDTM": false
   }
 ]
