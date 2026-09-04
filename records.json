@@ -1357,7 +1357,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PE-986(d)",
     "PozoDestino": "PE-1057",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-03T14:00",
     "Id": 27,
     "Created": "2026-09-04T18:28:56.497Z",
@@ -1379,7 +1379,7 @@
     "Grua1": "LXGCPA503RA009356 - XCMG",
     "Camion1": "AF248NQ - IVECO Tractor de auxilio",
     "Camion2": "AG982RQ - IVECO Tractor c/malacate",
-    "Modified": "2026-09-04T19:04:24.506Z",
+    "Modified": "2026-09-04T19:05:07.169Z",
     "FechaHoraArribo": "2026-09-03T17:30",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -1396,6 +1396,8 @@
     "AsistCargadora1": true,
     "AsistGrua1": true,
     "AsistCamion1": true,
-    "AsistCamion2": true
+    "AsistCamion2": true,
+    "ComentarioNPT": "3,5hs espera turno Copesa",
+    "FinDTM": true
   }
 ]
