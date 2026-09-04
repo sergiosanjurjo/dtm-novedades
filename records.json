@@ -1263,9 +1263,26 @@
     "Turno": "T 1",
     "PozoOrigen": "PE-986(d)",
     "PozoDestino": "PE-1057",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-09-02T14:00",
     "Id": 25,
-    "Created": "2026-09-04T16:58:29.420Z"
+    "Created": "2026-09-04T16:58:29.420Z",
+    "HoraPlanArribo": "2026-09-02T14:00",
+    "ComentarioCopesa": "seis camiones contratados\narteagax2, transhakx2, canadax2",
+    "Supervisor1": "ALANIZ GUSTAVO ANTONIO - SUPERVISOR",
+    "Supervisor2": "CARRIZO HECTOR ALEJANDRO - SUPERVISOR",
+    "Guinchero1": "CORNEJO WALTER SEBASTIAN",
+    "ChoferCargadora1": "NAIN MARIO DAVID",
+    "Gruero1": "CASTRO MARTIN ANTONIO",
+    "Chofer1": "DI LUCA JOSE ANTONIO - CARRETON",
+    "Chofer2": "BARRIA ANDRES ROMAN - CARRETON",
+    "Ayudante1": "ARRAMENDI MARIO LUIS",
+    "Ayudante2": "DIAZ IAN ANDRES",
+    "Guinche1": "GPET-F148 - KENWORTH",
+    "Cargadora1": "XUG0700KHPCB08121 - XCMG Cargadora",
+    "Grua1": "LXGCPA503RA009356 - XCMG",
+    "Camion1": "AH881KJ - IVECO Tractor doble",
+    "Camion2": "AG982RQ - IVECO Tractor c/malacate",
+    "Modified": "2026-09-04T17:02:39.410Z"
   }
 ]
