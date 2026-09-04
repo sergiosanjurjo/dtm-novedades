@@ -991,7 +991,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PSA-818",
     "PozoDestino": "PCD-1354",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-02T20:01",
     "Id": 21,
     "Created": "2026-09-04T14:01:32.575Z",
@@ -1023,7 +1023,7 @@
     "Camion5": "AF868YL - IVECO Tractor doble",
     "Camion6": "AH541EV - SCANIA Tractor doble",
     "Camion7": "AH881KI - IVECO Tractor doble",
-    "Modified": "2026-09-04T14:29:51.097Z",
+    "Modified": "2026-09-04T14:30:52.376Z",
     "FechaHoraArribo": "2026-09-02T20:00",
     "KmHojaRuta": 22,
     "ActaEntregaLocacion": true,
@@ -1054,6 +1054,8 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "AsistCamion7": true,
-    "FechaHoraPlugDown": "2026-09-02T15:15"
+    "FechaHoraPlugDown": "2026-09-02T15:15",
+    "ComentarioNPT": "sin NPT",
+    "FinDTM": false
   }
 ]
