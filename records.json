@@ -14,7 +14,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PCD-1355(d)",
     "PozoDestino": "PEN-809(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-05T20:00",
     "Id": 2,
     "Created": "2026-09-07T14:48:45.098Z",
@@ -48,7 +48,7 @@
     "Camion6": "AH881KJ - IVECO Tractor doble",
     "Camion7": "AG807DH - VOLKSWAGEN Tractor doble",
     "Camion8": "AG982RQ - IVECO Tractor c/malacate",
-    "Modified": "2026-09-07T16:40:24.375Z",
+    "Modified": "2026-09-07T16:40:48.176Z",
     "FechaHoraArribo": "2026-09-05T20:00",
     "KmHojaRuta": 17,
     "ActaEntregaLocacion": true,
@@ -82,6 +82,8 @@
     "AsistCamion6": true,
     "AsistCamion7": true,
     "AsistCamion8": true,
-    "FechaHoraPlugDown": "2026-09-05T16:15"
+    "FechaHoraPlugDown": "2026-09-05T16:15",
+    "ComentarioNPT": "",
+    "FinDTM": false
   }
 ]
