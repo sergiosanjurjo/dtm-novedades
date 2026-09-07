@@ -1,6 +1,20 @@
 {
-  "equipos": ["PAE 002", "PAE 003", "PAE 006", "PAE 007"],
-  "turnos": ["T 1", "T 2", "T 3", "T 4", "T 5", "T 6", "Pre Tarea. Hoja de Ruta", "Pre Tarea. Mont. Tablonada / Semi Barras"],
+  "equipos": [
+    "PAE 002",
+    "PAE 003",
+    "PAE 006",
+    "PAE 007"
+  ],
+  "turnos": [
+    "T 1",
+    "T 2",
+    "T 3",
+    "T 4",
+    "T 5",
+    "T 6",
+    "Pre Tarea. Hoja de Ruta",
+    "Pre Tarea. Mont. Tablonada / Semi Barras"
+  ],
   "personal": {
     "supervisores": [
       "MERCADO HECTOR ROQUE - JEFE CAMPO",
@@ -108,7 +122,8 @@
       "011603A8347 - HELI Autoelevador",
       "314160511580 - LONKING Autoelevador",
       "XUG00978LSCB18724 - XCMG Cargadora",
-      "XUG0700KHPCB08121 - XCMG Cargadora"
+      "XUG0700KHPCB08121 - XCMG Cargadora",
+      "000000 011603A8347 - HELI Autoelevador"
     ],
     "gruas": [
       "LXGCPA503RA009356 - XCMG",
