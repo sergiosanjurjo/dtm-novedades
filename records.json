@@ -96,7 +96,7 @@
     "Id": 3,
     "Created": "2026-09-07T16:41:27.861Z",
     "HoraPlanArribo": "2026-09-06T13:41",
-    "ComentarioCopesa": "Nuñez esta como chofer guinchero\nse sumo un camion de arteaga carreton",
+    "ComentarioCopesa": "NuÃ±ez esta como chofer guinchero\nse sumo un camion de arteaga carreton",
     "Supervisor1": "CARRIZO HECTOR ALEJANDRO - SUPERVISOR",
     "Supervisor2": "MELIAN JEREMIAS NADIR - SUPERVISOR",
     "Guinchero1": "CORNEJO WALTER SEBASTIAN",
@@ -106,8 +106,8 @@
     "Chofer2": "BARRIA ANDRES ROMAN - CARRETON",
     "Chofer3": "FERNANDEZ ISMAEL WALTER EFRAIN - CARRETON",
     "Chofer4": "MASLOVSKI FEDERICO ABEL - CARRETON",
-    "Chofer5": "MUÃÂÃÂÃÂÃÂOZ DIEGO ADRIAN - CARRETON",
-    "Chofer6": "MUÃÂÃÂÃÂÃÂOZ JAVIER ALEJANDRO - CARRETON",
+    "Chofer5": "MUÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂOZ DIEGO ADRIAN - CARRETON",
+    "Chofer6": "MUÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂOZ JAVIER ALEJANDRO - CARRETON",
     "Chofer7": "DE LA LLAMA ALEJANDRO ANDRES - SEMI",
     "Chofer8": "HERNANDEZ JOSE SERGIO - CARRETON",
     "Chofer9": "GUTIERREZ JORGE ANDRES - SEMI",
@@ -162,5 +162,15 @@
     "FechaHoraRetiroFlota": "2026-09-06T18:30",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false
+  },
+  {
+    "Equipo": "PAE 003",
+    "Turno": "T 1",
+    "PozoOrigen": "PE-1057",
+    "PozoDestino": "PE-1133",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-09-10T00:00",
+    "Id": 4,
+    "Created": "2026-09-10T12:06:24.461Z"
   }
 ]
