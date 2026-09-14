@@ -28,7 +28,7 @@
     "Camion3": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion4": "AF868YN - IVECO Tractor simple - CF103",
     "Camion5": "AF868YL - IVECO Tractor doble - CF105",
-    "Modified": "2026-09-14T14:20:38.348Z",
+    "Modified": "2026-09-14T16:53:56.782Z",
     "FechaHoraArribo": "2026-09-14T08:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -51,6 +51,8 @@
     "AsistCamion5": true,
     "FechaHoraPlugDown": "2026-09-13T15:00",
     "ComentarioNPT": "3hr Opera con un solo guinche, afectando el traslado de circuito",
-    "FinDTM": false
+    "FinDTM": false,
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false
   }
 ]
