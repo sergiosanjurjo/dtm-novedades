@@ -66,7 +66,7 @@
     "Id": 2,
     "Created": "2026-09-14T17:30:08.405Z",
     "HoraPlanArribo": "2026-09-14T16:00",
-    "ComentarioCopesa": "4 carretones (Transhax - Guillermo Villegas, Arteaga - Franco Delgado, Canada - FabiÃÂÃÂ¡n Colina, Axel - Axel Ojeda) y un semi deprimido (Arteaga -Eduardo MaÃÂÃÂ§ÃÂÃÂ­as). ",
+    "ComentarioCopesa": "4 carretones (Transhax - Guillermo Villegas, Arteaga - Franco Delgado, Canada - FabiÃÂÃÂÃÂÃÂ¡n Colina, Axel - Axel Ojeda) y un semi deprimido (Arteaga -Eduardo MaÃÂÃÂÃÂÃÂ§ÃÂÃÂÃÂÃÂ­as). ",
     "Supervisor1": "MENGUEZ FRANCISCO ADRIANO - SUPERVISOR",
     "Guinchero1": "TRACALEU GUSTAVO ALEJANDRO",
     "Guinchero2": "PACILLI FABIO DAMIAN",
@@ -109,5 +109,15 @@
     "FechaHoraPlugDown": "2026-09-14T08:15",
     "ComentarioNPT": "",
     "FinDTM": false
+  },
+  {
+    "Equipo": "PAE 007",
+    "Turno": "T 2",
+    "PozoOrigen": "PEN-809",
+    "PozoDestino": "PSA-817",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-09-15T04:00",
+    "Id": 3,
+    "Created": "2026-09-15T18:49:48.240Z"
   }
 ]
