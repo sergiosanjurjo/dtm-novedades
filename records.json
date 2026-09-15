@@ -61,12 +61,12 @@
     "Turno": "T 1",
     "PozoOrigen": "PEN-809",
     "PozoDestino": "PSA-817(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-14T16:00",
     "Id": 2,
     "Created": "2026-09-14T17:30:08.405Z",
     "HoraPlanArribo": "2026-09-14T16:00",
-    "ComentarioCopesa": "4 carretones (Transhax - Guillermo Villegas, Arteaga - Franco Delgado, Canada - FabiÃÂ¡n Colina, Axel - Axel Ojeda) y un semi deprimido (Arteaga -Eduardo MaÃÂ§ÃÂ­as). ",
+    "ComentarioCopesa": "4 carretones (Transhax - Guillermo Villegas, Arteaga - Franco Delgado, Canada - FabiÃÂÃÂ¡n Colina, Axel - Axel Ojeda) y un semi deprimido (Arteaga -Eduardo MaÃÂÃÂ§ÃÂÃÂ­as). ",
     "Supervisor1": "MENGUEZ FRANCISCO ADRIANO - SUPERVISOR",
     "Guinchero1": "TRACALEU GUSTAVO ALEJANDRO",
     "Guinchero2": "PACILLI FABIO DAMIAN",
@@ -84,7 +84,7 @@
     "Camion1": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion2": "AH881KI - IVECO Tractor doble - CF139",
     "Camion3": "AH610ER - SCANIA Tractor doble - CF121",
-    "Modified": "2026-09-15T18:48:28.715Z",
+    "Modified": "2026-09-15T18:48:39.230Z",
     "FechaHoraArribo": "2026-09-14T16:00",
     "KmHojaRuta": 4.5,
     "ActaEntregaLocacion": false,
@@ -106,6 +106,8 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "FechaHoraPlugDown": "2026-09-14T08:15"
+    "FechaHoraPlugDown": "2026-09-14T08:15",
+    "ComentarioNPT": "",
+    "FinDTM": false
   }
 ]
