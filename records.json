@@ -116,7 +116,7 @@
     "Camion2": "AH881KI - IVECO Tractor doble - CF139",
     "Camion3": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion4": "AF516RN - IVECO Tractor c/malacate - CF97",
-    "Modified": "2026-09-15T19:34:46.127Z",
+    "Modified": "2026-09-17T21:05:28.709Z",
     "FechaHoraArribo": "2026-09-15T15:57",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -135,7 +135,9 @@
     "AsistCamion4": true,
     "ComentarioNPT": "",
     "FinDTM": true,
-    "FechaHoraRetiroFlota": "2026-09-15T11:00"
+    "FechaHoraRetiroFlota": "2026-09-15T11:00",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false
   },
   {
     "Equipo": "PAE 003",
