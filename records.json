@@ -174,6 +174,10 @@
     "Camion3": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion4": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion5": "AH541EV - SCANIA Tractor doble - CF118",
-    "Camion6": "AH881KI - IVECO Tractor doble - CF139"
+    "Camion6": "AH881KI - IVECO Tractor doble - CF139",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false,
+    "Modified": "2026-09-17T21:05:22.369Z"
   }
 ]
