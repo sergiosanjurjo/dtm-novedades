@@ -188,7 +188,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PCD-1353",
     "PozoDestino": "PCD-1352(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-19T08:00",
     "Id": 5,
     "Created": "2026-09-18T19:21:41.246Z",
@@ -218,7 +218,7 @@
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Camion5": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion6": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-09-19T18:20:41.243Z",
+    "Modified": "2026-09-21T16:44:47.431Z",
     "FechaHoraArribo": "2026-09-19T08:02",
     "KmHojaRuta": "0.9",
     "ActaEntregaLocacion": true,
@@ -248,7 +248,8 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "FechaHoraPlugDown": "2026-09-19T04:15",
-    "FinDTM": false
+    "FinDTM": false,
+    "ComentarioNPT": "1 hr Guinche afectado a retenida para carretón "
   },
   {
     "Equipo": "PAE 002",
