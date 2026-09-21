@@ -256,7 +256,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PCD-1353",
     "PozoDestino": "PCD-1352(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-19T20:00",
     "Id": 6,
     "Created": "2026-09-19T18:14:35.085Z",
@@ -279,8 +279,8 @@
     "Ayudante5": "GALLARDO ALBERTO EDUARDO",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
-    "FinDTM": false,
-    "Modified": "2026-09-21T16:43:30.190Z",
+    "FinDTM": true,
+    "Modified": "2026-09-21T16:48:22.786Z",
     "Ayudante2": "GALLARDO ALBERTO EDUARDO",
     "Ayudante3": "BARRIOS MAXIMO BENJAMIN",
     "Guinche1": "GPET-F149 - KENWORTH - CF149",
@@ -317,6 +317,8 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "ComentarioNPT": "1 hr Realiza medición de dureza.\n4,5 hr Personal mantenimiento eléctrico revisa falla en drill cabin. ",
+    "FechaHoraRetiroFlota": "2026-09-20T05:30"
   }
 ]
