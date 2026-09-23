@@ -357,7 +357,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PSA-817",
     "PozoDestino": "PSA-815(i)",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-09-22T10:00",
     "Id": 8,
     "Created": "2026-09-22T12:56:34.252Z",
@@ -379,7 +379,7 @@
     "Camion2": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion3": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion4": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-09-22T15:09:32.216Z",
+    "Modified": "2026-09-23T12:17:23.636Z",
     "FechaHoraArribo": "2026-09-22T10:00",
     "KmHojaRuta": 1.5,
     "ActaEntregaLocacion": true,
@@ -399,7 +399,10 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "FechaHoraEvacuacion": "2026-09-22T16:15",
+    "FechaHoraBajadaMastil": "2026-09-22T16:00",
+    "FechaHoraPlugDown": "2026-09-22T05:45"
   },
   {
     "Equipo": "PAE 007",
