@@ -326,7 +326,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PLF-1005",
     "PozoDestino": "PLF-1015",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-09-22T12:00",
     "Id": 7,
     "Created": "2026-09-22T12:34:44.204Z",
@@ -350,7 +350,7 @@
     "Camion3": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion4": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion5": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-09-24T10:35:42.586Z",
+    "Modified": "2026-09-24T10:37:32.155Z",
     "FechaHoraArribo": "2026-09-22T12:30",
     "KmHojaRuta": 3,
     "ActaEntregaLocacion": true,
@@ -372,7 +372,8 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "FechaHoraPlugDown": "2026-09-22T06:15"
   },
   {
     "Equipo": "PAE 007",
