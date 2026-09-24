@@ -466,14 +466,14 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1005",
     "PozoDestino": "PLF-1015",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-23T00:00",
     "Id": 10,
     "Created": "2026-09-24T10:56:10.331Z",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
     "FinDTM": false,
-    "Modified": "2026-09-24T11:12:01.861Z",
+    "Modified": "2026-09-24T11:14:40.253Z",
     "HoraPlanArribo": "2026-09-23T00:00",
     "ComentarioCopesa": "contratados un carreton de arteaga, uno COR, Transp. Walter",
     "Supervisor1": "ROSSONE EDUARDO OMAR - SUPERVISOR",
@@ -506,6 +506,7 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "4hs opera con un solo guinche\n5hs montaje de mat\n"
   }
 ]
