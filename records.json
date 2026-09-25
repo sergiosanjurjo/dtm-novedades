@@ -976,12 +976,14 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "pe-950",
     "PozoDestino": "pe-1059",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-09-20T10:30",
     "Id": 18,
     "Created": "2026-09-25T19:28:20.258Z",
     "HoraPlanArribo": "2026-09-20T10:33",
     "Supervisor1": "AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR",
-    "Modified": "2026-09-25T19:29:13.310Z"
+    "Modified": "2026-09-25T19:30:07.109Z",
+    "FechaHoraArribo": "2026-09-20T09:34",
+    "AsistSupervisor1": true
   }
 ]
