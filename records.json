@@ -970,5 +970,15 @@
     "Camion5": "AG218BZ - IVECO Tractor simple - CF108",
     "Camion6": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Modified": "2026-09-25T19:16:37.363Z"
+  },
+  {
+    "Equipo": "PAE 003",
+    "Turno": "Pre Tarea. Hoja de Ruta",
+    "PozoOrigen": "pe-950",
+    "PozoDestino": "pe-1059",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-09-20T10:30",
+    "Id": 18,
+    "Created": "2026-09-25T19:28:20.258Z"
   }
 ]
