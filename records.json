@@ -991,9 +991,17 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PCD-1352(d)",
     "PozoDestino": "PSA-822",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-09-25T09:00",
     "Id": 19,
-    "Created": "2026-09-25T19:31:18.569Z"
+    "Created": "2026-09-25T19:31:18.569Z",
+    "HoraPlanArribo": "2026-09-25T16:35",
+    "Supervisor1": "AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR",
+    "Chofer1": "CRETTON VICTOR JAVIER - CARRETON",
+    "Chofer2": "DEL RIO LUIS ALBERTO - CARRETON",
+    "Cargadora1": "XUG00978LSCB18724 - XCMG Cargadora - CV62",
+    "Camion1": "AF593ZZ - AGRALE Tractor c/cisterna - CF100",
+    "Camion2": "AG982RQ - IVECO Tractor c/malacate - CF115",
+    "Modified": "2026-09-25T19:31:54.241Z"
   }
 ]
