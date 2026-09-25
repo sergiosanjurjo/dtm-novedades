@@ -824,7 +824,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PE-950",
     "PozoDestino": "PE-1059",
-    "Estado": "Orden3_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-25T00:00",
     "Id": 15,
     "Created": "2026-09-24T23:17:50.730Z",
@@ -860,7 +860,7 @@
     "Camion6": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion8": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-09-25T11:10:05.913Z",
+    "Modified": "2026-09-25T17:31:19.749Z",
     "FechaHoraArribo": "2026-09-25T00:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -891,7 +891,9 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "AsistCamion7": true,
-    "AsistCamion8": true
+    "AsistCamion8": true,
+    "ComentarioNPT": "12hr Espera acontecimiento de locación PE-1059. Se genero un 3° turno por esta condición. ",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
