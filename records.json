@@ -938,7 +938,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PE-950",
     "PozoDestino": "PE-1059",
-    "Estado": "Orden3_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-25T12:00",
     "Id": 17,
     "Created": "2026-09-25T19:10:20.440Z",
@@ -969,7 +969,7 @@
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Camion5": "AG218BZ - IVECO Tractor simple - CF108",
     "Camion6": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-09-25T21:37:50.830Z",
+    "Modified": "2026-09-25T21:40:44.709Z",
     "FechaHoraArribo": "2026-09-25T16:30",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -995,7 +995,9 @@
     "AsistCamion3": true,
     "AsistCamion4": true,
     "AsistCamion5": true,
-    "AsistCamion6": true
+    "AsistCamion6": true,
+    "ComentarioNPT": "13:75hr NPT Acondina locación. Copesa se retira 22hr.",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
