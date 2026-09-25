@@ -745,7 +745,7 @@
     "Turno": "T 2",
     "PozoOrigen": "pe-950",
     "PozoDestino": "PE-1059",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-09-25T00:00",
     "Id": 14,
     "Created": "2026-09-24T23:14:54.441Z",
@@ -781,7 +781,7 @@
     "Camion6": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion7": "AG218BZ - IVECO Tractor simple - CF108",
     "Camion8": "AF868YL - IVECO Tractor doble - CF105",
-    "Modified": "2026-09-25T17:24:41.623Z",
+    "Modified": "2026-09-25T17:28:23.351Z",
     "FechaHoraArribo": "2026-09-25T00:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -812,7 +812,12 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "AsistCamion7": true,
-    "AsistCamion8": true
+    "AsistCamion8": true,
+    "FechaHoraEvacuacion": "2026-09-25T00:30",
+    "FechaHoraCarritoBOP": "2026-09-24T16:30",
+    "FechaHoraBajadaMastil": "2026-09-25T23:00",
+    "FechaHoraFinVactor": "2026-09-25T14:27",
+    "FechaHoraPlugDown": "2026-09-24T10:15"
   },
   {
     "Equipo": "PAE 003",
