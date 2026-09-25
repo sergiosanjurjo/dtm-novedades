@@ -932,5 +932,15 @@
     "Camion6": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
     "Modified": "2026-09-25T11:40:56.685Z"
+  },
+  {
+    "Equipo": "PAE 003",
+    "Turno": "T 3",
+    "PozoOrigen": "PE-950",
+    "PozoDestino": "PE-1059",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-09-25T12:00",
+    "Id": 17,
+    "Created": "2026-09-25T19:10:20.440Z"
   }
 ]
