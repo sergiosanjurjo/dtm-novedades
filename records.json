@@ -1071,7 +1071,7 @@
     "Id": 21,
     "Created": "2026-09-26T18:01:06.184Z",
     "HoraPlanArribo": "2026-09-27T00:00",
-    "ComentarioCopesa": "Hay 2 contratados Transhac y Canada",
+    "ComentarioCopesa": "Hay 1 contratado que llegara 02 hr",
     "Supervisor1": "MENGUEZ FRANCISCO ADRIANO - SUPERVISOR",
     "Supervisor2": "BECERRA ALBERTO DANTE - SUPERVISOR",
     "Guinchero1": "SANZANA MANSILLA BORIS ENRIQUE",
@@ -1101,6 +1101,9 @@
     "Camion6": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion8": "AG218BZ - IVECO Tractor simple - CF108",
-    "Modified": "2026-09-26T18:06:55.866Z"
+    "Modified": "2026-09-26T20:38:14.503Z",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   }
 ]
