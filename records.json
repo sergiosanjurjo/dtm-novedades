@@ -905,7 +905,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PE-950",
     "PozoDestino": "PE-1059",
-    "Estado": "Orden2_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-25T12:00",
     "Id": 16,
     "Created": "2026-09-25T11:35:16.615Z",
@@ -936,7 +936,10 @@
     "Camion5": "AG218BZ - IVECO Tractor simple - CF108",
     "Camion6": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
-    "Modified": "2026-09-25T11:40:56.685Z"
+    "Modified": "2026-09-26T18:13:47.982Z",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
