@@ -1257,5 +1257,15 @@
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion8": "AG218BZ - IVECO Tractor simple - CF108",
     "Modified": "2026-09-28T13:09:06.058Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 3",
+    "PozoOrigen": "PCD-1352(d)",
+    "PozoDestino": "PSA-822",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-09-28T01:00",
+    "Id": 24,
+    "Created": "2026-09-28T13:09:50.714Z"
   }
 ]
