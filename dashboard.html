@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tablero Ejecutivo DTM · PAE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --pae-navy:#0b2545; --pae-blue:#134074; --pae-cyan:#3a86ff;
+  --bg:#eef1f6; --card:#ffffff; --text:#1a2233; --muted:#6b7688;
+  --border:#e2e7ef; --ok:#1e9e6a; --warn:#e6a700; --bad:#e04b4b;
+  --radius:14px; --shadow:0 4px 18px rgba(11,37,69,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text)}
+.topbar{background:linear-gradient(100deg,var(--pae-navy),var(--pae-blue));color:#fff;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);position:sticky;top:0;z-index:50}
+.topbar .brand{display:flex;align-items:center;gap:.9rem}
+.topbar .brand i{font-size:1.6rem;color:var(--pae-cyan)}
+.topbar h1{font-size:1.15rem;font-weight:700;letter-spacing:.3px}
+.topbar .sub{font-size:.78rem;opacity:.8;font-weight:400}
+.topbar .status{font-size:.78rem;display:flex;align-items:center;gap:.5rem;opacity:.9}
+.dot{width:9px;height:9px;border-radius:50%;background:#67e8a5;box-shadow:0 0 0 4px rgba(103,232,165,.2)}
+.wrap{max-width:1280px;margin:0 auto;padding:1.5rem 2rem 3rem}
+.filters{display:flex;flex-wrap:wrap;gap:.75rem;align-items:flex-end;background:var(--card);padding:1rem 1.25rem;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1.5rem}
+.filters .fg{display:flex;flex-direction:column;gap:.3rem}
+.filters label{font-size:.72rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.filters select,.filters input{padding:.5rem .7rem;border:1px solid var(--border);border-radius:8px;font-size:.85rem;background:#fff;min-width:150px}
+.filters .spacer{flex:1}
+.btn-reset{padding:.55rem 1rem;border:1px solid var(--border);background:#fff;border-radius:8px;cursor:pointer;font-size:.82rem;color:var(--muted)}
+.btn-reset:hover{background:var(--bg)}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem;margin-bottom:1.5rem}
+.kpi{background:var(--card);border-radius:var(--radius);padding:1.25rem 1.35rem;box-shadow:var(--shadow);position:relative;overflow:hidden;border-left:4px solid var(--pae-cyan)}
+.kpi .label{font-size:.74rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.5rem}
+.kpi .value{font-size:2rem;font-weight:800;line-height:1;color:var(--pae-navy)}
+.kpi .value small{font-size:1rem;font-weight:600;color:var(--muted)}
+.kpi .foot{font-size:.75rem;color:var(--muted);margin-top:.55rem;display:flex;align-items:center;gap:.35rem}
+.kpi.good{border-left-color:var(--ok)} .kpi.good .value{color:var(--ok)}
+.kpi.warn{border-left-color:var(--warn)} .kpi.warn .value{color:#b9860b}
+.kpi.bad{border-left-color:var(--bad)} .kpi.bad .value{color:var(--bad)}
+.kpi .ic{position:absolute;right:1rem;top:1rem;font-size:1.5rem;opacity:.12}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+.grid2.wide{grid-template-columns:1.4fr 1fr}
+.panel{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.25rem 1.4rem}
+.panel h3{font-size:.95rem;color:var(--pae-navy);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.panel h3 i{color:var(--pae-cyan)}
+.chart-box{position:relative;height:280px}
+.chart-box.tall{height:320px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.82rem}
+th,td{padding:.6rem .7rem;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:.68rem;letter-spacing:.4px;position:sticky;top:0;background:#fff}
+tbody tr:hover td{background:#f6f9fe}
+.badge{padding:.2rem .55rem;border-radius:10px;font-size:.7rem;font-weight:600}
+.b-pend{background:#fff3cd;color:#856404}.b-act{background:#cfe3ff;color:#0a4e8f}.b-ok{background:#d6f3e4;color:#0f7a4d}
+.pill{font-weight:700}
+.pill.ok{color:var(--ok)}.pill.warn{color:#b9860b}.pill.bad{color:var(--bad)}
+.empty{text-align:center;color:var(--muted);padding:3rem 1rem}
+.foot-note{font-size:.72rem;color:var(--muted);text-align:center;margin-top:1.5rem}
+/* Tabs */
+.tabs{display:flex;gap:.4rem;background:var(--card);padding:.4rem;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{flex:1;min-width:180px;padding:.7rem 1rem;border:none;background:transparent;border-radius:10px;cursor:pointer;font-size:.85rem;font-weight:600;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:.5rem;transition:all .18s}
+.tab:hover{background:var(--bg);color:var(--pae-blue)}
+.tab.active{background:linear-gradient(100deg,var(--pae-navy),var(--pae-blue));color:#fff;box-shadow:var(--shadow)}
+.tab i{font-size:.95rem}
+.tabpane{display:none;animation:fadeIn .25s ease}
+.tabpane.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* Filtro periodo agrupado */
+.filters .fg.period{border-left:1px dashed var(--border);padding-left:.9rem}
+.filters .fg.period.first{border-left:none;padding-left:0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-bottom:1.5rem}
+@media(max-width:900px){.grid2,.grid2.wide,.grid3{grid-template-columns:1fr}.wrap{padding:1rem}.tab{min-width:0;flex:1 1 40%}}
+/* Login overlay */
+#loginOverlay{position:fixed;inset:0;z-index:200;background:linear-gradient(135deg,var(--pae-navy),var(--pae-blue));display:flex;align-items:center;justify-content:center;padding:1rem}
+.login-card{background:var(--card);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.35);width:100%;max-width:400px;padding:2.4rem 2.2rem;text-align:center}
+.login-card .logo{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--pae-blue),var(--pae-cyan));display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;color:#fff;font-size:1.7rem}
+.login-card h2{color:var(--pae-navy);font-size:1.25rem;margin-bottom:.3rem}
+.login-card p{color:var(--muted);font-size:.85rem;margin-bottom:1.6rem}
+.login-card input{width:100%;padding:.8rem .9rem;border:1px solid var(--border);border-radius:10px;font-size:.95rem;margin-bottom:1rem;text-align:center}
+.login-card input:focus{outline:none;border-color:var(--pae-cyan);box-shadow:0 0 0 3px rgba(58,134,255,.15)}
+.login-card button{width:100%;padding:.85rem;border:none;border-radius:10px;background:linear-gradient(100deg,var(--pae-navy),var(--pae-blue));color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;transition:opacity .15s}
+.login-card button:hover{opacity:.92}
+.login-card button:disabled{opacity:.6;cursor:not-allowed}
+.login-err{color:var(--bad);font-size:.82rem;margin-top:.9rem;min-height:1.1em}
+.login-foot{margin-top:1.4rem;font-size:.72rem;color:var(--muted)}
+body.locked{overflow:hidden}
+.logout-btn{background:rgba(255,255,255,.15);border:none;color:#fff;padding:.4rem .8rem;border-radius:8px;cursor:pointer;font-size:.75rem;display:flex;align-items:center;gap:.4rem}
+.logout-btn:hover{background:rgba(255,255,255,.25)}
+</style>
+</head>
+<body class="locked">
+
+<!-- ===================== LOGIN (solo lectura) ===================== -->
+<div id="loginOverlay">
+  <form class="login-card" id="loginForm" autocomplete="off">
+    <div class="logo"><i class="fas fa-truck-moving"></i></div>
+    <h2>Tablero Ejecutivo DTM</h2>
+    <p>Pan American Energy · Acceso de consulta</p>
+    <input type="password" id="loginPass" placeholder="Ingresá tu clave de acceso" autocomplete="current-password" required>
+    <button type="submit" id="loginBtn">Ingresar</button>
+    <div class="login-err" id="loginErr"></div>
+    <div class="login-foot">Acceso de solo lectura · PAE</div>
+  </form>
+</div>
+
+<div class="topbar">
+  <div class="brand">
+    <i class="fas fa-truck-moving"></i>
+    <div>
+      <h1>Tablero Ejecutivo DTM</h1>
+      <div class="sub">Pan American Energy · Transporte y Mudanza de Equipos de Perforación</div>
+    </div>
+  </div>
+  <div class="status">
+    <span class="dot"></span><span id="statusText">Cargando datos…</span>
+    <button class="logout-btn" id="logoutBtn" title="Cerrar sesión"><i class="fas fa-right-from-bracket"></i> Salir</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="filters">
+    <div class="fg"><label>Equipo</label><select id="fEquipo"><option value="">Todos</option></select></div>
+    <div class="fg"><label>Pozo Destino</label><select id="fPozoDestino"><option value="">Todos</option></select></div>
+    <div class="fg"><label>Turno</label><select id="fTurno"><option value="">Todos</option></select></div>
+    <div class="fg period first"><label>Periodo</label>
+      <select id="fPeriodo">
+        <option value="">Todo el histórico</option>
+        <option value="anual">Anual</option>
+        <option value="mensual">Mensual</option>
+        <option value="semanal">Semanal</option>
+      </select>
+    </div>
+    <div class="fg period"><label>Año</label><select id="fAnio" disabled><option value="">—</option></select></div>
+    <div class="fg period" id="fgMes" style="display:none"><label>Mes</label><select id="fMes"><option value="">—</option></select></div>
+    <div class="fg period" id="fgSemana" style="display:none"><label>Semana</label><select id="fSemana"><option value="">—</option></select></div>
+    <div class="spacer"></div>
+    <button class="btn-reset" id="btnReset"><i class="fas fa-rotate-left"></i> Limpiar</button>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="principal"><i class="fas fa-gauge-high"></i> Principal</button>
+    <button class="tab" data-tab="recursos"><i class="fas fa-people-carry-box"></i> Asignación de Recursos</button>
+    <button class="tab" data-tab="detalle"><i class="fas fa-table-list"></i> Detalle Operacional</button>
+  </div>
+
+  <!-- ===================== PESTAÑA PRINCIPAL ===================== -->
+  <section class="tabpane active" id="tab-principal">
+    <div class="kpi-grid" id="kpiGrid"></div>
+
+    <div class="grid2 wide">
+      <div class="panel">
+        <h3><i class="fas fa-chart-line"></i> Tendencia mensual · DTMs y Puntualidad</h3>
+        <div class="chart-box tall"><canvas id="chTrend"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3><i class="fas fa-filter"></i> Embudo por etapa</h3>
+        <div class="chart-box tall"><canvas id="chFunnel"></canvas></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3><i class="fas fa-ranking-star"></i> Desempeño por equipo</h3>
+        <div class="chart-box"><canvas id="chEquipo"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3><i class="fas fa-rotate"></i> Reprogramaciones por equipo</h3>
+        <div class="chart-box"><canvas id="chReprog"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PESTAÑA ASIGNACIÓN DE RECURSOS ================= -->
+  <section class="tabpane" id="tab-recursos">
+    <div class="kpi-grid" id="resKpiGrid"></div>
+
+    <div class="grid2 wide">
+      <div class="panel">
+        <h3><i class="fas fa-layer-group"></i> Planificado vs Asistió · por tipo de recurso</h3>
+        <div class="chart-box tall"><canvas id="chResTipo"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3><i class="fas fa-percent"></i> % Asistencia por tipo de recurso</h3>
+        <div class="chart-box tall"><canvas id="chResPct"></canvas></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3><i class="fas fa-clipboard-check"></i> Detalle de recursos (planificado vs asistió)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Tipo de recurso</th><th>Categoría</th><th>Planificados</th>
+            <th>Asistieron</th><th>Ausentes</th><th>% Asistencia</th>
+          </tr></thead>
+          <tbody id="resBody"></tbody>
+        </table>
+      </div>
+      <div id="resEmpty" class="empty" style="display:none">Sin recursos para los filtros seleccionados.</div>
+    </div>
+  </section>
+
+  <!-- ================= PESTAÑA DETALLE OPERACIONAL ================= -->
+  <section class="tabpane" id="tab-detalle">
+    <div class="panel">
+      <h3><i class="fas fa-table-list"></i> Detalle de operaciones (<span id="detCount">0</span>)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>ID</th><th>Equipo</th><th>Turno</th><th>Origen → Destino</th>
+            <th>Estado</th><th>Plan Arribo</th><th>Arribo Real</th><th>Desvío</th>
+            <th>Asist.</th><th>NPT</th><th>Reprog.</th>
+          </tr></thead>
+          <tbody id="detBody"></tbody>
+        </table>
+      </div>
+      <div id="detEmpty" class="empty" style="display:none">Sin registros para los filtros seleccionados.</div>
+    </div>
+  </section>
+
+  <div class="foot-note">Fuente: records.json (DTM) · Los KPIs se recalculan con los filtros aplicados · <span id="lastUpd"></span></div>
+</div>
+
+<script>
+// ===== Config compartida: mismo backend que index.html / copesa.html =====
+const GH_OWNER="sergiosanjurjo", GH_REPO="dtm-novedades", GH_BRANCH="main";
+
+// URL del Worker (login viewer). Mismo que usan index.html / copesa.html.
+const WORKER_URL="https://dtm-proxy.pae-development.workers.dev";
+
+// Fuente de datos de SOLO LECTURA (evita el rate limit de api.github.com: 60 req/h por IP).
+// Usa el CDN de GitHub raw, cacheado globalmente. Si publicás records.json en GitHub Pages,
+// podés apuntar a esa URL (aún más cacheada). Se agrega ?t= para forzar refresco.
+const DATA_URL=`https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/records.json`;
+
+// Clave de almacenamiento del token de sesión (rol viewer)
+const TOKEN_KEY="dtm_viewer_token";
+
+// Umbrales de KPI (objetivos PAE). Ajustables.
+const TARGET={ puntualidad:90, asistencia:95, nptMax:15 };
+
+// Prefijos de recursos para contar asignados/asistencia
+const RES_PREFIX=["Supervisor","Guinchero","ChoferCargadora","Gruero","Chofer","Ayudante","Guinche","Cargadora","Grua","Camion"];
+
+// Definición de tipos de recurso con etiqueta legible y categoría (para la pestaña de recursos)
+const RES_DEFS=[
+  {prefix:"Supervisor",     label:"Supervisores",     grupo:"Personal", color:"#134074"},
+  {prefix:"Guinchero",      label:"Guincheros",       grupo:"Personal", color:"#2a6fd6"},
+  {prefix:"ChoferCargadora",label:"Choferes Cargadora",grupo:"Personal",color:"#3a86ff"},
+  {prefix:"Gruero",         label:"Grueros",          grupo:"Personal", color:"#5aa0ff"},
+  {prefix:"Chofer",         label:"Choferes",         grupo:"Personal", color:"#7db6ff"},
+  {prefix:"Ayudante",       label:"Ayudantes",        grupo:"Personal", color:"#a9d0ff"},
+  {prefix:"Guinche",        label:"Guinches",         grupo:"Flota",    color:"#0f7a4d"},
+  {prefix:"Cargadora",      label:"Cargadoras",       grupo:"Flota",    color:"#1e9e6a"},
+  {prefix:"Grua",           label:"Grúas",            grupo:"Flota",    color:"#38c187"},
+  {prefix:"Camion",         label:"Camiones",         grupo:"Flota",    color:"#e6a700"}
+];
+// ChoferCargadora es prefijo de Chofer -> se distinguen porque el campo real es "ChoferCargadoraN".
+// Guinchero vs Guinche y Gruero vs Grua también comparten raíz; el conteo usa el nombre exacto del campo.
+
+// Posibles nombres para el motivo/comentario de una reprogramación (fallback si el modelo lo agrega)
+const REPROG_COMMENT_KEYS=["ComentarioReprogramacion","MotivoReprogramacion","ComentarioReprog","MotivoReprog","ObservacionReprogramacion"];
+function reprogComentario(r){
+  for(const k of REPROG_COMMENT_KEYS){ if(nonEmpty(r[k])) return String(r[k]); }
+  // Fallback: usar observaciones de COPESA si existen
+  if(nonEmpty(r.ComentarioCopesa)) return String(r.ComentarioCopesa);
+  return "";
+}
+
+let ALL=[]; const charts={};
+
+async function loadRecords(){
+  try{
+    // Lectura desde el CDN raw de GitHub (sin límite de API). ?t= evita caché del navegador.
+    const res=await fetch(`${DATA_URL}?t=${Date.now()}`,{cache:"no-store"});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    const data=await res.json();
+    localStorage.setItem("dtm_records_cache",JSON.stringify(data));
+    return Array.isArray(data)?data:[];
+  }catch(e){
+    console.warn("Uso caché local:",e.message);
+    const l=localStorage.getItem("dtm_records_cache");
+    return l?JSON.parse(l):[];
+  }
+}
+
+// ---- helpers ----
+const parseD=v=>{ if(!v)return null; const d=new Date(v); return isNaN(d)?null:d; };
+const minutesBetween=(a,b)=>{ const x=parseD(a),y=parseD(b); return (x&&y)?(y-x)/60000:null; };
+const fmtMin=m=>{ if(m===null||isNaN(m))return "—"; const s=m<0?"-":""; m=Math.abs(m); const h=Math.floor(m/60),mm=Math.round(m%60); return s+(h?h+"h ":"")+mm+"m"; };
+const isTruthy=v=>v===true||v==="true"||v===1||v==="1";
+const nonEmpty=v=>v!==undefined&&v!==null&&String(v).trim()!=="";
+function estadoBadge(e){
+  const m={Orden1_Completa:['b-pend','Pend. COPESA'],Orden2_Completa:['b-act','Pend. Asist.'],
+    Orden3_Completa:['b-act','Pend. Tiempos'],Orden4_Completa:['b-act','Pend. NPT'],Completo:['b-ok','Completo']};
+  const [c,t]=m[e]||['b-pend','—']; return `<span class="badge ${c}">${t}</span>`;
+}
+// Cuenta planificados/asistieron para un tipo de recurso en un registro.
+// Se accede por clave EXACTA (p.ej. "Chofer3"), por lo que "Chofer" no captura
+// "ChoferCargadora3" (clave distinta). No hay doble conteo.
+function countPrefix(r,prefix){
+  let asignados=0,asistieron=0;
+  for(let i=1;i<=12;i++){
+    const key=prefix+i;
+    if(!nonEmpty(r[key])) continue;
+    asignados++;
+    if(isTruthy(r["Asist"+key])) asistieron++;
+  }
+  return {asignados,asistieron};
+}
+// recursos totales asignados y asistidos de un registro (sin doble conteo)
+function recursos(r){
+  let asignados=0,asistieron=0;
+  for(const d of RES_DEFS){
+    const c=countPrefix(r,d.prefix);
+    asignados+=c.asignados; asistieron+=c.asistieron;
+  }
+  return {asignados,asistieron};
+}
+// puntualidad: arribo real <= plan. Devuelve true/false/null
+function puntual(r){
+  const dv=minutesBetween(r.HoraPlanArribo,r.FechaHoraArribo);
+  return dv===null?null:dv<=0;
+}
+
+// ---- fecha de referencia de un registro (para filtro de periodo) ----
+const recDate=r=>parseD(r.FechaHoraArribo)||parseD(r.HoraPlanArribo)||parseD(r.Created)||parseD(r.HoraRequerida);
+// número de semana ISO-8601 y su año
+function isoWeek(d){
+  const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));
+  const day=t.getUTCDay()||7; t.setUTCDate(t.getUTCDate()+4-day);
+  const yStart=new Date(Date.UTC(t.getUTCFullYear(),0,1));
+  const wk=Math.ceil((((t-yStart)/86400000)+1)/7);
+  return {year:t.getUTCFullYear(),week:wk};
+}
+const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+// ---- filtros ----
+function getFilters(){
+  return {
+    equipo:document.getElementById('fEquipo').value,
+    pozoDestino:document.getElementById('fPozoDestino').value,
+    turno:document.getElementById('fTurno').value,
+    periodo:document.getElementById('fPeriodo').value,
+    anio:document.getElementById('fAnio').value,
+    mes:document.getElementById('fMes').value,
+    semana:document.getElementById('fSemana').value
+  };
+}
+function matchPeriodo(r,f){
+  if(!f.periodo||!f.anio) return true;
+  const d=recDate(r); if(!d) return false;
+  if(String(d.getFullYear())!==String(f.anio)) return false;
+  if(f.periodo==='mensual' && f.mes!=='') return d.getMonth()===Number(f.mes);
+  if(f.periodo==='semanal' && f.semana!==''){
+    const w=isoWeek(d); return String(w.year)===String(f.anio) && String(w.week)===String(f.semana);
+  }
+  return true; // anual, o mensual/semanal sin sub-selección => todo el año
+}
+function applyFilters(rows){
+  const f=getFilters();
+  return rows.filter(r=>{
+    if(f.equipo && r.Equipo!==f.equipo) return false;
+    if(f.pozoDestino && r.PozoDestino!==f.pozoDestino) return false;
+    if(f.turno && r.Turno!==f.turno) return false;
+    if(!matchPeriodo(r,f)) return false;
+    return true;
+  });
+}
+
+// ---- KPIs ----
+function computeKPIs(rows){
+  const total=rows.length;
+  const completos=rows.filter(r=>r.Estado==='Completo').length;
+  const conPlanYReal=rows.filter(r=>puntual(r)!==null);
+  const puntuales=conPlanYReal.filter(r=>puntual(r)===true).length;
+  const puntualidad=conPlanYReal.length?(puntuales/conPlanYReal.length*100):null;
+  const desvios=rows.map(r=>minutesBetween(r.HoraPlanArribo,r.FechaHoraArribo)).filter(v=>v!==null);
+  const desvProm=desvios.length?desvios.reduce((a,b)=>a+b,0)/desvios.length:null;
+  const conNpt=rows.filter(r=>nonEmpty(r.ComentarioNPT)).length;
+  const nptPct=total?(conNpt/total*100):0;
+  const reprog=rows.filter(r=>nonEmpty(r.Reprogramacion)&&String(r.Reprogramacion)!=="0").length;
+  let asg=0,ast=0; rows.forEach(r=>{const x=recursos(r);asg+=x.asignados;ast+=x.asistieron;});
+  const asistencia=asg?(ast/asg*100):null;
+  return {total,completos,puntualidad,desvProm,nptPct,reprog,asistencia,conNpt,asg,ast};
+}
+
+function kpiCard(label,value,foot,cls,icon){
+  return `<div class="kpi ${cls||''}"><i class="fas ${icon} ic"></i>
+    <div class="label">${label}</div><div class="value">${value}</div>
+    <div class="foot">${foot||''}</div></div>`;
+}
+function renderKPIs(k){
+  const p=k.puntualidad;
+  const clsP=p===null?'':(p>=TARGET.puntualidad?'good':(p>=TARGET.puntualidad-15?'warn':'bad'));
+  const a=k.asistencia;
+  const clsA=a===null?'':(a>=TARGET.asistencia?'good':(a>=TARGET.asistencia-15?'warn':'bad'));
+  const g=document.getElementById('kpiGrid');
+  g.innerHTML=
+    kpiCard('Puntualidad de Arribo', p===null?'—':p.toFixed(0)+'<small>%</small>',
+      `Objetivo ≥ ${TARGET.puntualidad}%`,clsP,'fa-bullseye')+
+    kpiCard('DTMs Completados', k.completos+'<small>/'+k.total+'</small>',
+      'Del total en el período',k.total?'good':'','fa-circle-check')+
+    kpiCard('Tasa de Asistencia', a===null?'—':a.toFixed(0)+'<small>%</small>',
+      `${k.ast}/${k.asg} recursos`,clsA,'fa-user-check')+
+    kpiCard('Reprogramaciones', k.reprog,
+      'Operaciones reprogramadas',k.reprog===0?'good':(k.reprog<=3?'warn':'bad'),'fa-rotate');
+}
+
+// ---- charts ----
+function destroy(id){ if(charts[id]){charts[id].destroy(); delete charts[id];} }
+
+function renderTrend(rows){
+  const byMonth={};
+  rows.forEach(r=>{
+    const d=parseD(r.Created); if(!d)return;
+    const key=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,'0');
+    if(!byMonth[key])byMonth[key]={total:0,puntEval:0,punt:0};
+    byMonth[key].total++;
+    const pu=puntual(r); if(pu!==null){byMonth[key].puntEval++; if(pu)byMonth[key].punt++;}
+  });
+  const labels=Object.keys(byMonth).sort();
+  const totals=labels.map(l=>byMonth[l].total);
+  const punt=labels.map(l=>byMonth[l].puntEval?Math.round(byMonth[l].punt/byMonth[l].puntEval*100):null);
+  destroy('chTrend');
+  charts.chTrend=new Chart(document.getElementById('chTrend'),{
+    data:{labels,datasets:[
+      {type:'bar',label:'DTMs',data:totals,backgroundColor:'rgba(58,134,255,.75)',borderRadius:6,yAxisID:'y'},
+      {type:'line',label:'Puntualidad %',data:punt,borderColor:'#1e9e6a',backgroundColor:'#1e9e6a',
+        tension:.3,yAxisID:'y1',spanGaps:true,pointRadius:4}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      scales:{y:{beginAtZero:true,title:{display:true,text:'DTMs'}},
+        y1:{position:'right',beginAtZero:true,max:100,grid:{drawOnChartArea:false},title:{display:true,text:'%'}}},
+      plugins:{legend:{position:'bottom'}}}
+  });
+}
+
+function renderFunnel(rows){
+  const order=[['Orden1_Completa','Pend. COPESA'],['Orden2_Completa','Pend. Asistencia'],
+    ['Orden3_Completa','Pend. Tiempos'],['Orden4_Completa','Pend. NPT'],['Completo','Completo']];
+  const counts=order.map(([k])=>rows.filter(r=>r.Estado===k).length);
+  destroy('chFunnel');
+  charts.chFunnel=new Chart(document.getElementById('chFunnel'),{
+    type:'bar',
+    data:{labels:order.map(o=>o[1]),datasets:[{label:'DTMs',data:counts,
+      backgroundColor:['#f0b400','#3a86ff','#2a6fd6','#134074','#1e9e6a'],borderRadius:6}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,ticks:{precision:0}}}}
+  });
+}
+
+function renderEquipo(rows){
+  const eqs=[...new Set(rows.map(r=>r.Equipo).filter(Boolean))].sort();
+  const punt=eqs.map(e=>{
+    const rs=rows.filter(r=>r.Equipo===e && puntual(r)!==null);
+    return rs.length?Math.round(rs.filter(r=>puntual(r)).length/rs.length*100):0;
+  });
+  const asist=eqs.map(e=>{
+    let a=0,t=0; rows.filter(r=>r.Equipo===e).forEach(r=>{const x=recursos(r);a+=x.asistieron;t+=x.asignados;});
+    return t?Math.round(a/t*100):0;
+  });
+  destroy('chEquipo');
+  charts.chEquipo=new Chart(document.getElementById('chEquipo'),{
+    type:'bar',
+    data:{labels:eqs,datasets:[
+      {label:'Puntualidad %',data:punt,backgroundColor:'#3a86ff',borderRadius:6},
+      {label:'Asistencia %',data:asist,backgroundColor:'#1e9e6a',borderRadius:6}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,scales:{y:{beginAtZero:true,max:100}},
+      plugins:{legend:{position:'bottom'}}}
+  });
+}
+
+const esReprogramado=r=>nonEmpty(r.Reprogramacion)&&String(r.Reprogramacion)!=="0";
+
+function renderReprog(rows){
+  const eqs=[...new Set(rows.map(r=>r.Equipo).filter(Boolean))].sort();
+  // conteo de reprogramaciones por equipo + lista de motivos para el tooltip
+  const rep=eqs.map(e=>rows.filter(r=>r.Equipo===e && esReprogramado(r)).length);
+  const motivos=eqs.map(e=>rows.filter(r=>r.Equipo===e && esReprogramado(r))
+    .map(r=>{const c=reprogComentario(r); return c?`#${r.Id??'?'}: ${c}`:`#${r.Id??'?'}: (sin motivo)`;}));
+  destroy('chReprog');
+  charts.chReprog=new Chart(document.getElementById('chReprog'),{
+    type:'bar',
+    data:{labels:eqs,datasets:[
+      {label:'Reprogramaciones',data:rep,backgroundColor:'#e6a700',borderRadius:6}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true,ticks:{precision:0}}},
+      plugins:{
+        legend:{position:'bottom'},
+        tooltip:{
+          callbacks:{
+            title:(items)=>items[0].label,
+            label:(item)=>`Reprogramaciones: ${item.parsed.y}`,
+            afterBody:(items)=>{
+              const idx=items[0].dataIndex;
+              const list=motivos[idx]||[];
+              if(!list.length) return '';
+              // límite de líneas para no desbordar el tooltip
+              const shown=list.slice(0,6);
+              const extra=list.length-shown.length;
+              return ['','Motivos:'].concat(shown.map(m=>' • '+m))
+                .concat(extra>0?[` …y ${extra} más`]:[]);
+            }
+          }
+        }
+      }}
+  });
+}
+
+function renderTable(rows){
+  const body=document.getElementById('detBody');
+  const empty=document.getElementById('detEmpty');
+  document.getElementById('detCount').textContent=rows.length;
+  if(!rows.length){body.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  const sorted=[...rows].sort((a,b)=>(b.Id||0)-(a.Id||0));
+  body.innerHTML=sorted.map(r=>{
+    const dv=minutesBetween(r.HoraPlanArribo,r.FechaHoraArribo);
+    const dvCls=dv===null?'':(dv<=0?'ok':(dv<=30?'warn':'bad'));
+    const x=recursos(r);
+    const asistPct=x.asignados?Math.round(x.asistieron/x.asignados*100):null;
+    const plan=parseD(r.HoraPlanArribo), real=parseD(r.FechaHoraArribo);
+    const fmt=d=>d?d.toLocaleString('es-AR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
+    return `<tr>
+      <td>${r.Id??'—'}</td><td><strong>${r.Equipo||'—'}</strong></td><td>${r.Turno||'—'}</td>
+      <td>${(r.PozoOrigen||'—')} → ${(r.PozoDestino||'—')}</td>
+      <td>${estadoBadge(r.Estado)}</td>
+      <td>${fmt(plan)}</td><td>${fmt(real)}</td>
+      <td class="pill ${dvCls}">${fmtMin(dv)}</td>
+      <td>${asistPct===null?'—':asistPct+'%'}</td>
+      <td>${nonEmpty(r.ComentarioNPT)?'<span class="pill bad">Sí</span>':'—'}</td>
+      <td>${nonEmpty(r.Reprogramacion)&&String(r.Reprogramacion)!=="0"?r.Reprogramacion:'—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ============ PESTAÑA: ASIGNACIÓN DE RECURSOS ============
+// Agrega planificado vs asistió por cada tipo de recurso definido en RES_DEFS.
+function computeRecursos(rows){
+  return RES_DEFS.map(d=>{
+    let plan=0,asist=0;
+    rows.forEach(r=>{const c=countPrefix(r,d.prefix);plan+=c.asignados;asist+=c.asistieron;});
+    return {...d,plan,asist,ausentes:plan-asist,pct:plan?Math.round(asist/plan*100):null};
+  });
+}
+function renderResKPIs(stats){
+  const totPlan=stats.reduce((a,s)=>a+s.plan,0);
+  const totAsist=stats.reduce((a,s)=>a+s.asist,0);
+  const totAus=totPlan-totAsist;
+  const pct=totPlan?Math.round(totAsist/totPlan*100):null;
+  const clsA=pct===null?'':(pct>=TARGET.asistencia?'good':(pct>=TARGET.asistencia-15?'warn':'bad'));
+  const pers=stats.filter(s=>s.grupo==='Personal');
+  const flot=stats.filter(s=>s.grupo==='Flota');
+  const sum=(arr,k)=>arr.reduce((a,s)=>a+s[k],0);
+  const pctG=(arr)=>{const p=sum(arr,'plan');return p?Math.round(sum(arr,'asist')/p*100):null;};
+  const g=document.getElementById('resKpiGrid');
+  g.innerHTML=
+    kpiCard('Recursos Planificados', totPlan, 'Personal + flota, según filtros','','fa-list-check')+
+    kpiCard('Recursos Asistieron', totAsist+'<small>/'+totPlan+'</small>', pct===null?'—':pct+'% de asistencia', clsA,'fa-user-check')+
+    kpiCard('Ausencias', totAus, totAus===0?'Sin faltantes':'Recursos faltantes', totAus===0?'good':(totAus<=5?'warn':'bad'),'fa-user-xmark')+
+    kpiCard('Asistencia Personal', pctG(pers)===null?'—':pctG(pers)+'<small>%</small>', `${sum(pers,'asist')}/${sum(pers,'plan')} personas`, '', 'fa-helmet-safety')+
+    kpiCard('Asistencia Flota', pctG(flot)===null?'—':pctG(flot)+'<small>%</small>', `${sum(flot,'asist')}/${sum(flot,'plan')} unidades`, '', 'fa-truck');
+}
+function renderResTipo(stats){
+  const labels=stats.map(s=>s.label);
+  destroy('chResTipo');
+  charts.chResTipo=new Chart(document.getElementById('chResTipo'),{
+    type:'bar',
+    data:{labels,datasets:[
+      {label:'Planificados',data:stats.map(s=>s.plan),backgroundColor:'#94a9c9',borderRadius:6},
+      {label:'Asistieron',data:stats.map(s=>s.asist),backgroundColor:'#1e9e6a',borderRadius:6}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,
+      scales:{y:{beginAtZero:true,ticks:{precision:0}},x:{ticks:{maxRotation:45,minRotation:0}}},
+      plugins:{legend:{position:'bottom'}}}
+  });
+}
+function renderResPct(stats){
+  const labels=stats.map(s=>s.label);
+  const pct=stats.map(s=>s.pct===null?0:s.pct);
+  const colors=stats.map(s=>s.pct===null?'#cbd4e3':(s.pct>=TARGET.asistencia?'#1e9e6a':(s.pct>=TARGET.asistencia-15?'#e6a700':'#e04b4b')));
+  destroy('chResPct');
+  charts.chResPct=new Chart(document.getElementById('chResPct'),{
+    type:'bar',
+    data:{labels,datasets:[{label:'% Asistencia',data:pct,backgroundColor:colors,borderRadius:6}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      scales:{x:{beginAtZero:true,max:100,title:{display:true,text:'%'}}},
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:(it)=>{const s=stats[it.dataIndex];return s.plan?`${s.pct}%  (${s.asist}/${s.plan})`:'Sin planificados';}}}}}
+  });
+}
+function renderResTable(stats){
+  const body=document.getElementById('resBody');
+  const empty=document.getElementById('resEmpty');
+  const withData=stats.filter(s=>s.plan>0);
+  if(!withData.length){body.innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  body.innerHTML=stats.map(s=>{
+    const cls=s.pct===null?'':(s.pct>=TARGET.asistencia?'ok':(s.pct>=TARGET.asistencia-15?'warn':'bad'));
+    return `<tr>
+      <td><strong>${s.label}</strong></td>
+      <td><span class="badge ${s.grupo==='Personal'?'b-act':'b-ok'}">${s.grupo}</span></td>
+      <td>${s.plan}</td>
+      <td>${s.asist}</td>
+      <td>${s.ausentes}</td>
+      <td class="pill ${cls}">${s.pct===null?'—':s.pct+'%'}</td>
+    </tr>`;
+  }).join('');
+}
+function renderRecursosTab(rows){
+  const stats=computeRecursos(rows);
+  renderResKPIs(stats); renderResTipo(stats); renderResPct(stats); renderResTable(stats);
+}
+
+// ---- filtros: poblar selects ----
+function populateFilters(rows){
+  const fill=(id,vals)=>{
+    const sel=document.getElementById(id); const cur=sel.value;
+    sel.innerHTML='<option value="">Todos</option>'+vals.map(v=>`<option value="${v}">${v}</option>`).join('');
+    sel.value=cur;
+  };
+  fill('fEquipo',[...new Set(rows.map(r=>r.Equipo).filter(Boolean))].sort());
+  fill('fPozoDestino',[...new Set(rows.map(r=>r.PozoDestino).filter(Boolean))].sort());
+  fill('fTurno',[...new Set(rows.map(r=>r.Turno).filter(Boolean))].sort());
+  populateAnios(rows);
+}
+// Poblar años disponibles a partir de las fechas de los registros
+function populateAnios(rows){
+  const sel=document.getElementById('fAnio'); const cur=sel.value;
+  const anios=[...new Set(rows.map(recDate).filter(Boolean).map(d=>d.getFullYear()))].sort((a,b)=>b-a);
+  sel.innerHTML='<option value="">—</option>'+anios.map(y=>`<option value="${y}">${y}</option>`).join('');
+  if(anios.map(String).includes(cur)) sel.value=cur;
+}
+// Poblar semanas ISO existentes para el año seleccionado
+function populateSemanas(rows){
+  const anio=document.getElementById('fAnio').value;
+  const sel=document.getElementById('fSemana'); const cur=sel.value;
+  let semanas=[];
+  if(anio){
+    semanas=[...new Set(rows.map(recDate).filter(Boolean)
+      .map(isoWeek).filter(w=>String(w.year)===String(anio)).map(w=>w.week))].sort((a,b)=>a-b);
+  }
+  sel.innerHTML='<option value="">Todas</option>'+semanas.map(w=>`<option value="${w}">Semana ${w}</option>`).join('');
+  if(semanas.map(String).includes(cur)) sel.value=cur;
+}
+// Mostrar/ocultar sub-selectores según el tipo de periodo elegido
+function syncPeriodoUI(){
+  const per=document.getElementById('fPeriodo').value;
+  const anio=document.getElementById('fAnio');
+  anio.disabled = !per;                       // año se habilita al elegir cualquier periodo
+  if(!per) anio.value='';
+  document.getElementById('fgMes').style.display    = per==='mensual' ? '' : 'none';
+  document.getElementById('fgSemana').style.display = per==='semanal' ? '' : 'none';
+  // poblar meses (fijos) una sola vez
+  const selMes=document.getElementById('fMes');
+  if(selMes.options.length<=1){
+    selMes.innerHTML='<option value="">Todos</option>'+MESES.map((m,i)=>`<option value="${i}">${m}</option>`).join('');
+  }
+  populateSemanas(ALL);
+}
+
+function refresh(){
+  const rows=applyFilters(ALL);
+  renderKPIs(computeKPIs(rows));
+  renderTrend(rows); renderFunnel(rows); renderEquipo(rows); renderReprog(rows);
+  renderTable(rows);
+  renderRecursosTab(rows);
+}
+
+// ---- pestañas ----
+function initTabs(){
+  const tabs=document.querySelectorAll('.tab');
+  tabs.forEach(t=>t.addEventListener('click',()=>{
+    tabs.forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tabpane').forEach(p=>p.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('tab-'+t.dataset.tab).classList.add('active');
+    // Redimensionar charts al mostrar una pestaña oculta (Chart.js no mide bien en display:none)
+    Object.values(charts).forEach(c=>{try{c.resize();}catch(e){}});
+  }));
+}
+
+async function init(){
+  ALL=await loadRecords();
+  document.getElementById('statusText').textContent=ALL.length+' registros cargados';
+  document.getElementById('lastUpd').textContent='Actualizado '+new Date().toLocaleString('es-AR');
+  initTabs();
+  populateFilters(ALL);
+  syncPeriodoUI();
+
+  // filtros base
+  ['fEquipo','fPozoDestino','fTurno'].forEach(id=>document.getElementById(id).addEventListener('change',refresh));
+  // filtro de periodo
+  document.getElementById('fPeriodo').addEventListener('change',()=>{ syncPeriodoUI(); refresh(); });
+  document.getElementById('fAnio').addEventListener('change',()=>{ populateSemanas(ALL); refresh(); });
+  document.getElementById('fMes').addEventListener('change',refresh);
+  document.getElementById('fSemana').addEventListener('change',refresh);
+
+  document.getElementById('btnReset').addEventListener('click',()=>{
+    ['fEquipo','fPozoDestino','fTurno','fPeriodo','fAnio','fMes','fSemana'].forEach(id=>document.getElementById(id).value='');
+    syncPeriodoUI();
+    refresh();
+  });
+  refresh();
+  // auto-refresh cada 60s
+  setInterval(async()=>{ ALL=await loadRecords(); populateFilters(ALL); syncPeriodoUI(); refresh();
+    document.getElementById('statusText').textContent=ALL.length+' registros cargados';
+    document.getElementById('lastUpd').textContent='Actualizado '+new Date().toLocaleString('es-AR');
+  },60000);
+}
+
+// ===================== AUTENTICACIÓN (rol viewer) =====================
+// El token es un JWT firmado por el Worker. Acá solo leemos su expiración (payload base64url)
+// para no llamar al Worker si ya venció. La validación real la hace el Worker en cada escritura;
+// para lectura, el token solo actúa como "llave" de acceso al tablero.
+function tokenValido(token){
+  if(!token) return false;
+  try{
+    const p=token.split('.')[1];
+    const payload=JSON.parse(atob(p.replace(/-/g,'+').replace(/_/g,'/')));
+    return payload.exp && payload.exp > Math.floor(Date.now()/1000);
+  }catch(e){ return false; }
+}
+function cerrarSesion(){
+  localStorage.removeItem(TOKEN_KEY);
+  location.reload();
+}
+async function hacerLogin(pass){
+  const res=await fetch(`${WORKER_URL}/login`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({password:pass})
+  });
+  const data=await res.json().catch(()=>({}));
+  if(!res.ok) throw new Error(data.error||('HTTP '+res.status));
+  if(!data.token) throw new Error('Respuesta sin token');
+  return data;
+}
+function mostrarDashboard(){
+  document.getElementById('loginOverlay').style.display='none';
+  document.body.classList.remove('locked');
+  init();
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const form=document.getElementById('loginForm');
+  const err=document.getElementById('loginErr');
+  const btn=document.getElementById('loginBtn');
+  document.getElementById('logoutBtn').addEventListener('click',cerrarSesion);
+
+  // Si ya hay un token válido en este navegador, entrar directo.
+  if(tokenValido(localStorage.getItem(TOKEN_KEY))){ mostrarDashboard(); return; }
+
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
+    err.textContent='';
+    btn.disabled=true; btn.textContent='Verificando…';
+    try{
+      const {token}=await hacerLogin(document.getElementById('loginPass').value);
+      localStorage.setItem(TOKEN_KEY,token);
+      mostrarDashboard();
+    }catch(ex){
+      err.textContent=/credenc/i.test(ex.message)?'Clave incorrecta.':('No se pudo iniciar sesión: '+ex.message);
+      btn.disabled=false; btn.textContent='Ingresar';
+    }
+  });
+  document.getElementById('loginPass').focus();
+});
+</script>
+</body>
+</html>
