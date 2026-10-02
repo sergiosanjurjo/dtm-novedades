@@ -1366,5 +1366,15 @@
     "AsistCamion8": true,
     "ComentarioNPT": "Espera por cambio de turno copesa 1hr",
     "FinDTM": false
+  },
+  {
+    "Equipo": "PAE 003",
+    "Turno": "T 1",
+    "PozoOrigen": "PE-1059",
+    "PozoDestino": "PE-1131(d)",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-01T20:00",
+    "Id": 25,
+    "Created": "2026-10-02T17:05:52.390Z"
   }
 ]
