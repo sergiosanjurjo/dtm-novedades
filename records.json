@@ -747,7 +747,7 @@
     "Turno": "T 2",
     "PozoOrigen": "pe-950",
     "PozoDestino": "PE-1059",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-25T00:00",
     "Id": 14,
     "Created": "2026-09-24T23:14:54.441Z",
@@ -783,7 +783,7 @@
     "Camion6": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion7": "AG218BZ - IVECO Tractor simple - CF108",
     "Camion8": "AF868YL - IVECO Tractor doble - CF105",
-    "Modified": "2026-09-26T18:10:52.429Z",
+    "Modified": "2026-10-05T16:53:47.735Z",
     "FechaHoraArribo": "2026-09-25T00:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -822,8 +822,8 @@
     "FechaHoraPlugDown": "2026-09-24T10:15",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
-    "ComentarioNPT": "13,75 hr acondicionamiento locacion",
-    "FinDTM": true,
+    "ComentarioNPT": "",
+    "FinDTM": false,
     "FechaHoraRetiroFlota": "2026-09-26T00:00"
   },
   {
