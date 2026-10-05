@@ -1034,7 +1034,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PCD-1352(d)",
     "PozoDestino": "PSA-822",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-25T09:00",
     "Id": 19,
     "Created": "2026-09-25T19:31:18.569Z",
@@ -1045,14 +1045,16 @@
     "Cargadora1": "XUG00978LSCB18724 - XCMG Cargadora - CV62",
     "Camion1": "AF593ZZ - AGRALE Tractor c/cisterna - CF100",
     "Camion2": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-09-25T19:32:27.554Z",
+    "Modified": "2026-10-05T16:54:17.928Z",
     "FechaHoraArribo": "2026-09-25T16:36",
     "AsistSupervisor1": true,
     "AsistChofer1": true,
     "AsistChofer2": true,
     "AsistCargadora1": true,
     "AsistCamion1": true,
-    "AsistCamion2": true
+    "AsistCamion2": true,
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
