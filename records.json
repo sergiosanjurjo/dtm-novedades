@@ -1223,7 +1223,7 @@
     "Turno": "T 4",
     "PozoOrigen": "PCD-1352(d)",
     "PozoDestino": "PSA-822",
-    "Estado": "Orden3_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-09-28T13:00",
     "Id": 23,
     "Created": "2026-09-28T13:04:01.503Z",
@@ -1259,7 +1259,7 @@
     "Camion6": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion8": "AG218BZ - IVECO Tractor simple - CF108",
-    "Modified": "2026-09-28T15:20:08.422Z",
+    "Modified": "2026-10-05T16:53:59.462Z",
     "FechaHoraArribo": "2026-09-28T13:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -1291,7 +1291,9 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "AsistCamion7": true,
-    "AsistCamion8": true
+    "AsistCamion8": true,
+    "ComentarioNPT": "",
+    "FinDTM": true
   },
   {
     "Equipo": "PAE 002",
