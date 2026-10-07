@@ -1474,5 +1474,15 @@
     "Camion6": "AH881KI - IVECO Tractor doble - CF139",
     "Camion7": "AH881KJ - IVECO Tractor doble - CF140",
     "Modified": "2026-10-04T18:14:07.065Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 1",
+    "PozoOrigen": "PSA-822",
+    "PozoDestino": "PEC-843",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-04T14:39",
+    "Id": 27,
+    "Created": "2026-10-07T13:35:22.697Z"
   }
 ]
