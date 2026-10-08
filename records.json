@@ -1468,7 +1468,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PSA-822",
     "PozoDestino": "PEC-843",
-    "Estado": "Orden2_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-04T14:00",
     "Id": 26,
     "Created": "2026-10-04T18:10:57.664Z",
@@ -1501,7 +1501,7 @@
     "Camion5": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion6": "AH881KI - IVECO Tractor doble - CF139",
     "Camion7": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-10-08T11:15:15.309Z",
+    "Modified": "2026-10-08T11:15:42.332Z",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
     "FinDTM": false
