@@ -1508,7 +1508,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PSA-822",
     "PozoDestino": "PEC-843",
-    "Estado": "Orden2_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-04T14:39",
     "Id": 27,
     "Created": "2026-10-07T13:35:22.697Z",
@@ -1534,7 +1534,10 @@
     "Camion2": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AF593ZZ - AGRALE Tractor c/cisterna - CF100",
-    "Modified": "2026-10-07T13:38:19.273Z"
+    "Modified": "2026-10-08T11:15:07.296Z",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 007",
