@@ -1501,7 +1501,10 @@
     "Camion5": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion6": "AH881KI - IVECO Tractor doble - CF139",
     "Camion7": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-10-04T18:14:07.065Z"
+    "Modified": "2026-10-08T11:15:15.309Z",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
