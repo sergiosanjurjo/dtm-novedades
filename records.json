@@ -1573,13 +1573,16 @@
     "Chofer3": "BARRIA ANDRES ROMAN - CARRETON",
     "Cargadora1": "XUG00978LSCB18724 - XCMG Cargadora - CV62",
     "Camion1": "AF868YL - IVECO Tractor doble - CF105",
-    "Modified": "2026-10-08T11:14:14.757Z",
+    "Modified": "2026-10-08T11:15:33.176Z",
     "FechaHoraArribo": "2026-10-07T15:20",
     "AsistSupervisor1": true,
     "AsistChofer1": false,
     "AsistChofer2": false,
     "AsistChofer3": false,
     "AsistCargadora1": false,
-    "AsistCamion1": false
+    "AsistCamion1": false,
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   }
 ]
