@@ -1554,7 +1554,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PEC-839",
     "PozoDestino": "PET-870",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-07T14:50",
     "Id": 29,
     "Created": "2026-10-07T13:48:16.400Z",
@@ -1565,6 +1565,13 @@
     "Chofer3": "BARRIA ANDRES ROMAN - CARRETON",
     "Cargadora1": "XUG00978LSCB18724 - XCMG Cargadora - CV62",
     "Camion1": "AF868YL - IVECO Tractor doble - CF105",
-    "Modified": "2026-10-07T13:50:35.706Z"
+    "Modified": "2026-10-08T11:14:14.757Z",
+    "FechaHoraArribo": "2026-10-07T15:20",
+    "AsistSupervisor1": true,
+    "AsistChofer1": false,
+    "AsistChofer2": false,
+    "AsistChofer3": false,
+    "AsistCargadora1": false,
+    "AsistCamion1": false
   }
 ]
