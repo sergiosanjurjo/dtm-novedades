@@ -1588,5 +1588,15 @@
     "HojaRutaAprobada": false,
     "FinDTM": true,
     "ComentarioNPT": ""
+  },
+  {
+    "Equipo": "PAE 007",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PEC-839",
+    "PozoDestino": "PET-870",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-08T11:00",
+    "Id": 30,
+    "Created": "2026-10-08T13:25:03.014Z"
   }
 ]
