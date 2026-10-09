@@ -1640,5 +1640,15 @@
     "Camion3": "AF516RO - IVECO Tractor doble - CF96",
     "Camion4": "AG392AE - IVECO Tractor c/hidro - CF110",
     "Modified": "2026-10-08T13:32:20.636Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PEC-843",
+    "PozoDestino": "PVH-1629",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-09T14:00",
+    "Id": 31,
+    "Created": "2026-10-09T12:11:36.729Z"
   }
 ]
