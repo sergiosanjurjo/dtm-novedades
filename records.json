@@ -1663,5 +1663,15 @@
     "HoraRequerida": "2026-10-09T14:00",
     "Id": 31,
     "Created": "2026-10-09T12:11:36.729Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PEC-843",
+    "PozoDestino": "PVH-1629",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-09T14:00",
+    "Id": 32,
+    "Created": "2026-10-09T17:46:47.443Z"
   }
 ]
