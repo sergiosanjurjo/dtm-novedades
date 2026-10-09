@@ -1673,9 +1673,23 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PEC-843",
     "PozoDestino": "PVH-1629",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-09T14:00",
     "Id": 32,
-    "Created": "2026-10-09T17:46:47.443Z"
+    "Created": "2026-10-09T17:46:47.443Z",
+    "HoraPlanArribo": "2026-10-09T14:00",
+    "ComentarioCopesa": "va un ayudante Barrios Maximo",
+    "Supervisor1": "QUINTANA JORGE MARTIN - SUPERVISOR",
+    "Chofer1": "FERREIRA MARIO ESTEBAN - CARRETON",
+    "Chofer2": "WOLHWEND MARCELO - SEMI",
+    "Chofer3": "LUZ CLARA JUAN - SEMI",
+    "Chofer4": "BARGAS DARIO ANTONIO - CARRETON",
+    "Chofer5": "PAREDES ERNESTO ALEJANDRO - CARRETON",
+    "Camion1": "AF516RN - IVECO Tractor c/malacate - CF97",
+    "Camion2": "AH541EV - SCANIA Tractor doble - CF118",
+    "Camion3": "AH881KI - IVECO Tractor doble - CF139",
+    "Camion4": "AF868YL - IVECO Tractor doble - CF105",
+    "Camion5": "AG218BZ - IVECO Tractor simple - CF108",
+    "Modified": "2026-10-09T19:13:15.011Z"
   }
 ]
