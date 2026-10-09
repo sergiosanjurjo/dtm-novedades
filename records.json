@@ -1659,10 +1659,14 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PEC-843",
     "PozoDestino": "PVH-1629",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-09T14:00",
     "Id": 31,
-    "Created": "2026-10-09T12:11:36.729Z"
+    "Created": "2026-10-09T12:11:36.729Z",
+    "HoraPlanArribo": "2026-10-09T14:00",
+    "Supervisor1": "ALANIZ GUSTAVO ANTONIO - JEFE CAMPO",
+    "Cargadora1": "011603A8347 - HELI Autoelevador - CV58",
+    "Modified": "2026-10-09T19:05:22.346Z"
   },
   {
     "Equipo": "PAE 002",
