@@ -1823,7 +1823,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PEC-843",
     "PozoDestino": "PVH-1619",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-11T13:00",
     "Id": 36,
     "Created": "2026-10-11T14:26:18.539Z",
@@ -1850,7 +1850,7 @@
     "Camion3": "AF516RO - IVECO Tractor doble - CF96",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Camion5": "AH541EV - SCANIA Tractor doble - CF118",
-    "Modified": "2026-10-11T20:37:24.329Z",
+    "Modified": "2026-10-11T20:41:29.196Z",
     "FechaHoraArribo": "2026-10-11T12:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -1872,7 +1872,10 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "FechaHoraEvacuacion": "2026-10-11T06:00",
+    "FechaHoraBajadaMastil": "2026-10-11T07:00",
+    "FechaHoraPlugDown": "2026-10-10T17:45"
   },
   {
     "Equipo": "PAE 002",
