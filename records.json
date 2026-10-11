@@ -1712,7 +1712,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PEC-839",
     "PozoDestino": "PET-870",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-10T01:00",
     "Id": 33,
     "Created": "2026-10-11T14:21:05.266Z",
@@ -1725,7 +1725,7 @@
     "Chofer1": "PHILLIPS GASTON ERNESTO - CARRETON",
     "Chofer2": "CRETTON VICTOR JAVIER - CARRETON",
     "Chofer3": "LEGUIPAN BRUNO ALEJANDRO - CARRETON",
-    "Modified": "2026-10-11T20:42:40.520Z",
+    "Modified": "2026-10-11T20:45:33.585Z",
     "FechaHoraArribo": "2026-10-11T00:00",
     "KmHojaRuta": 44,
     "ActaEntregaLocacion": true,
@@ -1736,7 +1736,11 @@
     "AsistChoferCargadora1": true,
     "AsistChofer1": true,
     "AsistChofer2": true,
-    "AsistChofer3": true
+    "AsistChofer3": true,
+    "FechaHoraEvacuacion": "2026-10-09T00:00",
+    "Reprogramacion": "1",
+    "FechaHoraBajadaMastil": "2026-10-10T23:00",
+    "FechaHoraPlugDown": "2026-11-09T01:00"
   },
   {
     "Equipo": "PAE 007",
