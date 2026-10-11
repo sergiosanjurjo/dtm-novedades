@@ -1833,9 +1833,12 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "PEC-843",
     "PozoDestino": "PVH-1619",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "Id": 37,
-    "Created": "2026-10-11T14:27:25.523Z"
+    "Created": "2026-10-11T14:27:25.523Z",
+    "HoraPlanArribo": "2026-10-11T01:00",
+    "Supervisor1": "AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR",
+    "Modified": "2026-10-11T20:34:45.100Z"
   },
   {
     "Equipo": "PAE 002",
