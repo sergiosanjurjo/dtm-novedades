@@ -1752,5 +1752,14 @@
     "Estado": "Orden1_Completa",
     "Id": 37,
     "Created": "2026-10-11T14:27:25.523Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PEC-843",
+    "PozoDestino": "PVH-1619",
+    "Estado": "Orden1_Completa",
+    "Id": 38,
+    "Created": "2026-10-11T14:28:43.147Z"
   }
 ]
