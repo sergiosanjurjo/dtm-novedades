@@ -1731,5 +1731,14 @@
     "HoraRequerida": "2026-10-11T13:00",
     "Id": 36,
     "Created": "2026-10-11T14:26:18.539Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Hoja de Ruta",
+    "PozoOrigen": "PEC-843",
+    "PozoDestino": "PVH-1619",
+    "Estado": "Orden1_Completa",
+    "Id": 37,
+    "Created": "2026-10-11T14:27:25.523Z"
   }
 ]
