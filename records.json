@@ -1712,10 +1712,20 @@
     "Turno": "T 1",
     "PozoOrigen": "PEC-839",
     "PozoDestino": "PET-870",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-10T01:00",
     "Id": 33,
-    "Created": "2026-10-11T14:21:05.266Z"
+    "Created": "2026-10-11T14:21:05.266Z",
+    "HoraPlanArribo": "2026-10-10T00:50",
+    "ComentarioCopesa": "se einforma que el turno estaba con 4 carretones contratados y se sumaron 4 carretones mas a las 06 hs .",
+    "Supervisor1": "BECERRA ALBERTO DANTE - SUPERVISOR",
+    "Guinchero1": "PACILLI FABIO DAMIAN",
+    "Guinchero2": "TRACALEU GUSTAVO ALEJANDRO",
+    "ChoferCargadora1": "HERNANDEZ ESTEBAN FERNANDO",
+    "Chofer1": "PHILLIPS GASTON ERNESTO - CARRETON",
+    "Chofer2": "CRETTON VICTOR JAVIER - CARRETON",
+    "Chofer3": "LEGUIPAN BRUNO ALEJANDRO - CARRETON",
+    "Modified": "2026-10-11T14:56:40.512Z"
   },
   {
     "Equipo": "PAE 007",
