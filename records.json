@@ -1807,7 +1807,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PEC-843",
     "PozoDestino": "PVH-1619",
-    "Estado": "Orden3_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-11T00:00",
     "Id": 35,
     "Created": "2026-10-11T14:25:37.684Z",
@@ -1833,7 +1833,7 @@
     "Camion2": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Camion3": "AF516RO - IVECO Tractor doble - CF96",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-10-11T20:39:21.958Z",
+    "Modified": "2026-10-12T10:30:46.908Z",
     "FechaHoraArribo": "2026-10-11T01:00",
     "KmHojaRuta": 44,
     "ActaEntregaLocacion": true,
@@ -1857,7 +1857,9 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "7.25hr espera luz diurna ",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
