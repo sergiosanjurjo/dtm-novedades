@@ -2152,5 +2152,15 @@
     "Camion8": "AF868YL - IVECO Tractor doble - CF105",
     "Camion9": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Modified": "2026-10-16T11:34:52.577Z"
+  },
+  {
+    "Equipo": "PAE 003",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PE-1011",
+    "PozoDestino": "PE-1171(d)",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-17T09:00",
+    "Id": 44,
+    "Created": "2026-10-17T13:23:27.372Z"
   }
 ]
