@@ -2239,9 +2239,15 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PLF-1010",
     "PozoDestino": "PLF-1030",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-18T09:00",
     "Id": 47,
-    "Created": "2026-10-17T13:26:16.870Z"
+    "Created": "2026-10-17T13:26:16.870Z",
+    "HoraPlanArribo": "2026-10-18T09:00",
+    "ComentarioCopesa": "CONTRATADO WALTER SCHILL SEMI CHOFER VEGA ALEJANDRO\nCONTRATADO SCHILL CRISTIAN SEMI CHOFER FRANCO JUAN CARLOS\nAYUDANTES \nBILBAO JOSE- IAN DIAZ",
+    "Supervisor1": "ALANIZ GUSTAVO ANTONIO - JEFE CAMPO",
+    "Chofer1": "HERNANDEZ JOSE SERGIO - CARRETON",
+    "Camion1": "AH881KI - IVECO Tractor doble - CF139",
+    "Modified": "2026-10-17T17:04:45.137Z"
   }
 ]
