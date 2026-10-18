@@ -2321,5 +2321,15 @@
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Modified": "2026-10-18T01:32:34.725Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Hoja de Ruta",
+    "PozoOrigen": "PVH-1278",
+    "PozoDestino": "PZ-1699",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-18T10:00",
+    "Id": 50,
+    "Created": "2026-10-18T14:07:32.072Z"
   }
 ]
