@@ -2249,5 +2249,15 @@
     "Chofer1": "HERNANDEZ JOSE SERGIO - CARRETON",
     "Camion1": "AH881KI - IVECO Tractor doble - CF139",
     "Modified": "2026-10-17T17:04:45.137Z"
+  },
+  {
+    "Equipo": "PAE 003",
+    "Turno": "T 2",
+    "PozoOrigen": "PE-1011",
+    "PozoDestino": "PE-1171(d)",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-18T08:00",
+    "Id": 48,
+    "Created": "2026-10-18T01:04:14.595Z"
   }
 ]
