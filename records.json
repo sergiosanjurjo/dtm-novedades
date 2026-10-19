@@ -2341,5 +2341,15 @@
     "HoraRequerida": "2026-10-19T00:00",
     "Id": 51,
     "Created": "2026-10-19T01:22:52.885Z"
+  },
+  {
+    "Equipo": "PAE 007",
+    "Turno": "T 2",
+    "PozoOrigen": "PET-870",
+    "PozoDestino": "PT-869",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-19T12:00",
+    "Id": 52,
+    "Created": "2026-10-19T01:24:47.944Z"
   }
 ]
