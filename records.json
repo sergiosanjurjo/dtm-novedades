@@ -2404,5 +2404,15 @@
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Modified": "2026-10-19T01:39:45.014Z"
+  },
+  {
+    "Equipo": "PAE 007",
+    "Turno": "T 3",
+    "PozoOrigen": "PET-870",
+    "PozoDestino": "PET-869",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-19T20:00",
+    "Id": 54,
+    "Created": "2026-10-19T17:40:03.328Z"
   }
 ]
