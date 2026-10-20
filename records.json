@@ -2105,7 +2105,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PVH-1629",
     "PozoDestino": "PVH-1278(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-15T20:00",
     "Id": 42,
     "Created": "2026-10-15T19:50:34.757Z",
@@ -2142,7 +2142,7 @@
     "Camion7": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion8": "AF868YL - IVECO Tractor doble - CF105",
     "Camion9": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-10-20T13:17:19.559Z",
+    "Modified": "2026-10-20T13:35:35.145Z",
     "FechaHoraArribo": "2026-10-15T20:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -2174,7 +2174,10 @@
     "AsistCamion6": true,
     "AsistCamion7": true,
     "AsistCamion8": true,
-    "AsistCamion9": true
+    "AsistCamion9": true,
+    "ComentarioNPT": "2 hr espera Copesa, 1 hr falla patas trailer, 1 hr reunion sindical convencional",
+    "FinDTM": true,
+    "FechaHoraRetiroFlota": "2026-10-16T13:00"
   },
   {
     "Equipo": "PAE 002",
