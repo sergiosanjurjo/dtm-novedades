@@ -2557,7 +2557,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PET-870",
     "PozoDestino": "PET-869",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-19T00:00",
     "Id": 51,
     "Created": "2026-10-19T01:22:52.885Z",
@@ -2585,7 +2585,7 @@
     "Camion4": "AH610EQ - SCANIA Tractor doble - CF120",
     "Camion5": "AF868YL - IVECO Tractor doble - CF105",
     "Camion6": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-10-20T13:08:10.967Z",
+    "Modified": "2026-10-20T13:25:40.047Z",
     "FechaHoraArribo": "2026-10-19T02:30",
     "KmHojaRuta": 3,
     "ActaEntregaLocacion": true,
@@ -2612,7 +2612,8 @@
     "AsistCamion3": true,
     "AsistCamion4": true,
     "AsistCamion5": true,
-    "AsistCamion6": true
+    "AsistCamion6": true,
+    "ComentarioNPT": "2 hr espera turno Copesa, 1 hr Espera GDT, 7 hr espera eléctrico,"
   },
   {
     "Equipo": "PAE 007",
