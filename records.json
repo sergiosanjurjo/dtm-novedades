@@ -2266,7 +2266,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PE-1011",
     "PozoDestino": "PE-1171(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-17T09:00",
     "Id": 44,
     "Created": "2026-10-17T13:23:27.372Z",
@@ -2283,7 +2283,7 @@
     "Camion3": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion4": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion5": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-10-20T12:55:00.050Z",
+    "Modified": "2026-10-20T13:28:51.379Z",
     "FechaHoraArribo": "2026-10-16T09:54",
     "AsistSupervisor1": true,
     "AsistChofer1": true,
@@ -2296,7 +2296,9 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "ComentarioNPT": "No se entrego locacion, se monto con el turno uno",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
