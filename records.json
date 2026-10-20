@@ -2365,7 +2365,12 @@
     "Camion4": "AH610EQ - SCANIA Tractor doble - CF120",
     "Camion5": "AF868YL - IVECO Tractor doble - CF105",
     "Camion6": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-10-19T01:45:37.941Z"
+    "Modified": "2026-10-20T12:32:38.664Z",
+    "FechaHoraArribo": "2026-10-19T02:30",
+    "KmHojaRuta": "3",
+    "ActaEntregaLocacion": true,
+    "HojaRutaAprobada": true,
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 007",
