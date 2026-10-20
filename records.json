@@ -2401,7 +2401,7 @@
     "Camion3": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion4": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Camion5": "AH610EQ - SCANIA Tractor doble - CF120",
-    "Modified": "2026-10-20T12:13:26.901Z",
+    "Modified": "2026-10-20T12:34:54.705Z",
     "ActaEntregaLocacion": false,
     "HojaRutaAprobada": false,
     "FechaHoraEvacuacion": "2026-10-19T14:45",
@@ -2410,8 +2410,9 @@
     "FechaHoraFinVactor": "2026-10-19T19:30",
     "FechaHoraPlugDown": "2026-10-18T18:30",
     "ComentarioNPT": "sin NPT",
-    "FinDTM": true,
-    "FechaHoraRetiroFlota": "2026-10-19T19:30"
+    "FinDTM": false,
+    "FechaHoraRetiroFlota": "2026-10-19T19:30",
+    "FechaHoraArribo": "2026-10-19T09:30"
   },
   {
     "Equipo": "PAE 006",
