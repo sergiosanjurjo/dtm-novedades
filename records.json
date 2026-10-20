@@ -2371,7 +2371,7 @@
     "Equipo": "PAE 007",
     "Turno": "T 2",
     "PozoOrigen": "PET-870",
-    "PozoDestino": "PT-869",
+    "PozoDestino": "PET-869",
     "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-19T12:00",
     "Id": 52,
@@ -2396,7 +2396,17 @@
     "Camion3": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion4": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Camion5": "AH610EQ - SCANIA Tractor doble - CF120",
-    "Modified": "2026-10-19T18:03:59.837Z"
+    "Modified": "2026-10-20T12:13:26.901Z",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FechaHoraEvacuacion": "2026-10-19T14:45",
+    "FechaHoraCarritoBOP": "2026-10-18T21:30",
+    "FechaHoraBajadaMastil": "2026-10-19T14:45",
+    "FechaHoraFinVactor": "2026-10-19T19:30",
+    "FechaHoraPlugDown": "2026-10-18T18:30",
+    "ComentarioNPT": "sin NPT",
+    "FinDTM": true,
+    "FechaHoraRetiroFlota": "2026-10-19T19:30"
   },
   {
     "Equipo": "PAE 006",
