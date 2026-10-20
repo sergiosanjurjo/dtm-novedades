@@ -2684,7 +2684,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1010",
     "PozoDestino": "PLF-1030",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-19T04:00",
     "Id": 53,
     "Created": "2026-10-19T01:25:54.234Z",
@@ -2705,7 +2705,7 @@
     "Camion2": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-10-20T13:07:32.087Z",
+    "Modified": "2026-10-20T13:27:55.777Z",
     "FechaHoraArribo": "2026-10-18T20:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -2721,7 +2721,9 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "2,75 hr espera Copesa, 3 hr opera con 1 solo guinche",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 007",
