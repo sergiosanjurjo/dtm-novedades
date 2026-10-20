@@ -2239,7 +2239,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PLF-1010",
     "PozoDestino": "PLF-1030",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-18T09:00",
     "Id": 47,
     "Created": "2026-10-17T13:26:16.870Z",
@@ -2248,7 +2248,11 @@
     "Supervisor1": "ALANIZ GUSTAVO ANTONIO - JEFE CAMPO",
     "Chofer1": "HERNANDEZ JOSE SERGIO - CARRETON",
     "Camion1": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-10-17T17:04:45.137Z"
+    "Modified": "2026-10-20T12:51:51.739Z",
+    "FechaHoraArribo": "2026-10-17T09:51",
+    "AsistSupervisor1": true,
+    "AsistChofer1": true,
+    "AsistCamion1": true
   },
   {
     "Equipo": "PAE 003",
