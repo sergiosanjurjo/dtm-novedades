@@ -2424,7 +2424,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PE-1011",
     "PozoDestino": "PE-1171(d)",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-18T08:00",
     "Id": 48,
     "Created": "2026-10-18T01:04:14.595Z",
@@ -2460,7 +2460,7 @@
     "Camion7": "AF868YL - IVECO Tractor doble - CF105",
     "Camion8": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion9": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-10-20T13:12:27.231Z",
+    "Modified": "2026-10-20T13:31:30.779Z",
     "FechaHoraArribo": "2026-10-18T08:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -2497,7 +2497,10 @@
     "FechaHoraCarritoBOP": "2026-10-17T20:30",
     "FechaHoraBajadaMastil": "2026-10-18T05:29",
     "FechaHoraFinVactor": "2026-10-18T01:00",
-    "FechaHoraPlugDown": "2026-10-17T15:00"
+    "FechaHoraPlugDown": "2026-10-17T15:00",
+    "ComentarioNPT": "1,5 hr acondiciona locacion",
+    "FinDTM": true,
+    "FechaHoraRetiroFlota": "2026-10-18T20:00"
   },
   {
     "Equipo": "PAE 006",
