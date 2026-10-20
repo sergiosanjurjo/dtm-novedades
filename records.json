@@ -2774,7 +2774,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PLF-1010",
     "PozoDestino": "PLF-1030",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-19T08:00",
     "Id": 55,
     "Created": "2026-10-19T17:41:50.334Z",
@@ -2795,7 +2795,7 @@
     "Camion2": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-10-20T12:49:11.174Z",
+    "Modified": "2026-10-20T13:06:47.526Z",
     "FechaHoraArribo": "2026-10-19T09:30",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -2811,6 +2811,12 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "FechaHoraEvacuacion": "2026-10-19T15:02",
+    "Reprogramacion": "1",
+    "FechaHoraCarritoBOP": "2026-10-18T21:30",
+    "FechaHoraBajadaMastil": "2026-10-18T20:00",
+    "FechaHoraFinVactor": "2026-10-18T20:06",
+    "FechaHoraPlugDown": "2026-10-18T10:30"
   }
 ]
