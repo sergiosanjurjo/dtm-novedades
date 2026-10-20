@@ -2787,7 +2787,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PLF-1010",
     "PozoDestino": "PLF-1030",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-19T08:00",
     "Id": 55,
     "Created": "2026-10-19T17:41:50.334Z",
@@ -2808,7 +2808,7 @@
     "Camion2": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-10-20T13:06:47.526Z",
+    "Modified": "2026-10-20T13:21:51.171Z",
     "FechaHoraArribo": "2026-10-19T09:30",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -2830,6 +2830,9 @@
     "FechaHoraCarritoBOP": "2026-10-18T21:30",
     "FechaHoraBajadaMastil": "2026-10-18T20:00",
     "FechaHoraFinVactor": "2026-10-18T20:06",
-    "FechaHoraPlugDown": "2026-10-18T10:30"
+    "FechaHoraPlugDown": "2026-10-18T10:30",
+    "ComentarioNPT": "3 hr acumula agua, 2,5 hr asamblea sindical camioneros, 2 hr opera con 1 solo guinche",
+    "FinDTM": true,
+    "FechaHoraRetiroFlota": "2026-10-19T19:19"
   }
 ]
