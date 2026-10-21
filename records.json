@@ -2647,16 +2647,18 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "PVH-1278",
     "PozoDestino": "PZ-1699",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-18T10:00",
     "Id": 50,
     "Created": "2026-10-18T14:07:32.072Z",
     "HoraPlanArribo": "2026-10-20T08:00",
     "ComentarioCopesa": "Sube con ayudante Chicoy Bruno",
     "Supervisor1": "AYBAR GUILLERMO MISAEL DEL VALLE - SUPERVISOR",
-    "Modified": "2026-10-21T11:08:22.021Z",
+    "Modified": "2026-10-21T11:11:14.599Z",
     "FechaHoraArribo": "2026-10-20T09:08",
-    "AsistSupervisor1": true
+    "AsistSupervisor1": true,
+    "ComentarioNPT": "",
+    "FinDTM": true
   },
   {
     "Equipo": "PAE 007",
