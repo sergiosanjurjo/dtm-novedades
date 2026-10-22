@@ -3113,7 +3113,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PVH-1278",
     "PozoDestino": "PZ-1699",
-    "Estado": "Orden3_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-21T00:00",
     "Id": 58,
     "Created": "2026-10-22T00:37:43.039Z",
@@ -3151,7 +3151,7 @@
     "Camion8": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion9": "AH881KI - IVECO Tractor doble - CF139",
     "Camion10": "AH541EV - SCANIA Tractor doble - CF118",
-    "Modified": "2026-10-22T11:44:04.573Z",
+    "Modified": "2026-10-22T11:45:18.879Z",
     "FechaHoraArribo": "2026-10-22T02:30",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -3185,6 +3185,8 @@
     "AsistCamion7": true,
     "AsistCamion8": true,
     "AsistCamion9": true,
-    "AsistCamion10": true
+    "AsistCamion10": true,
+    "ComentarioNPT": "2,5 hr espera turno de Copesa",
+    "FinDTM": false
   }
 ]
