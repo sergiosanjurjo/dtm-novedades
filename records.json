@@ -3201,5 +3201,15 @@
     "FechaHoraFinVactor": "2026-10-21T12:55",
     "FechaHoraPlugDown": "2026-10-20T18:45",
     "FechaHoraRetiroFlota": "2026-10-22T10:56"
+  },
+  {
+    "Equipo": "PAE 006",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PLF-1030",
+    "PozoDestino": "PLF-1012",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-23T14:00",
+    "Id": 59,
+    "Created": "2026-10-22T22:46:02.922Z"
   }
 ]
