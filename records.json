@@ -3039,7 +3039,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PVH-1278",
     "PozoDestino": "PE-1699",
-    "Estado": "Orden3_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-21T12:00",
     "Id": 57,
     "Created": "2026-10-21T11:07:26.462Z",
@@ -3075,7 +3075,7 @@
     "Camion8": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion9": "AH881KI - IVECO Tractor doble - CF139",
     "Camion10": "AH541EV - SCANIA Tractor doble - CF118",
-    "Modified": "2026-10-21T18:25:41.229Z",
+    "Modified": "2026-10-22T11:47:41.288Z",
     "FechaHoraArribo": "2026-10-21T12:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -3106,7 +3106,9 @@
     "AsistCamion7": true,
     "AsistCamion8": true,
     "AsistCamion9": true,
-    "AsistCamion10": true
+    "AsistCamion10": true,
+    "ComentarioNPT": "2 hr trabajos eléctricos programados en la reconexión de cámaras en el mástil\n1 hr espera conductor para carga critica al momento de atracar el mástil.",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
