@@ -3155,7 +3155,7 @@
     "Camion8": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion9": "AH881KI - IVECO Tractor doble - CF139",
     "Camion10": "AH541EV - SCANIA Tractor doble - CF118",
-    "Modified": "2026-10-22T11:45:18.879Z",
+    "Modified": "2026-10-22T18:56:44.292Z",
     "FechaHoraArribo": "2026-10-22T02:30",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -3191,6 +3191,15 @@
     "AsistCamion9": true,
     "AsistCamion10": true,
     "ComentarioNPT": "2,5 hr espera turno de Copesa",
-    "FinDTM": false
+    "FinDTM": true,
+    "KmHojaRuta": "33.4",
+    "ActaEntregaLocacion": true,
+    "HojaRutaAprobada": true,
+    "FechaHoraEvacuacion": "2026-10-21T12:53",
+    "FechaHoraCarritoBOP": "2026-10-20T23:45",
+    "FechaHoraBajadaMastil": "2026-10-21T07:54",
+    "FechaHoraFinVactor": "2026-10-21T12:55",
+    "FechaHoraPlugDown": "2026-10-20T18:45",
+    "FechaHoraRetiroFlota": "2026-10-22T10:56"
   }
 ]
