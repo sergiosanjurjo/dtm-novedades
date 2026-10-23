@@ -3207,9 +3207,22 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PLF-1030",
     "PozoDestino": "PLF-1012",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-23T14:00",
     "Id": 59,
-    "Created": "2026-10-22T22:46:02.922Z"
+    "Created": "2026-10-22T22:46:02.922Z",
+    "HoraPlanArribo": "2026-10-23T09:30",
+    "Supervisor1": "MENGUEZ FRANCISCO ADRIANO - SUPERVISOR",
+    "Supervisor2": "QUINTANA JORGE MARTIN - SUPERVISOR",
+    "Chofer1": "FLORES ARIEL GUSTAVO - CARRETON",
+    "Chofer2": "WOLHWEND MARCELO - SEMI",
+    "Chofer3": "LUZ CLARA JUAN - SEMI",
+    "Chofer4": "GONZALEZ WALTER DANIEL - CARRETON",
+    "Cargadora1": "XUG00978LSCB18724 - XCMG Cargadora - CV62",
+    "Camion1": "AH610ER - SCANIA Tractor doble - CF121",
+    "Camion2": "AH881KI - IVECO Tractor doble - CF139",
+    "Camion3": "AH541EV - SCANIA Tractor doble - CF118",
+    "Camion4": "AH541EW - SCANIA Tractor doble - CF119",
+    "Modified": "2026-10-23T18:26:56.914Z"
   }
 ]
