@@ -3354,7 +3354,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PE-1030",
     "PozoDestino": "PVH-1625d",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-24T09:00",
     "Id": 62,
     "Created": "2026-10-24T20:48:23.429Z",
@@ -3369,6 +3369,17 @@
     "Camion2": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion3": "AH610EQ - SCANIA Tractor doble - CF120",
     "Camion4": "AG218BZ - IVECO Tractor simple - CF108",
-    "Modified": "2026-10-24T21:48:42.969Z"
+    "Modified": "2026-10-24T23:37:08.448Z",
+    "FechaHoraArribo": "2026-10-24T15:00",
+    "AsistSupervisor1": true,
+    "AsistChofer1": true,
+    "AsistChofer2": true,
+    "AsistChofer3": true,
+    "AsistChofer4": true,
+    "AsistCargadora1": true,
+    "AsistCamion1": true,
+    "AsistCamion2": true,
+    "AsistCamion3": true,
+    "AsistCamion4": true
   }
 ]
