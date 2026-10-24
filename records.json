@@ -3333,9 +3333,21 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PE-1030",
     "PozoDestino": "PVH-1625d",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-10-24T09:00",
     "Id": 62,
-    "Created": "2026-10-24T20:48:23.429Z"
+    "Created": "2026-10-24T20:48:23.429Z",
+    "HoraPlanArribo": "2026-10-24T12:00",
+    "Supervisor1": "QUINTANA JORGE MARTIN - SUPERVISOR",
+    "Chofer1": "CABEZAS VICTOR OSCAR - CARRETON",
+    "Chofer2": "BARGAS DARIO ANTONIO - CARRETON",
+    "Chofer3": "FERREIRA MARIO ESTEBAN - CARRETON",
+    "Chofer4": "CASMUZ CARLOS ANTONIO MARTIN - SEMI",
+    "Cargadora1": "XUG0700KHPCB08121 - XCMG Cargadora - CV61",
+    "Camion1": "AF868YL - IVECO Tractor doble - CF105",
+    "Camion2": "AH881KJ - IVECO Tractor doble - CF140",
+    "Camion3": "AH610EQ - SCANIA Tractor doble - CF120",
+    "Camion4": "AG218BZ - IVECO Tractor simple - CF108",
+    "Modified": "2026-10-24T21:48:42.969Z"
   }
 ]
