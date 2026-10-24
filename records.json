@@ -3207,7 +3207,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PLF-1030",
     "PozoDestino": "PLF-1012",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-23T14:00",
     "Id": 59,
     "Created": "2026-10-22T22:46:02.922Z",
@@ -3223,7 +3223,7 @@
     "Camion2": "AH881KI - IVECO Tractor doble - CF139",
     "Camion3": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion4": "AH541EW - SCANIA Tractor doble - CF119",
-    "Modified": "2026-10-23T18:29:59.188Z",
+    "Modified": "2026-10-24T20:54:11.134Z",
     "FechaHoraArribo": "2026-10-23T11:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -3235,7 +3235,9 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 006",
