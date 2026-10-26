@@ -3308,7 +3308,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1030",
     "PozoDestino": "PLF-1012",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-24T20:00",
     "Id": 61,
     "Created": "2026-10-23T19:42:36.938Z",
@@ -3333,7 +3333,7 @@
     "Camion3": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Camion5": "AF516RN - IVECO Tractor c/malacate - CF97",
-    "Modified": "2026-10-24T23:38:41.262Z",
+    "Modified": "2026-10-26T13:08:31.472Z",
     "FechaHoraArribo": "2026-10-24T20:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -3354,7 +3354,9 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "ComentarioNPT": "1 hr falla en HPU\n1 hr espera movimiento trailer control geologico",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
