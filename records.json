@@ -3605,5 +3605,15 @@
     "Camion3": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion4": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Modified": "2026-10-26T01:43:10.508Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 2",
+    "PozoOrigen": "PZ-1699",
+    "PozoDestino": "PZ-1738",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-27T02:00",
+    "Id": 67,
+    "Created": "2026-10-26T16:11:10.096Z"
   }
 ]
