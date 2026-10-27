@@ -3615,7 +3615,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PZ-1699",
     "PozoDestino": "PZ-1738",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-26T14:00",
     "Id": 66,
     "Created": "2026-10-26T01:26:29.316Z",
@@ -3640,7 +3640,7 @@
     "Camion2": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion3": "AH541EV - SCANIA Tractor doble - CF118",
     "Camion4": "AF516RN - IVECO Tractor c/malacate - CF97",
-    "Modified": "2026-10-26T18:58:10.023Z",
+    "Modified": "2026-10-27T01:17:10.470Z",
     "FechaHoraArribo": "2026-10-26T15:00",
     "KmHojaRuta": 18.8,
     "ActaEntregaLocacion": true,
@@ -3663,7 +3663,10 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "FechaHoraCarritoBOP": "2026-10-26T12:16",
+    "FechaHoraBajadaMastil": "2026-10-26T18:16",
+    "FechaHoraPlugDown": "2026-10-26T06:00"
   },
   {
     "Equipo": "PAE 002",
