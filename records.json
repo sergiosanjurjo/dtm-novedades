@@ -3737,7 +3737,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PE-1171",
     "PozoDestino": "PVH-1625d",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-26T20:00",
     "Id": 68,
     "Created": "2026-10-26T16:12:04.572Z",
@@ -3762,7 +3762,7 @@
     "Camion2": "AF868YL - IVECO Tractor doble - CF105",
     "Camion3": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion4": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-10-28T21:46:43.880Z",
+    "Modified": "2026-10-28T21:47:43.188Z",
     "FechaHoraArribo": "2026-10-27T08:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -3783,6 +3783,8 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "",
+    "FinDTM": false
   }
 ]
