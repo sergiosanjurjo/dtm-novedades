@@ -2020,16 +2020,18 @@
     "Turno": "T 1",
     "PozoOrigen": "jJjJ1",
     "PozoDestino": "jajaja2",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-13T14:23",
     "Id": 40,
     "Created": "2026-10-12T17:23:39.359Z",
     "HoraPlanArribo": "2026-10-14T14:24",
-    "Modified": "2026-10-28T11:35:15.873Z",
+    "Modified": "2026-10-28T11:35:23.960Z",
     "FechaHoraArribo": "2026-10-06T08:33",
     "KmHojaRuta": 26,
     "ActaEntregaLocacion": true,
-    "HojaRutaAprobada": true
+    "HojaRutaAprobada": true,
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
