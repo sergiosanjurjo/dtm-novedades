@@ -3887,5 +3887,15 @@
     "Camion2": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion3": "AG392AE - IVECO Tractor c/hidro - CF110",
     "Modified": "2026-10-29T19:08:54.117Z"
+  },
+  {
+    "Equipo": "PAE 006",
+    "Turno": "T 1",
+    "PozoOrigen": "PLF-1012",
+    "PozoDestino": "PLF-1014",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-10-30T00:00",
+    "Id": 71,
+    "Created": "2026-10-29T23:55:28.073Z"
   }
 ]
