@@ -3794,7 +3794,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PET-869d",
     "PozoDestino": "PCG-1364d",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-10-29T18:48",
     "Id": 69,
     "Created": "2026-10-28T21:48:35.984Z",
@@ -3823,7 +3823,7 @@
     "Camion3": "AG392AE - IVECO Tractor c/hidro - CF110",
     "Camion4": "AH610EQ - SCANIA Tractor doble - CF120",
     "Camion5": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-10-29T17:44:57.925Z",
+    "Modified": "2026-10-29T17:52:54.565Z",
     "FechaHoraArribo": "2026-10-29T10:00",
     "KmHojaRuta": 48,
     "ActaEntregaLocacion": true,
@@ -3850,7 +3850,13 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "FechaHoraEvacuacion": "2026-10-29T13:00",
+    "Reprogramacion": "1",
+    "FechaHoraCarritoBOP": "2026-10-29T10:30",
+    "FechaHoraBajadaMastil": "2026-10-29T15:00",
+    "FechaHoraFinVactor": "2026-10-29T17:00",
+    "FechaHoraPlugDown": "2026-10-29T06:00"
   },
   {
     "Equipo": "PAE 007",
