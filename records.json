@@ -2927,7 +2927,7 @@
     "Camion2": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion3": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-10-20T13:21:51.171Z",
+    "Modified": "2026-10-29T12:03:33.272Z",
     "FechaHoraArribo": "2026-10-19T09:30",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -2952,7 +2952,9 @@
     "FechaHoraPlugDown": "2026-10-18T10:30",
     "ComentarioNPT": "3 hr acumula agua, 2,5 hr asamblea sindical camioneros, 2 hr opera con 1 solo guinche",
     "FinDTM": true,
-    "FechaHoraRetiroFlota": "2026-10-19T19:19"
+    "FechaHoraRetiroFlota": "2026-10-19T19:19",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false
   },
   {
     "Equipo": "PAE 002",
