@@ -3943,7 +3943,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PET-869d",
     "PozoDestino": "PCG-1364d",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-30T10:00",
     "Id": 72,
     "Created": "2026-10-30T01:11:56.270Z",
@@ -3969,7 +3969,7 @@
     "Camion2": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion3": "AF868YL - IVECO Tractor doble - CF105",
     "Camion4": "AH610EQ - SCANIA Tractor doble - CF120",
-    "Modified": "2026-10-31T13:42:25.131Z",
+    "Modified": "2026-10-31T13:46:45.174Z",
     "FechaHoraArribo": "2026-10-30T11:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -3990,7 +3990,9 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "4hr espera hpu para transportar subestructura\n2hr guinche int 126 fuera de servicio\n7hr espera luz diurna\n3hr personal de copesa se niega a montar tapetes\n4hr retención de servicios personal jerárquico \n5hr espera hpu para montar subestructura",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 006",
