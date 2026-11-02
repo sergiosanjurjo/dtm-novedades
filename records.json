@@ -3915,7 +3915,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PLF-1012",
     "PozoDestino": "PLF-1014",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-30T00:00",
     "Id": 71,
     "Created": "2026-10-29T23:55:28.073Z",
@@ -3936,7 +3936,7 @@
     "Camion4": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion5": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion6": "AF516RO - IVECO Tractor doble - CF96",
-    "Modified": "2026-11-02T17:59:15.259Z",
+    "Modified": "2026-11-02T18:38:47.618Z",
     "FechaHoraArribo": "2026-10-30T00:00",
     "KmHojaRuta": 2,
     "ActaEntregaLocacion": true,
@@ -3961,7 +3961,9 @@
     "FechaHoraCarritoBOP": "2026-10-30T02:00",
     "FechaHoraBajadaMastil": "2026-10-30T05:00",
     "FechaHoraFinVactor": "2026-10-30T23:45",
-    "FechaHoraPlugDown": "2026-10-29T17:45"
+    "FechaHoraPlugDown": "2026-10-29T17:45",
+    "ComentarioNPT": "2,00 hr: Incidente pata de cabina en cable del muerto",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 007",
