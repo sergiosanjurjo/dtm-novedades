@@ -4229,5 +4229,15 @@
     "HoraRequerida": "2026-11-03T09:00",
     "Id": 81,
     "Created": "2026-11-02T01:02:31.587Z"
+  },
+  {
+    "Equipo": "PAE 006",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PLF-1014",
+    "PozoDestino": "PLF-1013",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-02T14:00",
+    "Id": 82,
+    "Created": "2026-11-02T01:03:12.881Z"
   }
 ]
