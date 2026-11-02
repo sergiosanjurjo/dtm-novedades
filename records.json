@@ -4152,7 +4152,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PVH-1625",
     "PozoDestino": "PP-841d",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-10-31T14:00",
     "Id": 76,
     "Created": "2026-10-31T13:56:18.345Z",
@@ -4183,7 +4183,7 @@
     "Camion4": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion5": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion6": "AF516RO - IVECO Tractor doble - CF96",
-    "Modified": "2026-11-02T21:40:09.207Z",
+    "Modified": "2026-11-02T21:43:38.537Z",
     "FechaHoraArribo": "2026-10-31T08:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -4209,7 +4209,9 @@
     "AsistCamion3": true,
     "AsistCamion4": true,
     "AsistCamion5": true,
-    "AsistCamion6": true
+    "AsistCamion6": true,
+    "ComentarioNPT": "3,00 hr: espera mecánico para reparar ruedas de carretón con mástil\n3,00 hr: espera personal de Copesa",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
