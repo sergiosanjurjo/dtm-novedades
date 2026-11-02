@@ -4209,5 +4209,15 @@
     "HoraRequerida": "2026-11-02T00:00",
     "Id": 79,
     "Created": "2026-11-02T01:01:03.227Z"
+  },
+  {
+    "Equipo": "PAE 006",
+    "Turno": "Pre Tarea. Hoja de Ruta",
+    "PozoOrigen": "PLF-1014",
+    "PozoDestino": "PLF-1013",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-03T12:00",
+    "Id": 80,
+    "Created": "2026-11-02T01:01:52.244Z"
   }
 ]
