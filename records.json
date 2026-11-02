@@ -4208,7 +4208,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PZ-1738",
     "PozoDestino": "PE-1228",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-11-01T02:00",
     "Id": 77,
     "Created": "2026-11-01T20:16:06.416Z",
@@ -4235,7 +4235,7 @@
     "Camion3": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion4": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion5": "AG392AE - IVECO Tractor c/hidro - CF110",
-    "Modified": "2026-11-02T21:23:23.976Z",
+    "Modified": "2026-11-02T21:32:48.755Z",
     "FechaHoraArribo": "2026-11-01T00:00",
     "KmHojaRuta": 29.3,
     "ActaEntregaLocacion": true,
@@ -4260,7 +4260,13 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "AsistCamion5": true
+    "AsistCamion5": true,
+    "FechaHoraEvacuacion": "2026-11-01T18:30",
+    "Reprogramacion": "2",
+    "FechaHoraCarritoBOP": "2026-11-01T00:00",
+    "FechaHoraBajadaMastil": "2026-11-01T00:00",
+    "FechaHoraFinVactor": "2026-11-01T19:30",
+    "FechaHoraPlugDown": "2026-10-31T19:30"
   },
   {
     "Equipo": "PAE 002",
