@@ -4555,5 +4555,15 @@
     "AsistCamion5": true,
     "ComentarioNPT": "",
     "FinDTM": true
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "Pre Tarea. Hoja de Ruta",
+    "PozoOrigen": "PE-1228",
+    "PozoDestino": "PE-1094",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-04T10:00",
+    "Id": 84,
+    "Created": "2026-11-04T12:13:00.268Z"
   }
 ]
