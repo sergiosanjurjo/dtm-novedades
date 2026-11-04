@@ -4345,7 +4345,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PZ-1738",
     "PozoDestino": "PE-1228",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-02T00:00",
     "Id": 79,
     "Created": "2026-11-02T01:01:03.227Z",
@@ -4372,7 +4372,7 @@
     "Camion2": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion3": "AH610EQ - SCANIA Tractor doble - CF120",
     "Camion4": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-11-04T11:55:34.298Z",
+    "Modified": "2026-11-04T11:56:06.444Z",
     "FechaHoraArribo": "2026-11-02T03:15",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -4395,7 +4395,9 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "3,25 hr espera personal Copesa por descanso",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 006",
