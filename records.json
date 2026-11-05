@@ -4712,5 +4712,15 @@
     "Camion7": "AH881KI - IVECO Tractor doble - CF139",
     "Camion8": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Modified": "2026-11-05T02:58:03.513Z"
+  },
+  {
+    "Equipo": "PAE 006",
+    "Turno": "T 2",
+    "PozoOrigen": "PLF-1013",
+    "PozoDestino": "PLF-1013",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-05T03:00",
+    "Id": 88,
+    "Created": "2026-11-05T16:54:57.132Z"
   }
 ]
