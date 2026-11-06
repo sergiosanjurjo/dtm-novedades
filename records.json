@@ -4810,5 +4810,15 @@
     "Camion7": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion8": "AH881KJ - IVECO Tractor doble - CF140",
     "Modified": "2026-11-06T19:00:42.011Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 1",
+    "PozoOrigen": "PE-1228",
+    "PozoDestino": "PE-1094",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-07T02:00",
+    "Id": 90,
+    "Created": "2026-11-06T19:02:40.444Z"
   }
 ]
