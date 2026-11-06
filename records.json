@@ -4485,15 +4485,17 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "PCG-1364(d)",
     "PozoDestino": "PLF-1008",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-03T09:00",
     "Id": 81,
     "Created": "2026-11-02T01:02:31.587Z",
     "HoraPlanArribo": "2026-11-03T09:00",
     "Supervisor1": "BECERRA ALBERTO DANTE - SUPERVISOR",
-    "Modified": "2026-11-06T19:06:02.261Z",
+    "Modified": "2026-11-06T19:06:16.664Z",
     "FechaHoraArribo": "2026-11-06T12:00",
-    "AsistSupervisor1": false
+    "AsistSupervisor1": false,
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 006",
