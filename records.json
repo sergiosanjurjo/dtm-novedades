@@ -4678,7 +4678,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1014",
     "PozoDestino": "PLF-1013",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-05T03:00",
     "Id": 87,
     "Created": "2026-11-05T02:46:56.244Z",
@@ -4711,7 +4711,7 @@
     "Camion6": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion7": "AH881KI - IVECO Tractor doble - CF139",
     "Camion8": "AF516RN - IVECO Tractor c/malacate - CF97",
-    "Modified": "2026-11-06T18:48:54.116Z",
+    "Modified": "2026-11-06T18:49:04.239Z",
     "FechaHoraArribo": "2026-11-05T03:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -4740,7 +4740,9 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "AsistCamion7": true,
-    "AsistCamion8": true
+    "AsistCamion8": true,
+    "ComentarioNPT": "",
+    "FinDTM": true
   },
   {
     "Equipo": "PAE 006",
