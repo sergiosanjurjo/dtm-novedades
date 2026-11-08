@@ -4977,7 +4977,7 @@
     "Turno": "T 2",
     "PozoOrigen": "PCG-1364",
     "PozoDestino": "PLF-1008",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-07T11:00",
     "Id": 92,
     "Created": "2026-11-07T19:05:38.786Z",
@@ -5006,7 +5006,7 @@
     "Camion4": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion5": "AH881KI - IVECO Tractor doble - CF139",
     "Camion6": "AF516RN - IVECO Tractor c/malacate - CF97",
-    "Modified": "2026-11-08T13:25:09.207Z",
+    "Modified": "2026-11-08T14:23:03.550Z",
     "FechaHoraArribo": "2026-11-07T11:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -5030,7 +5030,9 @@
     "AsistCamion3": true,
     "AsistCamion4": true,
     "AsistCamion5": true,
-    "AsistCamion6": true
+    "AsistCamion6": true,
+    "ComentarioNPT": "1,5 hr espera personal de copesa para continuar montaje\n2hr mantenimiento bombas\n6hr problemas de HPU\n4,5 Inspección de zaranda\n\n",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 002",
