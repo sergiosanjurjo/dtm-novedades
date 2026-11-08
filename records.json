@@ -4772,10 +4772,12 @@
     "Turno": "T 2",
     "PozoOrigen": "PLF-1013",
     "PozoDestino": "PLF-1013",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-11-05T03:00",
     "Id": 88,
-    "Created": "2026-11-05T16:54:57.132Z"
+    "Created": "2026-11-05T16:54:57.132Z",
+    "HoraPlanArribo": "2026-11-05T03:00",
+    "Modified": "2026-11-08T14:06:38.229Z"
   },
   {
     "Equipo": "PAE 006",
