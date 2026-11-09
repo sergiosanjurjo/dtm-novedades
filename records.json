@@ -5149,10 +5149,20 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PLF-1013",
     "PozoDestino": "PLF-1011",
-    "Estado": "Orden1_Completa",
+    "Estado": "Orden2_Completa",
     "HoraRequerida": "2026-11-08T15:00",
     "Id": 95,
-    "Created": "2026-11-08T13:35:58.707Z"
+    "Created": "2026-11-08T13:35:58.707Z",
+    "HoraPlanArribo": "2026-11-08T13:30",
+    "Supervisor1": "QUINTANA JORGE MARTIN - SUPERVISOR",
+    "Chofer1": "FLORES ARIEL GUSTAVO - CARRETON",
+    "Chofer2": "GONZALEZ WALTER DANIEL - CARRETON",
+    "Chofer3": "PAREDES ERNESTO ALEJANDRO - CARRETON",
+    "Cargadora1": "XUG0700KHPCB08121 - XCMG Cargadora - CV61",
+    "Camion1": "AF516RN - IVECO Tractor c/malacate - CF97",
+    "Camion2": "AH610ER - SCANIA Tractor doble - CF121",
+    "Camion3": "AF516RO - IVECO Tractor doble - CF96",
+    "Modified": "2026-11-09T11:15:47.142Z"
   },
   {
     "Equipo": "PAE 006",
