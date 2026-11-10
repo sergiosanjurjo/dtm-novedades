@@ -5102,7 +5102,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PCG-1364",
     "PozoDestino": "PLF-1008",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-07T23:00",
     "Id": 94,
     "Created": "2026-11-08T13:24:28.538Z",
@@ -5126,7 +5126,7 @@
     "Camion2": "AH541EW - SCANIA Tractor doble - CF119",
     "Camion3": "AH881KI - IVECO Tractor doble - CF139",
     "Camion4": "AH610ER - SCANIA Tractor doble - CF121",
-    "Modified": "2026-11-08T14:18:20.889Z",
+    "Modified": "2026-11-10T16:37:11.242Z",
     "FechaHoraArribo": "2026-11-08T01:00",
     "AsistSupervisor1": true,
     "AsistGuinchero1": true,
@@ -5146,7 +5146,9 @@
     "AsistCamion1": true,
     "AsistCamion2": true,
     "AsistCamion3": true,
-    "AsistCamion4": true
+    "AsistCamion4": true,
+    "ComentarioNPT": "1,50 hr espera personal Copesa por descanso\n3,00 hr mantenimiento de bombas de lodo\n11,00 hr acumula agua y prepara lodo",
+    "FinDTM": true
   },
   {
     "Equipo": "PAE 006",
