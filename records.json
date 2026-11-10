@@ -4606,13 +4606,15 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "PE-1228",
     "PozoDestino": "PE-1094",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-04T10:00",
     "Id": 84,
     "Created": "2026-11-04T12:13:00.268Z",
     "HoraPlanArribo": "2026-11-05T11:00",
-    "Modified": "2026-11-08T14:11:21.930Z",
-    "FechaHoraArribo": "2026-11-06T11:00"
+    "Modified": "2026-11-10T11:36:57.923Z",
+    "FechaHoraArribo": "2026-11-06T11:00",
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
