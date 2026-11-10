@@ -4621,13 +4621,15 @@
     "Turno": "Pre Tarea. Hoja de Ruta",
     "PozoOrigen": "PP-841(d)",
     "PozoDestino": "PR-1236",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-04T13:00",
     "Id": 85,
     "Created": "2026-11-04T12:13:35.265Z",
     "HoraPlanArribo": "2026-11-06T18:00",
-    "Modified": "2026-11-09T10:54:12.990Z",
-    "FechaHoraArribo": "2026-11-08T14:00"
+    "Modified": "2026-11-10T11:37:08.599Z",
+    "FechaHoraArribo": "2026-11-08T14:00",
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 006",
