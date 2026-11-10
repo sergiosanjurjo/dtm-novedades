@@ -5149,7 +5149,7 @@
     "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
     "PozoOrigen": "PLF-1013",
     "PozoDestino": "PLF-1011",
-    "Estado": "Orden2_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-11-08T15:00",
     "Id": 95,
     "Created": "2026-11-08T13:35:58.707Z",
@@ -5162,7 +5162,16 @@
     "Camion1": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Camion2": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion3": "AF516RO - IVECO Tractor doble - CF96",
-    "Modified": "2026-11-09T11:15:47.142Z"
+    "Modified": "2026-11-10T11:23:00.353Z",
+    "FechaHoraArribo": "2026-11-08T08:22",
+    "AsistSupervisor1": true,
+    "AsistChofer1": true,
+    "AsistChofer2": true,
+    "AsistChofer3": true,
+    "AsistCargadora1": true,
+    "AsistCamion1": true,
+    "AsistCamion2": true,
+    "AsistCamion3": true
   },
   {
     "Equipo": "PAE 006",
