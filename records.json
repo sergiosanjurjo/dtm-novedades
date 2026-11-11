@@ -5312,7 +5312,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PP-841d",
     "PozoDestino": "PR-1236",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-10T14:00",
     "Id": 98,
     "Created": "2026-11-10T17:26:49.179Z",
@@ -5351,7 +5351,7 @@
     "Camion9": "AG982RQ - IVECO Tractor c/malacate - CF115",
     "Camion10": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion11": "AH610EQ - SCANIA Tractor doble - CF120",
-    "Modified": "2026-11-11T19:41:36.445Z",
+    "Modified": "2026-11-11T19:43:23.943Z",
     "FechaHoraArribo": "2026-11-10T14:00",
     "KmHojaRuta": 50,
     "ActaEntregaLocacion": true,
@@ -5392,7 +5392,9 @@
     "FechaHoraCarritoBOP": "2026-11-10T16:40",
     "FechaHoraBajadaMastil": "2026-11-10T22:00",
     "FechaHoraFinVactor": "2026-11-11T05:00",
-    "FechaHoraPlugDown": "2026-11-10T10:00"
+    "FechaHoraPlugDown": "2026-11-10T10:00",
+    "ComentarioNPT": "9hr espera luz diurna",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 003",
