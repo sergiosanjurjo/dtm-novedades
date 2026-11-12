@@ -5475,7 +5475,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PP-841d",
     "PozoDestino": "PR-1236",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-11-11T08:00",
     "Id": 100,
     "Created": "2026-11-11T19:38:49.501Z",
@@ -5504,7 +5504,7 @@
     "Cargadora1": "XUG0700KHPCB08121 - XCMG Cargadora - CV61",
     "Cargadora2": "XUG00978LSCB18724 - XCMG Cargadora - CV62",
     "Grua1": "LXGCPA503RA009356 - XCMG - CI12",
-    "Modified": "2026-11-12T13:15:34.669Z",
+    "Modified": "2026-11-12T13:18:12.156Z",
     "FechaHoraArribo": "2026-11-11T08:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -5528,7 +5528,8 @@
     "AsistGuinche2": true,
     "AsistCargadora1": true,
     "AsistCargadora2": true,
-    "AsistGrua1": true
+    "AsistGrua1": true,
+    "Reprogramacion": "1"
   },
   {
     "Equipo": "PAE 003",
