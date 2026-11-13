@@ -5617,7 +5617,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PLF-1011",
     "PozoDestino": "PLF-1022",
-    "Estado": "Orden3_Completa",
+    "Estado": "Orden4_Completa",
     "HoraRequerida": "2026-11-13T00:00",
     "Id": 102,
     "Created": "2026-11-12T17:47:25.696Z",
@@ -5654,7 +5654,7 @@
     "Camion9": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion10": "AH881KI - IVECO Tractor doble - CF139",
     "Camion11": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-11-13T19:16:48.732Z",
+    "Modified": "2026-11-13T19:18:23.298Z",
     "FechaHoraArribo": "2026-11-13T00:00",
     "KmHojaRuta": 2.3,
     "ActaEntregaLocacion": true,
@@ -5688,6 +5688,11 @@
     "AsistCamion7": true,
     "AsistCamion8": true,
     "AsistCamion9": true,
-    "AsistCamion10": true
+    "AsistCamion10": true,
+    "FechaHoraEvacuacion": "2026-11-13T10:00",
+    "FechaHoraCarritoBOP": "2026-11-12T20:00",
+    "FechaHoraBajadaMastil": "2026-11-12T23:30",
+    "FechaHoraFinVactor": "2026-11-13T10:00",
+    "FechaHoraPlugDown": "2026-11-12T17:00"
   }
 ]
