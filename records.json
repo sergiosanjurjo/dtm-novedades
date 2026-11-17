@@ -5851,6 +5851,10 @@
     "Camion7": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion8": "AF516RO - IVECO Tractor doble - CF96",
     "Camion9": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-11-16T15:51:09.607Z"
+    "Modified": "2026-11-17T13:06:14.633Z",
+    "HoraRequerida": "2026-11-17T08:00",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false
   }
 ]
