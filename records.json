@@ -5704,7 +5704,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PE-1094",
     "PozoDestino": "PE-1123",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-14T02:00",
     "Id": 103,
     "Created": "2026-11-13T19:20:01.094Z",
@@ -5729,7 +5729,7 @@
     "Camion2": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Camion3": "AH881KJ - IVECO Tractor doble - CF140",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
-    "Modified": "2026-11-18T11:34:02.371Z",
+    "Modified": "2026-11-18T11:34:09.757Z",
     "FechaHoraArribo": "2026-11-14T12:32",
     "KmHojaRuta": 10.6,
     "ActaEntregaLocacion": true,
@@ -5753,7 +5753,9 @@
     "AsistCamion2": true,
     "AsistCamion3": true,
     "AsistCamion4": true,
-    "FechaHoraPlugDown": "2026-11-14T05:30"
+    "FechaHoraPlugDown": "2026-11-14T05:30",
+    "ComentarioNPT": "",
+    "FinDTM": false
   },
   {
     "Equipo": "PAE 007",
