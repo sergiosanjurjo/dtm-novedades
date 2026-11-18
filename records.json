@@ -5876,13 +5876,17 @@
   },
   {
     "Equipo": "PAE 007",
-    "Turno": "T 1",
+    "Turno": "T 2",
     "PozoOrigen": "PLF-1008",
     "PozoDestino": "PLF-1031",
     "Estado": "Orden1_Completa",
     "HoraRequerida": "2026-11-14T14:00",
     "Id": 106,
-    "Created": "2026-11-15T01:57:18.532Z"
+    "Created": "2026-11-15T01:57:18.532Z",
+    "ActaEntregaLocacion": false,
+    "HojaRutaAprobada": false,
+    "FinDTM": false,
+    "Modified": "2026-11-18T15:02:16.740Z"
   },
   {
     "Equipo": "PAE 003",
