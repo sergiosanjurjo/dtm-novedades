@@ -5812,7 +5812,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PR-1236",
     "PozoDestino": "PEK.a-804",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "Id": 107,
     "Created": "2026-11-16T14:14:53.758Z",
     "HoraPlanArribo": "2026-11-17T08:00",
@@ -5851,7 +5851,7 @@
     "Camion7": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion8": "AF516RO - IVECO Tractor doble - CF96",
     "Camion9": "AG982RQ - IVECO Tractor c/malacate - CF115",
-    "Modified": "2026-11-18T00:24:03.116Z",
+    "Modified": "2026-11-18T00:25:57.715Z",
     "HoraRequerida": "2026-11-17T08:00",
     "ActaEntregaLocacion": true,
     "HojaRutaAprobada": true,
@@ -5896,7 +5896,8 @@
     "FechaHoraCarritoBOP": "2026-11-17T06:00",
     "FechaHoraBajadaMastil": "2026-11-17T13:00",
     "FechaHoraFinVactor": "0026-11-17T19:00",
-    "FechaHoraPlugDown": "2026-11-17T02:30"
+    "FechaHoraPlugDown": "2026-11-17T02:30",
+    "ComentarioNPT": "Se observa mal cargado el primer turno en la aplicación\n1 hr problemas para bajar patas en tráiler de mtto"
   },
   {
     "Equipo": "PAE 003",
