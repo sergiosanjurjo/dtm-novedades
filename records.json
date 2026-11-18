@@ -6066,7 +6066,7 @@
     "Turno": "T 3",
     "PozoOrigen": "PR-1236",
     "PozoDestino": "PEK.a-804",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-18T08:00",
     "Id": 109,
     "Created": "2026-11-18T11:22:40.474Z",
@@ -6104,7 +6104,7 @@
     "Camion6": "AH610ER - SCANIA Tractor doble - CF121",
     "Camion7": "AG807DH - VOLKSWAGEN Tractor doble - CF113",
     "Camion8": "AH541EW - SCANIA Tractor doble - CF119",
-    "Modified": "2026-11-18T15:07:28.929Z",
+    "Modified": "2026-11-18T15:08:55.241Z",
     "FechaHoraArribo": "2026-11-18T09:00",
     "AsistSupervisor1": true,
     "AsistSupervisor2": true,
@@ -6137,6 +6137,8 @@
     "AsistCamion5": true,
     "AsistCamion6": true,
     "AsistCamion7": true,
-    "AsistCamion8": true
+    "AsistCamion8": true,
+    "ComentarioNPT": "1hr Espera personal por descanso",
+    "FinDTM": false
   }
 ]
