@@ -6312,7 +6312,7 @@
     "Turno": "T 1",
     "PozoOrigen": "PLF-1031",
     "PozoDestino": "PLF-1001",
-    "Estado": "Orden4_Completa",
+    "Estado": "Completo",
     "HoraRequerida": "2026-11-20T00:00",
     "Id": 112,
     "Created": "2026-11-19T18:18:58.000Z",
@@ -6343,7 +6343,7 @@
     "Camion3": "AF516RO - IVECO Tractor doble - CF96",
     "Camion4": "AH881KI - IVECO Tractor doble - CF139",
     "Camion5": "AH881KJ - IVECO Tractor doble - CF140",
-    "Modified": "2026-11-22T13:03:01.532Z",
+    "Modified": "2026-11-22T13:07:22.406Z",
     "FechaHoraArribo": "2026-11-19T11:00",
     "KmHojaRuta": 3.6,
     "ActaEntregaLocacion": true,
@@ -6377,7 +6377,9 @@
     "FechaHoraEvacuacion": "2026-11-19T20:00",
     "FechaHoraCarritoBOP": "2026-11-19T08:00",
     "FechaHoraFinVactor": "2026-11-19T22:00",
-    "FechaHoraPlugDown": "2026-11-19T04:30"
+    "FechaHoraPlugDown": "2026-11-19T04:30",
+    "ComentarioNPT": "",
+    "FinDTM": true
   },
   {
     "Equipo": "PAE 006",
