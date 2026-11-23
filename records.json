@@ -6606,5 +6606,15 @@
     "ComentarioNPT": "",
     "FinDTM": true,
     "FechaHoraRetiroFlota": "2026-11-21T22:00"
+  },
+  {
+    "Equipo": "PAE 007",
+    "Turno": "Pre Tarea. Mont. Tablonada / Semi Barras",
+    "PozoOrigen": "PLF-1001",
+    "PozoDestino": "PLF-1033",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-23T14:00",
+    "Id": 117,
+    "Created": "2026-11-23T19:20:33.621Z"
   }
 ]
