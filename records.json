@@ -6820,5 +6820,15 @@
     "Camion5": "AF868YL - IVECO Tractor doble - CF105",
     "Camion6": "AF516RN - IVECO Tractor c/malacate - CF97",
     "Modified": "2026-11-27T00:45:52.659Z"
+  },
+  {
+    "Equipo": "PAE 002",
+    "Turno": "T 1",
+    "PozoOrigen": "PE-943(d)",
+    "PozoDestino": "PE-988(d)",
+    "Estado": "Orden1_Completa",
+    "HoraRequerida": "2026-11-27T20:00",
+    "Id": 122,
+    "Created": "2026-11-28T00:14:37.608Z"
   }
 ]
